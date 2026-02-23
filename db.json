@@ -190,14 +190,6 @@
               "notes_hi": null,
               "quiz": "https://vividecotest1.edgeone.app/",
               "handwritten": null
-            },
-            {
-              "title": "WEEKLY TEST 2",
-              "url": "<video width=\"100%\" controls controlsList=\"nodownload\"> <source src=\"https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/699bee92079b6e6aba672ec3\"video/mp4\"> Your browser does not support the video tag. </video>",
-              "notes_en": null,
-              "notes_hi": null,
-              "quiz": null,
-              "handwritten": null
             }
           ]
         }
