@@ -24,28 +24,23 @@ function addNewOrUpdate(db) {
         const subOptions = ['ADD SUB (Regular System)', 'ADD LINK (Direct Redirect)'];
         let subChoice = readline.keyInSelect(subOptions, 'Mode for ' + newCourseName + ':');
         
-        if (subChoice === 0) { 
+        if (subChoice === 0) {
             let subName = readline.question('Enter First Subject Name: ').toUpperCase();
             db.courses.push({ name: newCourseName, teacher: teacherName, subjects: [{ name: subName, CHAPTERS: [], "WEEKLY TESTS": [] }] });
             saveDB(db);
-            console.log('✅ Course with Subject & Teacher added!');
-        } else if (subChoice === 1) { 
+            console.log('✅ Course Added!');
+        } else if (subChoice === 1) {
             let directLink = readline.question('Enter Redirect Link: ');
             db.courses.push({ name: newCourseName, teacher: teacherName, directLink: directLink, subjects: [] });
             saveDB(db);
-            console.log('✅ Course with Redirect & Teacher added!');
+            console.log('✅ Redirect Course Added!');
         }
         return;
     }
 
     let course = db.courses[cIndex];
-    if (course.directLink) {
-        console.log("⚠️ This is a direct redirect course.");
-        return;
-    }
-
     let subjectNames = course.subjects.map(s => s.name);
-    subjectNames.push("ADD NEW SUBJECT (+)"); 
+    subjectNames.push("ADD NEW SUBJECT (+)");
     let sIndex = readline.keyInSelect(subjectNames, 'Select Subject:');
     if (sIndex === -1) return;
 
@@ -72,15 +67,15 @@ function addNewOrUpdate(db) {
     if (itemIndex === list.length - 1) title = readline.question('Enter Title: ');
     else { existing = sub[cat][itemIndex]; title = existing.title; }
 
-    let link = readline.question('Lecture Link: ', {defaultInput: existing ? existing.url : ''});
+    console.log("\nTIP: Link section mein aap Direct Link ya poora <video> tag daal sakte hain.");
+    let link = readline.question('Lecture Link/HTML: ', {defaultInput: existing ? existing.url : ''});
     let nEn = readline.question('Eng Notes: ', {defaultInput: existing ? existing.notes_en : ''});
     let nHi = readline.question('Hindi Notes: ', {defaultInput: existing ? existing.notes_hi : ''});
     let quiz = readline.question('Quiz: ', {defaultInput: existing ? existing.quiz : ''});
     let ppt = readline.question('PPT/Other: ', {defaultInput: existing ? existing.handwritten : ''});
 
     let newData = { title, url: link || null, notes_en: nEn || null, notes_hi: nHi || null, quiz: quiz || null, handwritten: ppt || null };
-    if (existing) sub[cat][itemIndex] = newData;
-    else sub[cat].push(newData);
+    if (existing) sub[cat][itemIndex] = newData; else sub[cat].push(newData);
     saveDB(db);
     console.log('\n✅ Saved!');
 }
@@ -88,23 +83,32 @@ function addNewOrUpdate(db) {
 function manageData(db) {
     let cIndex = readline.keyInSelect(db.courses.map(c => c.name), 'Select Course:');
     if (cIndex === -1) return;
-    if (readline.keyInYN('Delete WHOLE COURSE "' + db.courses[cIndex].name + '"?')) {
-        db.courses.splice(cIndex, 1);
-        saveDB(db);
-        console.log('🗑️ Course Deleted!');
-        return;
+
+    if (readline.keyInYN('Are you sure you want to delete "' + db.courses[cIndex].name + '"?')) {
+        if (readline.keyInYN('FINAL WARNING: Delete ALL subjects inside this course?')) {
+            db.courses.splice(cIndex, 1);
+            saveDB(db);
+            console.log('🗑️ Course Deleted!');
+            return;
+        }
     }
+
     let sIndex = readline.keyInSelect(db.courses[cIndex].subjects.map(s => s.name), 'Select Subject:');
     if (sIndex === -1) return;
     let sub = db.courses[cIndex].subjects[sIndex];
     let catIndex = readline.keyInSelect(['CHAPTERS', 'WEEKLY TESTS'], 'Select Category:');
     if (catIndex === -1) return;
     let cat = catIndex === 0 ? 'CHAPTERS' : 'WEEKLY TESTS';
+
     let itemIndex = readline.keyInSelect(sub[cat].map(i => i.title), 'Delete which one?');
-    if (itemIndex !== -1 && readline.keyInYN('Delete it?')) {
-        sub[cat].splice(itemIndex, 1);
-        saveDB(db);
-        console.log('🗑️ Deleted!');
+    if (itemIndex !== -1) {
+        if (readline.keyInYN('Delete this specific item?')) {
+            if (readline.keyInYN('RE-CONFIRM: This action cannot be undone. Delete?')) {
+                sub[cat].splice(itemIndex, 1);
+                saveDB(db);
+                console.log('🗑️ Item Deleted!');
+            }
+        }
     }
 }
 main();
