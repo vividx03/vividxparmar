@@ -324,19 +324,9 @@
       ]
     },
     {
-      "name": "REASONING",
-      "subjects": [
-        {
-          "name": "GENERAL",
-          "CHAPTERS": [
-            {
-              "title": "REASONING SPL 58",
-              "url": "https://vividreasoningbatch.edgeone.app/"
-            }
-          ],
-          "WEEKLY TESTS": []
-        }
-      ]
+      "name": "REASONING SPL 58",
+      "directLink": "https://vividreasoningbatch.edgeone.app/",
+      "subjects": []
     }
   ]
 }
