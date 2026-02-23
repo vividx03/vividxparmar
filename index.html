@@ -9,41 +9,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Poppins', sans-serif; background: radial-gradient(circle at top, #1e293b, #0f172a); color: #f8fafc; min-height: 100vh; }
-        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; transition: all 0.3s ease; }
-        .glass-card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.07); border-color: #3b82f6; }
-        .neon-text { text-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
-        .btn-gradient { background: linear-gradient(135deg, #3b82f6, #2563eb); }
-        .search-box { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 15px; }
+        .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; transition: all 0.3s ease; }
+        .search-box { background: rgba(255, 255, 255, 0.1); border: 1px solid #3b82f6; border-radius: 15px; }
         .hidden { display: none; }
     </style>
 </head>
 <body class="p-4 pb-24">
     <div class="max-w-md mx-auto">
-        <header class="text-center py-8">
-            <h1 class="text-3xl font-bold neon-text text-blue-400">VIVID ACADEMY</h1>
-            <p class="text-gray-400 text-sm mt-1">Study Material & Updates</p>
+        <header class="text-center py-6">
+            <h1 class="text-3xl font-bold text-blue-400">VIVID ACADEMY</h1>
         </header>
 
         <div id="search-container" class="mb-6">
             <div class="search-box flex items-center px-4 py-3">
                 <i class="fas fa-search text-blue-400 mr-3"></i>
                 <input type="text" id="courseSearch" placeholder="Search course or teacher..." 
-                    class="bg-transparent border-none outline-none w-full text-white placeholder-gray-500 text-sm"
+                    class="bg-transparent border-none outline-none w-full text-white placeholder-gray-400 text-sm"
                     onkeyup="filterCourses()">
             </div>
         </div>
 
-        <h2 id="view-title" class="text-xl font-semibold mb-6 text-center uppercase tracking-widest text-blue-200">COURSES</h2>
+        <h2 id="view-title" class="text-xl font-semibold mb-6 text-center text-blue-200">COURSES</h2>
 
         <div id="course-list" class="grid gap-4"></div>
-        
-        <div id="no-results" class="hidden text-center py-10 text-gray-500 italic">
-            No course or teacher found.
-        </div>
+        <div id="no-results" class="hidden text-center py-10 text-gray-500 italic">No course found.</div>
 
         <div id="subject-section" class="hidden grid gap-4">
             <div id="subject-list" class="grid gap-4"></div>
-            <button onclick="renderCourses()" class="mt-6 p-4 glass-card w-full font-bold text-gray-400"><i class="fas fa-arrow-left mr-2"></i> BACK TO COURSES</button>
+            <button onclick="renderCourses()" class="mt-6 p-4 glass-card w-full font-bold text-gray-400">BACK TO HOME</button>
         </div>
         <div id="category-section" class="hidden grid gap-4">
             <div id="category-list" class="grid gap-4"></div>
@@ -54,35 +47,30 @@
             <button onclick="toggle('category-section')" class="mt-4 p-4 glass-card w-full font-bold text-gray-400">BACK</button>
         </div>
 
-        <footer class="fixed bottom-0 left-0 w-full p-4 bg-[#0f172a]/90 backdrop-blur-md border-t border-gray-800">
+        <footer class="fixed bottom-0 left-0 w-full p-4 bg-[#0f172a] border-t border-gray-800">
             <div class="flex justify-around max-w-md mx-auto">
-                <a href="https://whatsapp.com/channel/0029VbBjUBM0wajzBk92iw2q" target="_blank" class="text-green-500 text-2xl"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://t.me/vividx_03" target="_blank" class="text-blue-400 text-2xl"><i class="fab fa-telegram-plane"></i></a>
-                <a href="#" class="text-pink-500 text-2xl"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="text-red-500 text-2xl"><i class="fab fa-youtube"></i></a>
+                <a href="https://whatsapp.com/channel/0029VbBjUBM0wajzBk92iw2q" class="text-green-500 text-2xl"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://t.me/vividx_03" class="text-blue-400 text-2xl"><i class="fab fa-telegram-plane"></i></a>
             </div>
-            <p class="text-[10px] text-center text-gray-600 mt-2">© VIVID ACADEMY | Designed for Students</p>
         </footer>
     </div>
 
     <script>
-        let mainData = null, curC = null, curS = null;
+        let mainData = null;
         function loadData() { fetch('db.json?v=' + Date.now()).then(res => res.json()).then(data => { mainData = data; renderCourses(); }); }
         
-        function renderCourses() { 
-            document.getElementById('view-title').innerText = "AVAILABLE COURSES"; 
+        function renderCourses() {
             document.getElementById('search-container').classList.remove('hidden');
-            const list = document.getElementById('course-list'); 
-            list.innerHTML = ''; 
-            mainData.courses.forEach((c, i) => { 
-                let clickAction = c.directLink ? `window.open('${c.directLink}', '_blank')` : `selectCourse(${i})`;
-                list.innerHTML += `<div onclick="${clickAction}" class="glass-card p-6 text-center cursor-pointer course-item">
-                    <div class="text-blue-400 text-2xl mb-2"><i class="fas fa-graduation-cap"></i></div>
+            const list = document.getElementById('course-list');
+            list.innerHTML = '';
+            mainData.courses.forEach((c, i) => {
+                list.innerHTML += `<div onclick="selectCourse(${i})" class="glass-card p-6 text-center cursor-pointer course-item">
+                    <i class="fas fa-graduation-cap text-blue-400 text-2xl mb-2"></i>
                     <div class="font-bold text-lg">${c.name}</div>
-                    <div class="teacher-name text-blue-300/60 text-[11px] mt-1 font-medium tracking-wide uppercase italic">${c.teacher || 'Vivid Academy'}</div>
-                </div>`; 
-            }); 
-            toggle('course-list'); 
+                    <div class="teacher-name text-blue-300/60 text-xs uppercase mt-1 italic">${c.teacher || 'VIVID ACADEMY'}</div>
+                </div>`;
+            });
+            toggle('course-list');
         }
 
         function filterCourses() {
@@ -90,69 +78,30 @@
             let items = document.getElementsByClassName('course-item');
             let found = false;
             for (let i = 0; i < items.length; i++) {
-                let name = items[i].getElementsByClassName('font-bold')[0].innerText;
-                let teacher = items[i].getElementsByClassName('teacher-name')[0].innerText;
-                if (name.toUpperCase().indexOf(input) > -1 || teacher.toUpperCase().indexOf(input) > -1) {
-                    items[i].style.display = "";
-                    found = true;
-                } else {
-                    items[i].style.display = "none";
-                }
+                let name = items[i].querySelector('.font-bold').innerText;
+                let teacher = items[i].querySelector('.teacher-name').innerText;
+                if (name.toUpperCase().includes(input) || teacher.toUpperCase().includes(input)) {
+                    items[i].style.display = ""; found = true;
+                } else items[i].style.display = "none";
             }
             document.getElementById('no-results').classList.toggle('hidden', found);
         }
 
-        function selectCourse(i) { 
-            curC = i; 
+        function selectCourse(i) {
             document.getElementById('search-container').classList.add('hidden');
-            document.getElementById('view-title').innerText = mainData.courses[i].name; 
-            const list = document.getElementById('subject-list'); list.innerHTML = ''; 
-            mainData.courses[i].subjects.forEach((s, si) => { 
-                list.innerHTML += `<div onclick="showCategories(${si})" class="glass-card p-5 flex justify-between items-center cursor-pointer">
-                    <span class="font-semibold tracking-wide">${s.name}</span>
-                    <i class="fas fa-chevron-right text-blue-500"></i>
-                </div>`; 
-            }); 
-            toggle('subject-section'); 
+            const list = document.getElementById('subject-list'); list.innerHTML = '';
+            if(!mainData.courses[i].subjects.length) list.innerHTML = '<p class="text-center text-gray-500">No subjects added yet.</p>';
+            mainData.courses[i].subjects.forEach((s, si) => {
+                list.innerHTML += `<div onclick="alert('Content loading...')" class="glass-card p-5 flex justify-between items-center cursor-pointer">
+                    <span class="font-semibold">${s.name}</span><i class="fas fa-chevron-right text-blue-500"></i>
+                </div>`;
+            });
+            toggle('subject-section');
         }
 
-        function showCategories(si) { 
-            curS = si; document.getElementById('view-title').innerText = mainData.courses[curC].subjects[si].name; 
-            document.getElementById('category-list').innerHTML = `
-                <div onclick="showItems('CHAPTERS')" class="glass-card p-6 border-l-4 border-blue-500 cursor-pointer flex items-center">
-                    <i class="fas fa-book-open mr-4 text-blue-500"></i> <span class="font-bold">CHAPTER-WISE CONTENT</span>
-                </div>
-                <div onclick="showItems('WEEKLY TESTS')" class="glass-card p-6 border-l-4 border-green-500 cursor-pointer flex items-center">
-                    <i class="fas fa-vial mr-4 text-green-500"></i> <span class="font-bold">WEEKLY MOCK TESTS</span>
-                </div>`; 
-            toggle('category-section'); 
-        }
-
-        function showItems(type) { 
-            const items = mainData.courses[curC].subjects[curS][type] || []; 
-            document.getElementById('view-title').innerText = type; 
-            const list = document.getElementById('chapter-list'); 
-            list.innerHTML = items.length ? '' : '<p class="text-center text-gray-500">No content found here.</p>'; 
-            items.forEach(ch => { 
-                list.innerHTML += `<div class="glass-card p-5 border-t-2 border-blue-500/20">
-                    <h4 class="font-bold mb-4 text-blue-100 text-sm leading-tight">${ch.title}</h4>
-                    <div class="grid grid-cols-2 gap-3 text-[10px] font-bold">
-                        ${ch.url ? `<a href="${ch.url}" target="_blank" class="btn-gradient p-3 rounded-xl text-center shadow-lg"><i class="fas fa-play mr-1"></i> VIDEO</a>` : ''}
-                        ${ch.notes_en ? `<a href="${ch.notes_en}" target="_blank" class="bg-slate-700 p-3 rounded-xl text-center">ENG NOTES</a>` : ''}
-                        ${ch.notes_hi ? `<a href="${ch.notes_hi}" target="_blank" class="bg-slate-700 p-3 rounded-xl text-center">HINDI NOTES</a>` : ''}
-                        ${ch.quiz ? `<a href="${ch.quiz}" target="_blank" class="bg-indigo-600 p-3 rounded-xl text-center">ATTEMPT QUIZ</a>` : ''}
-                        ${ch.handwritten ? `<a href="${ch.handwritten}" target="_blank" class="bg-teal-600 p-3 rounded-xl text-center">PPT/PDF</a>` : ''}
-                    </div>
-                </div>`; 
-            }); 
-            toggle('content-section'); 
-        }
-
-        function toggle(id) { 
-            ['course-list', 'subject-section', 'category-section', 'content-section'].forEach(d => document.getElementById(d).classList.add('hidden')); 
-            document.getElementById(id).classList.remove('hidden'); 
-            if(id === 'course-list') document.getElementById('search-container').classList.remove('hidden');
-            window.scrollTo(0,0);
+        function toggle(id) {
+            ['course-list', 'subject-section', 'category-section', 'content-section'].forEach(d => document.getElementById(d).classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
         }
         loadData();
     </script>
