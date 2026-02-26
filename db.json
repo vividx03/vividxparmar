@@ -270,11 +270,5 @@
       "subjects": []
     }
   ],
-  "notifications": [
-    {
-      "tag": "HELLO HELLO",
-      "message": "TESTING",
-      "date": "26 Feb"
-    }
-  ]
+  "notifications": []
 }
