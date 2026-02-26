@@ -228,15 +228,6 @@
               "notes_hi": null,
               "quiz": "https://vividecotest1.edgeone.app/",
               "handwritten": null
-            },
-            {
-              "title": "TESTING..",
-              "url": "<video width=\"100%\" controls controlsList=\"nodownload\"> <source src=\"https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/699fe54f42ba9673f171cb91\"> Your browser does not support the video tag. </video>",
-              "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/699fe54f42ba9673f171cb91",
-              "notes_en": null,
-              "notes_hi": null,
-              "quiz": null,
-              "handwritten": null
             }
           ]
         }
@@ -277,33 +268,6 @@
       "teacher": "YATENDRA SIR",
       "directLink": "https://vividxcomputerspl29.edgeone.app/",
       "subjects": []
-    },
-    {
-      "name": "TESTING",
-      "teacher": "HEHEHE",
-      "directLink": "https://vivid-kohl.vercel.app/",
-      "subjects": []
-    },
-    {
-      "name": "HEHEHE",
-      "teacher": "TESTINGG",
-      "subjects": [
-        {
-          "name": "HEHEHE",
-          "CHAPTERS": [
-            {
-              "title": "HEHE",
-              "url": null,
-              "download_url": null,
-              "notes_en": null,
-              "notes_hi": null,
-              "quiz": null,
-              "handwritten": null
-            }
-          ],
-          "WEEKLY TESTS": []
-        }
-      ]
     }
   ],
   "notifications": [
@@ -311,6 +275,11 @@
       "tag": "TESTING",
       "message": "hello!!!",
       "date": "26 Feb 2026, 11:56 pm"
+    },
+    {
+      "tag": "HEHE",
+      "message": "hehehe",
+      "date": "27 Feb 2026, 12:09 am"
     }
   ]
 }
