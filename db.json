@@ -94,10 +94,10 @@
               "title": "DISEASES - LEC 11",
               "url": "<video width=\"100%\" controls controlsList=\"nodownload\"> <source src=\"https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/699e988f6324dee97ea9577b\"> Your browser does not support the video tag. </video>",
               "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/699e988f6324dee97ea9577b",
-              "notes_en": null,
-              "notes_hi": null,
+              "notes_en": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69a19f946f54f56440f4bc04",
+              "notes_hi": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69a1a01a6f54f56440f4bc06",
               "quiz": "https://vividxdiseases.edgeone.app/",
-              "handwritten": null
+              "handwritten": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69a19e876f54f56440f4bc02"
             },
             {
               "title": "NUTRITION - LEC 12",
@@ -133,11 +133,12 @@
             },
             {
               "title": "MICROECONOMICS - LEC 2",
-              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=699b02cf8400b2ce4be1d9d7",
-              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=699b032d8400b2ce4be1d9d9",
-              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=699b03348400b2ce4be1d9db",
-              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=699b03498400b2ce4be1d9dd",
-              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=699b03538400b2ce4be1d9df"
+              "url": "<video width=\"100%\" controls controlsList=\"nodownload\"> <source src=\"https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69a19dde6f54f56440f4bc00\"> Your browser does not support the video tag. </video>",
+              "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69a19dde6f54f56440f4bc00",
+              "notes_en": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/699b032d8400b2ce4be1d9d9",
+              "notes_hi": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/699b03348400b2ce4be1d9db",
+              "quiz": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/699b03498400b2ce4be1d9dd",
+              "handwritten": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/699b03538400b2ce4be1d9df"
             },
             {
               "title": "INFLATION AND UNEMPLOYMENT - LEC 3",
@@ -294,6 +295,11 @@
       "tag": "UPDATE",
       "message": "Today Lectures Updated ✅ Abhi regular updates kuch time tak nhi aayega...",
       "date": "27 Feb 2026, 11:57 am"
+    },
+    {
+      "tag": "UPDATE",
+      "message": "Eco lec 2 nhi chal rha tha toh update kar diya hu ab chalega and diseases full update kar diya hu.",
+      "date": "27 Feb 2026, 7:18 pm"
     }
   ]
 }
