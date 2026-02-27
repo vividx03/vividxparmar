@@ -85,6 +85,21 @@
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
+
+        /* Updated Counter Style */
+        #notif-dot {
+            min-width: 18px;
+            height: 18px;
+            padding: 0 4px;
+            font-size: 10px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: 6px;
+            right: 6px;
+            border: 2px solid #020617;
+        }
     </style>
 </head>
 <body class="p-4 pb-28">
@@ -151,13 +166,18 @@
             </div>
             <button onclick="toggleInbox()" class="notif-btn glass-card w-14 h-14 flex items-center justify-center text-blue-500 relative">
                 <i class="fas fa-bell text-xl"></i>
-                <span id="notif-dot" class="hidden absolute top-4 right-4 w-2 h-2 bg-red-500 rounded-full"></span>
+                <span id="notif-dot" class="hidden absolute bg-red-500 text-white rounded-full">0</span>
             </button>
         </div>
 
         <h2 id="view-title" class="text-xs font-black mb-6 uppercase tracking-[0.2em] text-blue-400 border-b border-blue-500/20 pb-2">AVAILABLE COURSES</h2>
         <div id="course-list" class="grid gap-4"></div>
         <div id="no-results" class="hidden text-center py-20 text-slate-500 italic">No course found.</div>
+
+        <div id="subject-section" class="hidden grid gap-4">
+            <div id="subject-list" class="grid gap-4"></div>
+            <button onclick="renderCourses()" class="mt-8 p-4 glass-card w-full font-bold text-slate-400 text-sm tracking-widest uppercase">BACK TO COURSES</button>
+        </div>
 
         <div id="subject-section" class="hidden grid gap-4">
             <div id="subject-list" class="grid gap-4"></div>
@@ -193,7 +213,7 @@
             if(!modal.classList.contains('hidden')) {
                 renderNotifications();
                 document.getElementById('notif-dot').classList.add('hidden');
-                document.body.style.overflow = 'hidden'; // Stop scrolling background
+                document.body.style.overflow = 'hidden'; 
             } else {
                 document.body.style.overflow = 'auto';
             }
@@ -230,7 +250,12 @@
             .then(data => { 
                 mainData = data; 
                 renderCourses();
-                if(data.notifications && data.notifications.length > 0) document.getElementById('notif-dot').classList.remove('hidden');
+                // Change: Show count instead of just a dot
+                if(data.notifications && data.notifications.length > 0) {
+                    const dot = document.getElementById('notif-dot');
+                    dot.innerText = data.notifications.length;
+                    dot.classList.remove('hidden');
+                }
             }); 
         }
         
@@ -326,4 +351,3 @@
     </script>
 </body>
 </html>
-
