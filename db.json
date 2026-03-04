@@ -262,17 +262,7 @@
         },
         {
           "name": "STATIC G.K",
-          "CHAPTERS": [
-            {
-              "title": "CLASSICAL DANCE - LEC 1",
-              "url": "<video width=\"100%\" controls controlsList=\"nodownload\"> <source src=\"https://file-to-link-7zyro-1d402ae4f299.herokuapp.com/dl/69a82118ee2f698c35e4394b\"> Your browser does not support the video tag. </video>",
-              "download_url": "https://file-to-link-7zyro-1d402ae4f299.herokuapp.com/dl/69a82118ee2f698c35e4394b",
-              "notes_en": "https://file-to-link-7zyro-1d402ae4f299.herokuapp.com/dl/69a82775ee2f698c35e43969",
-              "notes_hi": "https://file-to-link-7zyro-1d402ae4f299.herokuapp.com/dl/69a8277cee2f698c35e4396a",
-              "quiz": "https://vividxclassicalddance.edgeone.app/",
-              "handwritten": null
-            }
-          ],
+          "CHAPTERS": [],
           "WEEKLY TESTS": []
         }
       ]
@@ -329,11 +319,6 @@
       "tag": "UPDATE..",
       "message": "BIO AND ECO FULLY UPDATED...",
       "date": "4 Mar 2026, 9:11 am"
-    },
-    {
-      "tag": "UPDATE..",
-      "message": "PARMAR 4.0 (STATIC G.K) LEC 1 ADDED..",
-      "date": "4 Mar 2026, 6:15 pm"
     }
   ]
 }
