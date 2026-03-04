@@ -262,7 +262,17 @@
         },
         {
           "name": "STATIC G.K",
-          "CHAPTERS": [],
+          "CHAPTERS": [
+            {
+              "title": "CLASSICAL DANCE - LEC 1",
+              "url": "<video width=\"100%\" controls controlsList=\"nodownload\"> <source src=\"https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69a8729326779a7245d7aa83\"> Your browser does not support the video tag. </video>",
+              "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69a8729326779a7245d7aa83",
+              "notes_en": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69a872a826779a7245d7aa85",
+              "notes_hi": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69a872ae26779a7245d7aa87",
+              "quiz": "https://vividxclassicalddance.edgeone.app/",
+              "handwritten": null
+            }
+          ],
           "WEEKLY TESTS": []
         }
       ]
@@ -302,6 +312,12 @@
       "teacher": "YATENDRA SIR",
       "directLink": "https://vividxcomputerspl29.edgeone.app/",
       "subjects": []
+    },
+    {
+      "name": "MATH'S SPECIAL VOD BATCH 2",
+      "teacher": "GAGAN PRATAP SIR",
+      "directLink": "https://vividxmathsspecialvod2.edgeone.app/",
+      "subjects": []
     }
   ],
   "notifications": [
@@ -319,6 +335,11 @@
       "tag": "UPDATE..",
       "message": "BIO AND ECO FULLY UPDATED...",
       "date": "4 Mar 2026, 9:11 am"
+    },
+    {
+      "tag": "UPDATE..",
+      "message": "STATIC G.K(PARMAR 4.0) LEC 1 ADDED..",
+      "date": "4 Mar 2026, 11:36 pm"
     }
   ]
 }
