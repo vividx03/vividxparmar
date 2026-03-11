@@ -137,15 +137,9 @@
         </div>
     </div>
 
-    <div id="redirect-overlay" class="fixed inset-0 modal-overlay hidden flex-col items-center justify-center text-center">
-        <div class="loader mb-6"></div>
-        <h3 class="text-blue-400 font-bold tracking-widest uppercase text-lg">Securing Connection...</h3>
-    </div>
-
     <div id="video-modal" class="fixed inset-0 hidden modal-overlay flex items-center justify-center p-4">
         <div class="modal-content glass-card p-5 relative w-full max-w-2xl text-center shadow-2xl">
             <button onclick="closeVideo()" class="absolute -top-14 right-0 text-white text-4xl">&times;</button>
-            <p id="wait-msg" class="text-[10px] mb-4 uppercase tracking-widest bg-yellow-500/10 py-2 rounded-lg text-yellow-500 font-bold hidden">⚠️ Please wait... Content is loading</p>
             <div id="video-player-container" class="rounded-xl overflow-hidden bg-black"></div>
             <div id="download-btn-container" class="mt-4"></div>
         </div>
@@ -227,11 +221,7 @@
         function closeNotice() { document.getElementById('notice-modal').style.display = 'none'; updateProgress(20); }
         function updateProgress(percent) { document.getElementById('progress-bar').style.width = percent + '%'; }
 
-        function safeRedirect(url) {
-            const loader = document.getElementById('redirect-overlay');
-            loader.classList.remove('hidden');
-            setTimeout(() => { window.open(url, '_blank'); loader.classList.add('hidden'); }, 800);
-        }
+        function quickOpen(url) { window.open(url, '_blank'); }
 
         function loadData() { 
             fetch('db.json?v=' + Date.now())
@@ -253,7 +243,7 @@
             document.getElementById('search-container').classList.remove('hidden');
             const list = document.getElementById('course-list'); list.innerHTML = ''; 
             mainData.courses.forEach((c, i) => { 
-                let action = c.directLink ? `safeRedirect('${c.directLink}')` : `selectCourse(${i})`;
+                let action = c.directLink ? `quickOpen('${c.directLink}')` : `selectCourse(${i})`;
                 list.innerHTML += `<div onclick="${action}" class="glass-card p-6 flex items-center cursor-pointer active:scale-95"><div class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center mr-5 border border-blue-500/20"><i class="fas fa-graduation-cap text-blue-500 text-xl"></i></div><div><div class="font-bold text-base text-white">${c.name}</div><div class="text-slate-500 text-[10px] font-black uppercase mt-1 tracking-widest">${c.teacher || 'Vivid Faculty'}</div></div><i class="fas fa-chevron-right ml-auto text-slate-700 text-sm"></i></div>`; 
             }); 
             toggle('course-list'); 
@@ -291,7 +281,7 @@
         function handleBtn(val, btnClass, btnText) {
             if(!val) return '';
             let isCode = val.includes('<');
-            let action = isCode ? `playVideo('${btoa(val)}', '', false)` : `safeRedirect('${val}')`;
+            let action = isCode ? `playVideo('${btoa(val)}', '')` : `quickOpen('${val}')`;
             return `<button onclick="${action}" class="${btnClass} py-4 rounded-xl">${btnText}</button>`;
         }
 
@@ -315,16 +305,9 @@
             toggle('content-section'); 
         }
 
-        function playVideo(enc, d, isLecture = true) {
+        function playVideo(enc, d) {
             document.getElementById('video-player-container').innerHTML = atob(enc);
-            document.getElementById('download-btn-container').innerHTML = d ? `<button onclick="safeRedirect('${d}')" class="block w-full bg-emerald-600 py-4 rounded-xl text-xs font-bold uppercase text-white shadow-lg">DOWNLOAD LECTURE</button>` : '';
-            const waitMsg = document.getElementById('wait-msg');
-            if(isLecture) {
-                waitMsg.classList.remove('hidden');
-                setTimeout(() => { waitMsg.classList.add('hidden'); }, 45000);
-            } else {
-                waitMsg.classList.add('hidden');
-            }
+            document.getElementById('download-btn-container').innerHTML = d ? `<button onclick="quickOpen('${d}')" class="block w-full bg-emerald-600 py-4 rounded-xl text-xs font-bold uppercase text-white shadow-lg">DOWNLOAD LECTURE</button>` : '';
             document.getElementById('video-modal').classList.remove('hidden');
         }
 
