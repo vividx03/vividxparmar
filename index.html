@@ -22,7 +22,6 @@
             overflow-x: hidden;
         }
 
-        /* Progress Bar */
         #progress-container {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 5px;
@@ -57,12 +56,9 @@
         }
 
         .full-page-notif {
-            width: 100%;
-            height: 100%;
-            max-width: none !important;
-            max-height: none !important;
-            border-radius: 0 !important;
-            border: none !important;
+            width: 100%; height: 100%;
+            max-width: none !important; max-height: none !important;
+            border-radius: 0 !important; border: none !important;
         }
 
         .loader {
@@ -86,17 +82,10 @@
         }
 
         #notif-dot {
-            min-width: 18px;
-            height: 18px;
-            padding: 0 4px;
-            font-size: 10px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            top: 6px;
-            right: 6px;
-            border: 2px solid #020617;
+            min-width: 18px; height: 18px; padding: 0 4px;
+            font-size: 10px; font-weight: bold;
+            display: flex; align-items: center; justify-content: center;
+            top: 6px; right: 6px; border: 2px solid #020617;
         }
     </style>
 </head>
@@ -113,15 +102,11 @@
             <div class="text-[13px] text-gray-300 space-y-3 leading-relaxed mb-6 text-left border-l-2 border-blue-500/30 pl-3">
                 <p>All courses and materials on this website are provided <b>completely free of cost</b> by <span class="text-blue-400 font-bold px-1 bg-blue-500/10 rounded">VIVID</span>.</p>
                 <p>We do not charge any fees. If anyone asks you for money claiming to represent us, <span class="text-red-400 font-bold uppercase">please do not pay</span>.</p>
-                <p>Ask for a refund immediately and report the matter to us. This is the only official platform managed by <span class="text-blue-400 font-bold">VIVID</span>.</p>
+                <p>Ask for a refund immediately and report the matter to us.</p>
             </div>
             <div class="flex flex-col gap-2">
-                <a href="https://whatsapp.com/channel/0029VbBjUBM0wajzBk92iw2q" target="_blank" class="btn-video py-3 rounded-xl font-bold text-xs tracking-widest uppercase text-white text-center">
-                    🔔 JOIN OFFICIAL CHANNEL
-                </a>
-                <button onclick="closeNotice()" class="bg-slate-800/60 py-3 rounded-xl font-bold text-[10px] text-slate-400 uppercase tracking-widest">
-                    I Have Already Joined
-                </button>
+                <a href="https://whatsapp.com/channel/0029VbBjUBM0wajzBk92iw2q" target="_blank" class="btn-video py-3 rounded-xl font-bold text-xs tracking-widest uppercase text-white">🔔 JOIN OFFICIAL CHANNEL</a>
+                <button onclick="closeNotice()" class="bg-slate-800/60 py-3 rounded-xl font-bold text-[10px] text-slate-400 uppercase tracking-widest">I Have Already Joined</button>
             </div>
         </div>
     </div>
@@ -139,6 +124,15 @@
     <div id="redirect-overlay" class="fixed inset-0 modal-overlay hidden flex-col items-center justify-center text-center">
         <div class="loader mb-6"></div>
         <h3 class="text-blue-400 font-bold tracking-widest uppercase text-lg">Securing Connection...</h3>
+    </div>
+
+    <div id="video-modal" class="fixed inset-0 hidden modal-overlay flex items-center justify-center p-4">
+        <div class="modal-content glass-card p-5 relative w-full max-w-2xl text-center shadow-2xl">
+            <button onclick="closeVideo()" class="absolute -top-14 right-0 text-white text-4xl">&times;</button>
+            <p id="wait-msg" class="text-[10px] mb-4 uppercase tracking-widest bg-yellow-500/10 py-2 rounded-lg text-yellow-500 font-bold hidden">⚠️ Please wait...</p>
+            <div id="video-player-container" class="rounded-xl overflow-hidden bg-black min-h-[200px] flex items-center justify-center"></div>
+            <div id="download-btn-container" class="mt-4"></div>
+        </div>
     </div>
 
     <div class="max-w-md mx-auto">
@@ -215,15 +209,10 @@
         function closeNotice() { document.getElementById('notice-modal').style.display = 'none'; updateProgress(20); }
         function updateProgress(percent) { document.getElementById('progress-bar').style.width = percent + '%'; }
 
-        // Updated safeRedirect: Open in New Tab with Security Animation
         function safeRedirect(url) {
-            if(!url || url === "#") return;
             const loader = document.getElementById('redirect-overlay');
             loader.classList.remove('hidden');
-            setTimeout(() => { 
-                window.open(url, '_blank'); 
-                loader.classList.add('hidden'); 
-            }, 1000);
+            setTimeout(() => { window.open(url, '_blank'); loader.classList.add('hidden'); }, 800);
         }
 
         function loadData() { 
@@ -290,7 +279,7 @@
                 list.innerHTML += `<div class="glass-card p-6 mb-4 text-left">
                     <h4 class="font-bold mb-5 text-white text-sm uppercase border-b border-slate-800 pb-4 leading-relaxed tracking-wide">${ch.title}</h4>
                     <div class="grid grid-cols-2 gap-3 text-[10px] font-black uppercase text-white">
-                        ${generateBtn(ch.url, 'VIDEO', 'btn-video')}
+                        ${generateBtn(ch.url, 'VIDEO', 'btn-video', ch.download_url)}
                         ${generateBtn(ch.notes_en, 'ENG NOTES', 'btn-eng')}
                         ${generateBtn(ch.notes_hi, 'HINDI NOTES', 'btn-hindi')}
                         ${generateBtn(ch.quiz, 'QUIZ', 'btn-quiz')}
@@ -301,9 +290,28 @@
             toggle('content-section'); 
         }
 
-        function generateBtn(val, label, cls) {
-            if(!val || val === "" || val.includes('<iframe')) return "";
-            return `<button onclick="safeRedirect('${val}')" class="${cls} py-4 rounded-xl shadow-md active:opacity-80">${label}</button>`;
+        function generateBtn(val, label, cls, download = "") {
+            if(!val || val === "") return "";
+            if(val.includes('<iframe') || val.includes('<div')) {
+                // Encode HTML safely for the onclick attribute
+                let encoded = btoa(unescape(encodeURIComponent(val)));
+                return `<button onclick="playVideo('${encoded}', '${download}')" class="${cls} py-4 rounded-xl">${label}</button>`;
+            }
+            return `<button onclick="safeRedirect('${val}')" class="${cls} py-4 rounded-xl">${label}</button>`;
+        }
+
+        function playVideo(enc, d) {
+            try {
+                let decoded = decodeURIComponent(escape(atob(enc)));
+                document.getElementById('video-player-container').innerHTML = decoded;
+                document.getElementById('download-btn-container').innerHTML = d ? `<button onclick="safeRedirect('${d}')" class="block w-full bg-emerald-600 py-4 rounded-xl text-xs font-bold uppercase text-white shadow-lg">DOWNLOAD LECTURE</button>` : '';
+                document.getElementById('video-modal').classList.remove('hidden');
+            } catch(e) { console.error("Video Error", e); }
+        }
+
+        function closeVideo() { 
+            document.getElementById('video-player-container').innerHTML = ''; 
+            document.getElementById('video-modal').classList.add('hidden'); 
         }
 
         function toggle(id) { 
