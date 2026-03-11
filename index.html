@@ -101,10 +101,37 @@
             border: 2px solid #020617;
         }
 
-        /* Custom style for iframe to ensure it fills container */
+        /* Custom style for iframe with your crop logic */
+        #video-player-container {
+            width: 100% !important;
+            max-width: 900px;
+            margin: auto;
+            overflow: hidden;
+            height: 220px; /* Non-fullscreen height */
+            position: relative;
+            background: black;
+        }
+
         #video-player-container iframe {
             width: 100% !important;
-            aspect-ratio: 16/9;
+            height: 600px !important; /* Fixed height to hide menus */
+            border: none;
+            transform: translateY(-60px) scale(1.15); /* Your exact transform */
+            transform-origin: center;
+        }
+
+        /* Logic for when the container goes Fullscreen */
+        #video-player-container:fullscreen {
+            width: 100vw !important;
+            height: 100vh !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #video-player-container:fullscreen iframe {
+            height: 120vh !important; /* Fullscreen height adjustment */
+            transform: translateY(-10vh) scale(1.2);
         }
     </style>
 </head>
@@ -353,20 +380,19 @@
             document.body.style.overflow = 'auto';
         }
 
-        // UPDATED LANDSCAPE FULL SCREEN FUNCTION
+        // FULL FIX: Fullscreen mode pe aapka crop wala logic apply hoga
         function makeFullScreen() {
             const container = document.getElementById('video-player-container');
-            const iframe = container.querySelector('iframe');
-            if (iframe) {
-                if (iframe.requestFullscreen) {
-                    iframe.requestFullscreen();
-                } else if (iframe.webkitRequestFullscreen) {
-                    iframe.webkitRequestFullscreen();
-                } else if (iframe.msRequestFullscreen) {
-                    iframe.msRequestFullscreen();
+            if (container) {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
                 }
                 
-                // Sabhi modern browsers ke liye orientation lock (Mobile users ke liye best)
+                // Force Landscape
                 if (screen.orientation && screen.orientation.lock) {
                     screen.orientation.lock('landscape').catch(e => console.log("Orientation lock failed"));
                 }
