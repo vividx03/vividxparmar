@@ -297,23 +297,22 @@
                 list.innerHTML += `<div class="glass-card p-6 mb-4 text-left">
                     <h4 class="font-bold mb-5 text-white text-sm uppercase border-b border-slate-800 pb-4 leading-relaxed tracking-wide">${ch.title}</h4>
                     <div class="grid grid-cols-2 gap-3 text-[10px] font-black uppercase text-white">
-                        ${generateBtn(ch.url, 'VIDEO', 'btn-video', ch.download_url)}
-                        ${generateBtn(ch.notes_en, 'ENG NOTES', 'btn-eng')}
-                        ${generateBtn(ch.notes_hi, 'HINDI NOTES', 'btn-hindi')}
-                        ${generateBtn(ch.quiz, 'QUIZ', 'btn-quiz')}
-                        ${generateBtn(ch.handwritten, 'PPT/PDF', 'btn-ppt')}
+                        ${generateVideoBtn(ch.url, ch.download_url)}
+                        ${ch.notes_en ? `<button onclick="safeRedirect('${ch.notes_en}')" class="btn-eng py-4 rounded-xl">ENG NOTES</button>` : ''}
+                        ${ch.notes_hi ? `<button onclick="safeRedirect('${ch.notes_hi}')" class="btn-hindi py-4 rounded-xl">HINDI NOTES</button>` : ''}
+                        ${ch.quiz ? `<button onclick="safeRedirect('${ch.quiz}')" class="btn-quiz py-4 rounded-xl">QUIZ</button>` : ''}
+                        ${ch.handwritten ? `<button onclick="safeRedirect('${ch.handwritten}')" class="btn-ppt py-4 rounded-xl">PPT/PDF</button>` : ''}
                     </div>
                 </div>`; 
             }); 
             toggle('content-section'); 
         }
 
-        // Yeh function fix kiya hai taaki HTML/Links dono handle hon
-        function generateBtn(val, label, cls, download = "") {
-            if(!val || val === "") return "";
-            let isHTML = val.includes('<');
-            let action = isHTML ? `playVideo('${btoa(val)}', '${download}')` : `safeRedirect('${val}')`;
-            return `<button onclick="${action}" class="${cls} py-4 rounded-xl">${label}</button>`;
+        function generateVideoBtn(url, download = "") {
+            if(!url || url === "") return "";
+            let isHTML = url.includes('<');
+            let action = isHTML ? `playVideo('${btoa(url)}', '${download}')` : `safeRedirect('${url}')`;
+            return `<button onclick="${action}" class="btn-video py-4 rounded-xl">VIDEO</button>`;
         }
 
         function playVideo(enc, d) {
