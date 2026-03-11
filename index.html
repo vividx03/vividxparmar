@@ -56,7 +56,6 @@
             backdrop-filter: blur(8px); 
         }
 
-        /* Notification Full Page Styling */
         .full-page-notif {
             width: 100%;
             height: 100%;
@@ -86,7 +85,6 @@
             100% { transform: scale(1); }
         }
 
-        /* Updated Counter Style */
         #notif-dot {
             min-width: 18px;
             height: 18px;
@@ -118,7 +116,7 @@
                 <p>Ask for a refund immediately and report the matter to us. This is the only official platform managed by <span class="text-blue-400 font-bold">VIVID</span>.</p>
             </div>
             <div class="flex flex-col gap-2">
-                <a href="https://whatsapp.com/channel/0029VbBjUBM0wajzBk92iw2q" target="_blank" class="btn-video py-3 rounded-xl font-bold text-xs tracking-widest uppercase text-white">
+                <a href="https://whatsapp.com/channel/0029VbBjUBM0wajzBk92iw2q" target="_blank" class="btn-video py-3 rounded-xl font-bold text-xs tracking-widest uppercase text-white text-center">
                     🔔 JOIN OFFICIAL CHANNEL
                 </a>
                 <button onclick="closeNotice()" class="bg-slate-800/60 py-3 rounded-xl font-bold text-[10px] text-slate-400 uppercase tracking-widest">
@@ -134,8 +132,7 @@
                 <h3 class="font-black text-white tracking-widest uppercase text-sm"><i class="fas fa-bell mr-2 text-blue-400"></i> Notifications</h3>
                 <button onclick="toggleInbox()" class="text-slate-400 text-3xl">&times;</button>
             </div>
-            <div id="inbox-list" class="p-4 space-y-4">
-                </div>
+            <div id="inbox-list" class="p-4 space-y-4"></div>
         </div>
     </div>
 
@@ -218,13 +215,15 @@
         function closeNotice() { document.getElementById('notice-modal').style.display = 'none'; updateProgress(20); }
         function updateProgress(percent) { document.getElementById('progress-bar').style.width = percent + '%'; }
 
+        // Updated safeRedirect: Open in New Tab with Security Animation
         function safeRedirect(url) {
+            if(!url || url === "#") return;
             const loader = document.getElementById('redirect-overlay');
             loader.classList.remove('hidden');
             setTimeout(() => { 
                 window.open(url, '_blank'); 
                 loader.classList.add('hidden'); 
-            }, 800);
+            }, 1000);
         }
 
         function loadData() { 
@@ -303,8 +302,8 @@
         }
 
         function generateBtn(val, label, cls) {
-            if(!val || val === "" || val.includes('<')) return ""; 
-            return `<button onclick="safeRedirect('${val}')" class="${cls} py-4 rounded-xl">${label}</button>`;
+            if(!val || val === "" || val.includes('<iframe')) return "";
+            return `<button onclick="safeRedirect('${val}')" class="${cls} py-4 rounded-xl shadow-md active:opacity-80">${label}</button>`;
         }
 
         function toggle(id) { 
