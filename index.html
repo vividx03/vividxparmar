@@ -144,6 +144,15 @@
         <h3 class="text-blue-400 font-bold tracking-widest uppercase text-lg">Securing Connection...</h3>
     </div>
 
+    <div id="video-modal" class="fixed inset-0 hidden modal-overlay flex items-center justify-center p-4">
+        <div class="modal-content glass-card p-5 relative w-full max-w-2xl text-center shadow-2xl">
+            <button onclick="closeVideo()" class="absolute -top-14 right-0 text-white text-4xl">&times;</button>
+            <p id="wait-msg" class="text-[10px] mb-4 uppercase tracking-widest bg-yellow-500/10 py-2 rounded-lg text-yellow-500 font-bold hidden">⚠️ Please wait... Lecture starts within 60s</p>
+            <div id="video-player-container" class="rounded-xl overflow-hidden bg-black min-h-[200px] flex items-center justify-center"></div>
+            <div id="download-btn-container" class="mt-4"></div>
+        </div>
+    </div>
+
     <div class="max-w-md mx-auto">
         <header class="text-center py-12">
             <h1 class="text-4xl font-black tracking-tighter text-white">VIVID <span class="text-blue-500">ACADEMY</span></h1>
@@ -192,7 +201,7 @@
 
     <script>
         let mainData = null, curC = null, curS = null;
-        let notifViewed = false;
+        let notifViewed = false; 
 
         function toggleInbox() {
             const modal = document.getElementById('inbox-modal');
@@ -203,9 +212,7 @@
                 dot.classList.add('hidden');
                 notifViewed = true; 
                 document.body.style.overflow = 'hidden'; 
-            } else {
-                document.body.style.overflow = 'auto';
-            }
+            } else { document.body.style.overflow = 'auto'; }
         }
 
         function renderNotifications() {
@@ -213,32 +220,20 @@
             const msgs = mainData.notifications || [];
             list.innerHTML = msgs.length ? '' : '<p class="text-center text-slate-500 text-xs py-20">No new updates</p>';
             msgs.slice().reverse().forEach(n => {
-                list.innerHTML += `<div class="glass-card p-5 border-l-4 border-blue-500 bg-white/5">
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="text-blue-400 text-[10px] font-black uppercase tracking-widest bg-blue-500/10 px-2 py-0.5 rounded">${n.tag || 'UPDATE'}</span>
-                        <span class="text-slate-600 text-[9px] font-bold">${n.date || ''}</span>
-                    </div>
-                    <p class="text-[13px] text-slate-300 leading-relaxed font-medium">${n.message}</p>
-                </div>`;
+                list.innerHTML += `<div class="glass-card p-5 border-l-4 border-blue-500 bg-white/5"><div class="flex justify-between items-center mb-2"><span class="text-blue-400 text-[10px] font-black uppercase tracking-widest bg-blue-500/10 px-2 py-0.5 rounded">${n.tag || 'UPDATE'}</span><span class="text-slate-600 text-[9px] font-bold">${n.date || ''}</span></div><p class="text-[13px] text-slate-300 leading-relaxed font-medium">${n.message}</p></div>`;
             });
         }
 
         function closeNotice() { document.getElementById('notice-modal').style.display = 'none'; updateProgress(20); }
         function updateProgress(percent) { document.getElementById('progress-bar').style.width = percent + '%'; }
 
-        // Updated safeRedirect to handle HTML codes and remove wait-popups
-        function safeRedirect(content) {
+        // New Tab Logic Added Here
+        function safeRedirect(url) {
             const loader = document.getElementById('redirect-overlay');
             loader.classList.remove('hidden');
             setTimeout(() => { 
-                loader.classList.add('hidden');
-                if (content.trim().startsWith('<')) {
-                    // Render HTML in new window
-                    let newWin = window.open('', '_blank');
-                    newWin.document.write(`<html><body style="margin:0;background:#000;display:flex;justify-content:center;align-items:center;">${content}</body></html>`);
-                } else {
-                    window.open(content, '_blank'); 
-                }
+                window.open(url, '_blank'); // Open in New Page
+                loader.classList.add('hidden'); 
             }, 800);
         }
 
@@ -263,11 +258,7 @@
             const list = document.getElementById('course-list'); list.innerHTML = ''; 
             mainData.courses.forEach((c, i) => { 
                 let action = c.directLink ? `safeRedirect('${c.directLink}')` : `selectCourse(${i})`;
-                list.innerHTML += `<div onclick="${action}" class="glass-card p-6 flex items-center cursor-pointer active:scale-95">
-                    <div class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center mr-5 border border-blue-500/20"><i class="fas fa-graduation-cap text-blue-500 text-xl"></i></div>
-                    <div><div class="font-bold text-base text-white">${c.name}</div><div class="text-slate-500 text-[10px] font-black uppercase mt-1 tracking-widest">${c.teacher || 'Vivid Faculty'}</div></div>
-                    <i class="fas fa-chevron-right ml-auto text-slate-700 text-sm"></i>
-                </div>`; 
+                list.innerHTML += `<div onclick="${action}" class="glass-card p-6 flex items-center cursor-pointer active:scale-95"><div class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center mr-5 border border-blue-500/20"><i class="fas fa-graduation-cap text-blue-500 text-xl"></i></div><div><div class="font-bold text-base text-white">${c.name}</div><div class="text-slate-500 text-[10px] font-black uppercase mt-1 tracking-widest">${c.teacher || 'Vivid Faculty'}</div></div><i class="fas fa-chevron-right ml-auto text-slate-700 text-sm"></i></div>`; 
             }); 
             toggle('course-list'); 
         }
@@ -297,9 +288,7 @@
         function showCategories(si) { 
             curS = si; updateProgress(75);
             document.getElementById('view-title').innerText = mainData.courses[curC].subjects[si].name;
-            document.getElementById('category-list').innerHTML = `
-                <div onclick="showItems('CHAPTERS')" class="glass-card p-8 border-l-4 border-blue-600 cursor-pointer flex items-center active:scale-95"><i class="fas fa-book-open mr-5 text-blue-500 text-xl"></i> <span class="font-black text-sm uppercase text-white tracking-widest">CHAPTERS CONTENT</span></div>
-                <div onclick="showItems('WEEKLY TESTS')" class="glass-card p-8 border-l-4 border-pink-600 cursor-pointer flex items-center active:scale-95"><i class="fas fa-vial mr-5 text-pink-500 text-xl"></i> <span class="font-black text-sm uppercase text-white tracking-widest">MOCK TESTS</span></div>`; 
+            document.getElementById('category-list').innerHTML = `<div onclick="showItems('CHAPTERS')" class="glass-card p-8 border-l-4 border-blue-600 cursor-pointer flex items-center active:scale-95"><i class="fas fa-book-open mr-5 text-blue-500 text-xl"></i> <span class="font-black text-sm uppercase text-white tracking-widest">CHAPTERS CONTENT</span></div><div onclick="showItems('WEEKLY TESTS')" class="glass-card p-8 border-l-4 border-pink-600 cursor-pointer flex items-center active:scale-95"><i class="fas fa-vial mr-5 text-pink-500 text-xl"></i> <span class="font-black text-sm uppercase text-white tracking-widest">MOCK TESTS</span></div>`; 
             toggle('category-section'); 
         }
 
@@ -312,15 +301,39 @@
                 list.innerHTML += `<div class="glass-card p-6 mb-4 text-left">
                     <h4 class="font-bold mb-5 text-white text-sm uppercase border-b border-slate-800 pb-4 leading-relaxed tracking-wide">${ch.title}</h4>
                     <div class="grid grid-cols-2 gap-3 text-[10px] font-black uppercase text-white">
-                        ${ch.url ? `<button onclick="safeRedirect(\`${ch.url}\`)" class="btn-video py-4 rounded-xl">VIDEO</button>` : ''}
-                        ${ch.notes_en ? `<button onclick="safeRedirect(\`${ch.notes_en}\`)" class="btn-eng py-4 rounded-xl">ENG NOTES</button>` : ''}
-                        ${ch.notes_hi ? `<button onclick="safeRedirect(\`${ch.notes_hi}\`)" class="btn-hindi py-4 rounded-xl">HINDI NOTES</button>` : ''}
-                        ${ch.quiz ? `<button onclick="safeRedirect(\`${ch.quiz}\`)" class="btn-quiz py-4 rounded-xl">QUIZ</button>` : ''}
-                        ${ch.handwritten ? `<button onclick="safeRedirect(\`${ch.handwritten}\`)" class="btn-ppt py-4 rounded-xl">PPT/PDF</button>` : ''}
+                        ${generateBtn(ch.url, 'VIDEO', 'btn-video', ch.download_url)}
+                        ${generateBtn(ch.notes_en, 'ENG NOTES', 'btn-eng')}
+                        ${generateBtn(ch.notes_hi, 'HINDI NOTES', 'btn-hindi')}
+                        ${generateBtn(ch.quiz, 'QUIZ', 'btn-quiz')}
+                        ${generateBtn(ch.handwritten, 'PPT/PDF', 'btn-ppt')}
                     </div>
                 </div>`; 
             }); 
             toggle('content-section'); 
+        }
+
+        function generateBtn(val, label, cls, download = "") {
+            if(!val || val === "") return "";
+            // Always use safeRedirect to open in new tab with "Securing Connection"
+            let action = `safeRedirect('${val}')`;
+            
+            // Special Case: If it's an iframe/embed code (not a link), keep the old modal logic
+            if(val.includes('<')) {
+                action = `playVideo('${btoa(val)}', '${download}')`;
+            }
+
+            return `<button onclick="${action}" class="${cls} py-4 rounded-xl">${label}</button>`;
+        }
+
+        function playVideo(enc, d) {
+            document.getElementById('video-player-container').innerHTML = atob(enc);
+            document.getElementById('download-btn-container').innerHTML = d ? `<button onclick="safeRedirect('${d}')" class="block w-full bg-emerald-600 py-4 rounded-xl text-xs font-bold uppercase text-white shadow-lg">DOWNLOAD LECTURE</button>` : '';
+            document.getElementById('video-modal').classList.remove('hidden');
+        }
+
+        function closeVideo() { 
+            document.getElementById('video-player-container').innerHTML = ''; 
+            document.getElementById('video-modal').classList.add('hidden'); 
         }
 
         function toggle(id) { 
