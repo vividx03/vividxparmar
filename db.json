@@ -316,21 +316,21 @@
             },
             {
               "title": "ISS MATTER PURE? - LEC 2",
-              "url": "<video width=\"100%\" controls controlsList=\"nodownload\"> <source src=\"https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69ad0aea522131182bea2e2e\"> Your browser does not support the video tag. </video>",
+              "url": "https://vividxismatterpurelec.edgeone.app/",
               "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69ad0aea522131182bea2e2e",
-              "notes_en": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69ad0af1522131182bea2e30",
-              "notes_hi": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69ad0af8522131182bea2e32",
+              "notes_en": "https://vividxismatterpureeng.edgeone.app/",
+              "notes_hi": "https://vividxismatterpurehindi.edgeone.app/",
               "quiz": "https://issmatterpurexvivid.edgeone.app/",
-              "handwritten": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69ad0b00522131182bea2e34"
+              "handwritten": "https://vividxismatterpureppt.edgeone.app/"
             },
             {
               "title": "ATOM & ITS STRUCTURE - LEC 3",
-              "url": "<video width=\"100%\" controls controlsList=\"nodownload\"> <source src=\"https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69ad0b06522131182bea2e36\"> Your browser does not support the video tag. </video>",
+              "url": "https://vividxatomz.edgeone.app/",
               "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69ad0b06522131182bea2e36",
               "notes_en": null,
               "notes_hi": null,
               "quiz": "https://vividxatom.edgeone.app/",
-              "handwritten": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69ad0b0d522131182bea2e38"
+              "handwritten": "https://vividxatomppt.edgeone.app/"
             }
           ],
           "WEEKLY TESTS": []
@@ -390,11 +390,6 @@
       "tag": "🚨 IMPORTANT NOTICE 🚨",
       "message": "A new SIM binding rule is coming in India. All our social media handles have been updated on the website. Please make sure to follow us everywhere to stay updated and avoid missing any important information. ~ Vivid 🤍",
       "date": "28 Feb 2026, 11:26 am"
-    },
-    {
-      "tag": "UPDATE",
-      "message": "CHEMISTRY UPDATED...",
-      "date": "8 Mar 2026, 11:20 am"
     }
   ]
 }
