@@ -349,6 +349,15 @@
               "notes_hi": "https://vividxchemicalhindi.edgeone.app/",
               "quiz": "https://vividxchemicalquiz.edgeone.app/",
               "handwritten": "https://vividxchemicalppt.edgeone.app/"
+            },
+            {
+              "title": "METALS AND NON-METALS - LEC 6",
+              "url": "https://vividxmetalnonmetal.edgeone.app/",
+              "download_url": null,
+              "notes_en": null,
+              "notes_hi": null,
+              "quiz": "https://vividxmetalquiz.edgeone.app/",
+              "handwritten": "https://vividxmetalnonmetalppt.edgeone.app/"
             }
           ],
           "WEEKLY TESTS": []
