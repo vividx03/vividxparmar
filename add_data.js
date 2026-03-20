@@ -136,26 +136,31 @@ function addNewOrUpdate(db) {
     if (itemIndex === list.length - 1) title = readline.question('Enter Title: ');
     else { existing = sub[cat][itemIndex]; title = existing.title; }
 
-    console.log("\n[LECTURE LINK / HTML CODE]");
-    console.log("Paste code, press ENTER, type 'DONE' and press ENTER.");
-    let lines = [];
-    while (true) {
-        let line = readline.question('>');
-        if (line.trim().toUpperCase() === 'DONE') break;
-        lines.push(line);
+    // --- HELPER FOR MULTILINE DONE LOGIC ---
+    function getLinkOrCode(promptLabel, existingVal) {
+        console.log(`\n[${promptLabel}]`);
+        console.log("Paste link/code, press ENTER, type 'DONE' and press ENTER.");
+        let lines = [];
+        while (true) {
+            let line = readline.question('>');
+            if (line.trim().toUpperCase() === 'DONE') break;
+            lines.push(line);
+        }
+        let input = lines.join(" ").replace(/(\r\n|\n|\r)/gm, " ").trim();
+        return input || existingVal;
     }
-    let link = lines.join(" ").replace(/(\r\n|\n|\r)/gm, " ").trim();
-    if (!link && existing) link = existing.url;
+
+    let link = getLinkOrCode("LECTURE LINK / HTML CODE", existing ? existing.url : null);
 
     let dLink = existing ? existing.download_url : null;
     if (link && link.includes('<')) {
         dLink = readline.question('Lecture Download Link: ');
     }
 
-    let nEn = readline.question('Eng Notes: ', {defaultInput: existing ? existing.notes_en : ''});
-    let nHi = readline.question('Hindi Notes: ', {defaultInput: existing ? existing.notes_hi : ''});
-    let quiz = readline.question('Quiz: ', {defaultInput: existing ? existing.quiz : ''});
-    let ppt = readline.question('PPT/Other: ', {defaultInput: existing ? existing.handwritten : ''});
+    let nEn = getLinkOrCode("Eng Notes Link/Code", existing ? existing.notes_en : null);
+    let nHi = getLinkOrCode("Hindi Notes Link/Code", existing ? existing.notes_hi : null);
+    let quiz = getLinkOrCode("Quiz Link/Code", existing ? existing.quiz : null);
+    let ppt = getLinkOrCode("PPT/PDF Link/Code", existing ? existing.handwritten : null);
 
     let newData = { title, url: link || null, download_url: dLink || null, notes_en: nEn || null, notes_hi: nHi || null, quiz: quiz || null, handwritten: ppt || null };
     if (existing) sub[cat][itemIndex] = newData; else sub[cat].push(newData);
