@@ -1427,7 +1427,37 @@
     {
       "name": "CURRENT AFFAIRS MAGAZINE",
       "teacher": "PARMAR SIR",
-      "subjects": []
+      "subjects": [
+        {
+          "name": "2025 CURRENT AFFAIR MAGAZINE",
+          "CHAPTERS": [],
+          "WEEKLY TESTS": []
+        },
+        {
+          "name": "2026 CURRENT AFFAIR MAGAZINE",
+          "CHAPTERS": [
+            {
+              "title": "JANUARY",
+              "url": null,
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8dd7b03ce62c2c595f96f",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8dd8203ce62c2c595f971",
+              "quiz": null,
+              "handwritten": null
+            },
+            {
+              "title": "FEBRUARY",
+              "url": null,
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8dd8b03ce62c2c595f973",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8dd9203ce62c2c595f975",
+              "quiz": null,
+              "handwritten": null
+            }
+          ],
+          "WEEKLY TESTS": []
+        }
+      ]
     }
   ],
   "notifications": [
