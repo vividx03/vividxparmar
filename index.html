@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Support Chat Styles -->
     <style>
         :root {
             --bg-dark: #020617;
@@ -103,7 +102,6 @@
             border-radius: 50%;
         }
 
-        /* Support Chat Styles */
         .support-chat-msg { max-width: 85%; border-radius: 22px; font-size: 13px; line-height: 1.45; margin-bottom: 12px; padding: 12px; word-wrap: break-word; }
         .support-msg-vivid { background: rgba(59, 130, 246, 0.2); border: 1px solid rgba(59,130,246,0.3); border-bottom-left-radius: 5px; color: #b9e0ff; }
         .support-msg-user { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255,255,255,0.12); border-bottom-right-radius: 5px; margin-left: auto; color: #fff; }
@@ -190,7 +188,6 @@
 
     <div id="progress-container"><div id="progress-bar"></div></div>
 
-    <!-- Notice Modal -->
     <div id="notice-modal" class="fixed inset-0 modal-overlay flex items-center justify-center p-4">
         <div class="notice-content glass-card p-6 text-center border-t-4 border-blue-500 shadow-2xl" style="width: 90%; max-width: 400px;">
             <div class="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -213,7 +210,6 @@
         </div>
     </div>
 
-    <!-- Inbox Modal -->
     <div id="inbox-modal" class="fixed inset-0 modal-overlay hidden flex items-start justify-center overflow-y-auto">
         <div class="notice-content glass-card full-page-notif flex flex-col min-h-screen">
             <div class="p-5 border-b border-white/10 flex justify-between items-center bg-blue-500/5 sticky top-0 backdrop-blur-md">
@@ -224,7 +220,6 @@
         </div>
     </div>
 
-    <!-- Support Chat Modal -->
     <div id="support-chat-modal" class="support-modal-container hidden">
         <div class="relative w-full max-w-md">
             <div id="support-auth" class="glass-card p-8 w-full">
@@ -268,13 +263,11 @@
         </div>
     </div>
 
-    <!-- Redirect Overlay -->
     <div id="redirect-overlay" class="fixed inset-0 modal-overlay hidden flex-col items-center justify-center text-center">
         <div class="loader mb-6"></div>
         <h3 class="text-blue-400 font-bold tracking-widest uppercase text-lg">Securing Connection...</h3>
     </div>
 
-    <!-- Video Modal -->
     <div id="video-modal" class="fixed inset-0 hidden modal-overlay flex items-center justify-center p-4">
         <div class="modal-content glass-card p-5 relative w-full max-w-2xl text-center shadow-2xl">
             <button onclick="closeVideo()" class="absolute -top-14 right-0 text-white text-4xl">&times;</button>
@@ -284,7 +277,6 @@
         </div>
     </div>
 
-    <!-- Main Content -->
     <div class="max-w-md mx-auto">
         <header class="text-center py-12">
             <h1 class="text-4xl font-black tracking-tighter text-white">VIVID <span class="text-blue-500">ACADEMY</span></h1>
@@ -321,7 +313,6 @@
             <button onclick="toggle('category-section')" class="mt-6 p-4 glass-card w-full font-bold text-slate-400 text-sm tracking-widest uppercase mb-10 text-center">BACK</button>
         </div>
 
-        <!-- Footer with Support button -->
         <footer class="fixed bottom-0 left-0 w-full p-6 bg-slate-950/95 backdrop-blur-2xl border-t border-slate-900">
             <div class="flex justify-around max-w-md mx-auto">
                 <a href="https://whatsapp.com/channel/0029VbBjUBM0wajzBk92iw2q" target="_blank" class="text-green-500 text-3xl"><i class="fab fa-whatsapp"></i></a>
@@ -503,13 +494,10 @@
             window.scrollTo({top: 0, behavior: 'smooth'}); 
         }
 
-        // Support Chat Functions
         function openSupportChat() {
             document.getElementById('support-chat-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
-            // Clear unread count when opening chat
             clearSupportUnreadCount();
-            // Scroll to bottom after a short delay
             setTimeout(() => {
                 const box = document.getElementById('live-chat-box');
                 if(box) box.scrollTop = box.scrollHeight;
@@ -521,7 +509,7 @@
             document.body.style.overflow = 'auto';
         }
 
-        // ==================== SUPPORT CHAT CODE ====================
+        // ==================== SUPPORT CHAT CODE WITH FIXED DOUBLE SEND ====================
         const BOT_TOKEN = "8670403460:AAGyJQnVT62Sg0bhqGm0vUTE6id66PF1t5I";
         const ADMIN_CHAT_ID = "8305282917";
         const STORAGE_USERS = "vivid_support_users_v2";
@@ -532,13 +520,13 @@
         let pollingInterval = null;
         let messageSendLock = false;
         let lastMessageCount = 0;
+        let sendCooldown = false;
         
         function loadUsersDB() { const raw = localStorage.getItem(STORAGE_USERS); if(!raw) return {}; try { return JSON.parse(raw); } catch(e) { return {}; } }
         function saveUsersDB(db) { localStorage.setItem(STORAGE_USERS, JSON.stringify(db)); }
         function isValidUsername(u) { return u.length >= 7 && /[A-Za-z]/.test(u) && /[0-9]/.test(u); }
         function escapeHtml(str) { if(!str) return ""; return str.replace(/[&<>]/g, function(m) { if(m === '&') return '&amp;'; if(m === '<') return '&lt;'; if(m === '>') return '&gt;'; return m; }); }
         
-        // Unread count functions
         function getSupportUnreadCount() {
             const count = localStorage.getItem(UNREAD_KEY);
             return count ? parseInt(count) : 0;
@@ -593,7 +581,6 @@
             if(!userData || !userData.messages) return;
             const box = document.getElementById("live-chat-box");
             if(!box) return;
-            const oldScrollHeight = box.scrollHeight;
             const wasScrolledToBottom = box.scrollHeight - box.scrollTop <= box.clientHeight + 50;
             
             box.innerHTML = "";
@@ -617,7 +604,6 @@
                 }
             }
             
-            // Auto-scroll to bottom if already at bottom
             if(wasScrolledToBottom || messages.length > lastMessageCount) {
                 box.scrollTop = box.scrollHeight;
             }
@@ -664,21 +650,35 @@
             } catch(e) { console.error(e); return false; }
         }
         
+        // FIXED: Added proper cooldown to prevent double sending
         async function supportSendLiveQuery() {
             if(!currentUser) return;
-            if(messageSendLock) return;
+            if(messageSendLock || sendCooldown) return;
+            
             const inp = document.getElementById("liveChatInput");
             let msg = inp.value.trim();
             if(!msg) return;
+            
             messageSendLock = true;
+            sendCooldown = true;
+            
+            // Add local message instantly
             addLocalMessage(currentUser.username, { type: "text", content: msg, sender: "user", timestamp: Date.now() });
             inp.value = "";
+            
             try {
                 const userTag = `@${currentUser.username}`;
                 const text = `📩 *NEW SUPPORT QUERY* ${userTag}%0A%0A👤 *Name:* ${currentUser.name}%0A🔖 *Tag:* ${userTag}%0A💬 *Message:* ${msg}`;
                 await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${ADMIN_CHAT_ID}&text=${text}&parse_mode=Markdown`);
             } catch(e) { console.error(e); }
-            setTimeout(() => { messageSendLock = false; }, 1000);
+            
+            setTimeout(() => { 
+                messageSendLock = false; 
+            }, 500);
+            
+            setTimeout(() => { 
+                sendCooldown = false; 
+            }, 1500);
         }
         
         async function handleImageUpload(file) {
@@ -715,7 +715,6 @@
                             const lastMsg = userMsgs[userMsgs.length-1];
                             if(lastMsg && lastMsg.sender === "admin" && lastMsg.content === reply && (Date.now() - (lastMsg.timestamp || 0)) < 5000) continue;
                             addLocalMessage(currentUser.username, { type: "text", content: reply, sender: "admin", timestamp: Date.now() });
-                            // Increment unread count only if chat modal is not open
                             const modal = document.getElementById('support-chat-modal');
                             if(!modal || modal.classList.contains('hidden')) {
                                 incrementSupportUnreadCount();
@@ -789,6 +788,7 @@
             if(box) box.innerHTML = "";
             lastUpdateId = 0;
             messageSendLock = false;
+            sendCooldown = false;
         }
         
         function autoLoginSupport() {
@@ -803,14 +803,12 @@
                     renderMessages();
                     startPolling();
                     lastUpdateId = 0;
-                    // Scroll to bottom after loading
                     setTimeout(() => {
                         const box = document.getElementById('live-chat-box');
                         if(box) box.scrollTop = box.scrollHeight;
                     }, 100);
                 }
             }
-            // Restore unread count display
             const unread = getSupportUnreadCount();
             if(unread > 0) {
                 const dot = document.getElementById('support-notif-dot');
@@ -821,7 +819,20 @@
             }
         }
         
-        document.getElementById("liveChatInput")?.addEventListener("keypress", function(e) { if(e.key === "Enter") { e.preventDefault(); supportSendLiveQuery(); } });
+        // FIXED: Remove duplicate event listener - only one keypress handler
+        const chatInput = document.getElementById("liveChatInput");
+        if(chatInput) {
+            // Remove any existing listeners by cloning and replacing
+            const newInput = chatInput.cloneNode(true);
+            chatInput.parentNode.replaceChild(newInput, chatInput);
+            newInput.id = "liveChatInput";
+            newInput.addEventListener("keypress", function(e) { 
+                if(e.key === "Enter") { 
+                    e.preventDefault(); 
+                    supportSendLiveQuery(); 
+                } 
+            });
+        }
         
         window.supportLoginOrStartChat = supportLoginOrStartChat;
         window.supportSendLiveQuery = supportSendLiveQuery;
