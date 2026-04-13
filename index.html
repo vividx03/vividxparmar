@@ -159,21 +159,7 @@
             width: 100%;
             margin: auto;
         }
-        .support-close {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 30px;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 20px;
-            z-index: 10;
-        }
+        /* Cross button removed - no support-close class styles now */
     </style>
 </head>
 <body class="p-4 pb-28">
@@ -214,10 +200,9 @@
         </div>
     </div>
 
-    <!-- Support Chat Modal - EXACT SAME HTML STRUCTURE as original support code -->
+    <!-- Support Chat Modal - EXACT SAME HTML STRUCTURE as original support code (cross button removed) -->
     <div id="support-chat-modal" class="support-modal-container hidden">
         <div class="relative w-full max-w-md">
-            <div class="support-close" onclick="closeSupportChat()">&times;</div>
             <!-- LOGIN SECTION (Name + Username only, NO password) - EXACT COPY -->
             <div id="support-auth" class="glass-card p-8 w-full">
                 <div class="text-center mb-6">
@@ -331,6 +316,18 @@
         // ==================== MAIN DASHBOARD LOGIC ====================
         let mainData = null, curC = null, curS = null;
         let notifViewed = false;
+        
+        // Load notification viewed status from localStorage
+        const NOTIF_VIEWED_KEY = "vivid_notifications_viewed";
+        
+        function markNotificationsViewed() {
+            notifViewed = true;
+            localStorage.setItem(NOTIF_VIEWED_KEY, "true");
+        }
+        
+        function wasNotificationsViewed() {
+            return localStorage.getItem(NOTIF_VIEWED_KEY) === "true";
+        }
 
         function toggleInbox() {
             const modal = document.getElementById('inbox-modal');
@@ -339,7 +336,7 @@
             if(!modal.classList.contains('hidden')) {
                 renderNotifications();
                 dot.classList.add('hidden');
-                notifViewed = true; 
+                markNotificationsViewed();
                 document.body.style.overflow = 'hidden'; 
             } else {
                 document.body.style.overflow = 'auto';
@@ -388,10 +385,14 @@
             .then(data => { 
                 mainData = data; 
                 renderCourses();
-                if(!notifViewed && data.notifications && data.notifications.length > 0) {
+                // Check if notifications were already viewed (persistent)
+                if(!wasNotificationsViewed() && data.notifications && data.notifications.length > 0) {
                     const dot = document.getElementById('notif-dot');
                     dot.innerText = data.notifications.length;
                     dot.classList.remove('hidden');
+                } else {
+                    const dot = document.getElementById('notif-dot');
+                    dot.classList.add('hidden');
                 }
             }).catch(() => {
                 mainData = { courses: [], notifications: [] };
@@ -496,6 +497,7 @@
         const BOT_TOKEN = "8670403460:AAGyJQnVT62Sg0bhqGm0vUTE6id66PF1t5I";
         const ADMIN_CHAT_ID = "8305282917";
         const STORAGE_USERS = "vivid_support_users_v2";
+        const SESSION_USER_KEY = "vivid_current_session_user";
         let currentUser = null;
         let lastUpdateId = 0;
         let pollingInterval = null;
@@ -505,6 +507,25 @@
         function saveUsersDB(db) { localStorage.setItem(STORAGE_USERS, JSON.stringify(db)); }
         function isValidUsername(u) { return u.length >= 7 && /[A-Za-z]/.test(u) && /[0-9]/.test(u); }
         function escapeHtml(str) { if(!str) return ""; return str.replace(/[&<>]/g, function(m) { if(m === '&') return '&amp;'; if(m === '<') return '&lt;'; if(m === '>') return '&gt;'; return m; }); }
+        
+        // Save current session to localStorage for auto-login on page reload
+        function saveCurrentSession(username, name) {
+            if(username && name) {
+                localStorage.setItem(SESSION_USER_KEY, JSON.stringify({ username, name }));
+            } else {
+                localStorage.removeItem(SESSION_USER_KEY);
+            }
+        }
+        
+        function loadCurrentSession() {
+            const session = localStorage.getItem(SESSION_USER_KEY);
+            if(session) {
+                try {
+                    return JSON.parse(session);
+                } catch(e) { return null; }
+            }
+            return null;
+        }
         
         function renderMessages() {
             if(!currentUser) return;
@@ -662,11 +683,14 @@
                 startPolling();
                 lastUpdateId = 0;
             }
+            // Save session for auto-login on page reload
+            saveCurrentSession(username, name);
         }
         
         function supportLogoutAndReset() {
             stopPolling();
             currentUser = null;
+            saveCurrentSession(null, null); // Clear session
             document.getElementById('support-auth').classList.remove('hidden');
             document.getElementById('live-support-ui').classList.add('hidden');
             document.getElementById('suppName').value = "";
@@ -679,6 +703,23 @@
             closeSupportChat();
         }
         
+        // Auto-login on page load if session exists
+        function autoLoginSupport() {
+            const session = loadCurrentSession();
+            if(session && session.username && session.name) {
+                const db = loadUsersDB();
+                if(db[session.username]) {
+                    currentUser = { username: session.username, name: session.name };
+                    document.getElementById('displayUser').innerText = "@" + session.username;
+                    document.getElementById('support-auth').classList.add('hidden');
+                    document.getElementById('live-support-ui').classList.remove('hidden');
+                    renderMessages();
+                    startPolling();
+                    lastUpdateId = 0;
+                }
+            }
+        }
+        
         document.getElementById("liveChatInput")?.addEventListener("keypress", function(e) { if(e.key === "Enter") { e.preventDefault(); supportSendLiveQuery(); } });
         
         window.supportLoginOrStartChat = supportLoginOrStartChat;
@@ -686,6 +727,7 @@
         window.supportLogoutAndReset = supportLogoutAndReset;
         
         loadData();
+        autoLoginSupport();
     </script>
 </body>
-                     </html>
+</html>
