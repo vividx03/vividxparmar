@@ -1,12 +1,14 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>Vivid Academy | Elite Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Support Chat Styles (same as before) -->
     <style>
         :root {
             --bg-dark: #020617;
@@ -73,7 +75,7 @@
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        .hidden { display: none; }
+        .hidden { display: none !important; }
 
         .notif-btn {
             box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
@@ -98,12 +100,77 @@
             right: 6px;
             border: 2px solid #020617;
         }
+
+        /* Support Chat Modal Styles */
+        .support-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(2, 6, 23, 0.98);
+            backdrop-filter: blur(12px);
+            z-index: 10001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+        .support-modal .glass-card {
+            max-width: 450px;
+            width: 100%;
+            margin: auto;
+        }
+        .chat-msg { max-width: 85%; border-radius: 22px; font-size: 13px; line-height: 1.45; margin-bottom: 12px; padding: 12px; word-wrap: break-word; }
+        .msg-vivid { background: rgba(59, 130, 246, 0.2); border: 1px solid rgba(59,130,246,0.3); border-bottom-left-radius: 5px; color: #b9e0ff; }
+        .msg-user { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255,255,255,0.12); border-bottom-right-radius: 5px; margin-left: auto; color: #fff; }
+        .msg-admin { background: linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(34, 197, 94, 0.15)); border: 1px solid rgba(34,197,94,0.4); border-bottom-left-radius: 5px; color: #c6ffd9; }
+        .auth-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 14px 18px;
+            width: 100%;
+            color: white;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        .auth-btn {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            border-radius: 24px;
+            padding: 14px;
+            font-weight: 700;
+            width: 100%;
+            color: white;
+            transition: 0.2s;
+        }
+        .online-dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; display: inline-block; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 0.4; } 100% { opacity: 1; } }
+        .msg-img { max-width: 160px; border-radius: 14px; margin-top: 6px; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; }
+        .file-attach-btn { background: rgba(255,255,255,0.08); border-radius: 40px; padding: 12px; cursor: pointer; transition: 0.2s; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; }
+        .send-btn { background: linear-gradient(135deg, #3b82f6, #2563eb); border-radius: 40px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; }
+        .chat-input-area { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(8px); border-top: 1px solid rgba(255,255,255,0.08); }
+        .support-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 30px;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+        }
     </style>
 </head>
 <body class="p-4 pb-28">
 
     <div id="progress-container"><div id="progress-bar"></div></div>
 
+    <!-- Notice Modal -->
     <div id="notice-modal" class="fixed inset-0 modal-overlay flex items-center justify-center p-4">
         <div class="notice-content glass-card p-6 text-center border-t-4 border-blue-500 shadow-2xl" style="width: 90%; max-width: 400px;">
             <div class="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -126,6 +193,7 @@
         </div>
     </div>
 
+    <!-- Inbox Modal -->
     <div id="inbox-modal" class="fixed inset-0 modal-overlay hidden flex items-start justify-center overflow-y-auto">
         <div class="notice-content glass-card full-page-notif flex flex-col min-h-screen">
             <div class="p-5 border-b border-white/10 flex justify-between items-center bg-blue-500/5 sticky top-0 backdrop-blur-md">
@@ -136,11 +204,23 @@
         </div>
     </div>
 
+    <!-- Support Chat Modal (replaces YouTube) -->
+    <div id="support-chat-modal" class="hidden support-modal" style="z-index: 10002;">
+        <div class="relative w-full max-w-md">
+            <div class="support-close-btn" onclick="closeSupportChat()">&times;</div>
+            <div id="support-chat-container">
+                <!-- Chat UI will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Redirect Overlay -->
     <div id="redirect-overlay" class="fixed inset-0 modal-overlay hidden flex-col items-center justify-center text-center">
         <div class="loader mb-6"></div>
         <h3 class="text-blue-400 font-bold tracking-widest uppercase text-lg">Securing Connection...</h3>
     </div>
 
+    <!-- Video Modal -->
     <div id="video-modal" class="fixed inset-0 hidden modal-overlay flex items-center justify-center p-4">
         <div class="modal-content glass-card p-5 relative w-full max-w-2xl text-center shadow-2xl">
             <button onclick="closeVideo()" class="absolute -top-14 right-0 text-white text-4xl">&times;</button>
@@ -150,6 +230,7 @@
         </div>
     </div>
 
+    <!-- Main Content -->
     <div class="max-w-md mx-auto">
         <header class="text-center py-12">
             <h1 class="text-4xl font-black tracking-tighter text-white">VIVID <span class="text-blue-500">ACADEMY</span></h1>
@@ -186,17 +267,19 @@
             <button onclick="toggle('category-section')" class="mt-6 p-4 glass-card w-full font-bold text-slate-400 text-sm tracking-widest uppercase mb-10 text-center">BACK</button>
         </div>
 
+        <!-- Footer with Support instead of YouTube -->
         <footer class="fixed bottom-0 left-0 w-full p-6 bg-slate-950/95 backdrop-blur-2xl border-t border-slate-900">
             <div class="flex justify-around max-w-md mx-auto">
                 <a href="https://whatsapp.com/channel/0029VbBjUBM0wajzBk92iw2q" target="_blank" class="text-green-500 text-3xl"><i class="fab fa-whatsapp"></i></a>
                 <a href="https://t.me/vividx_03" target="_blank" class="text-blue-400 text-3xl"><i class="fab fa-telegram-plane"></i></a>
                 <a href="https://www.instagram.com/ellorvii" target="_blank" class="text-pink-500 text-3xl"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="text-red-500 text-3xl"><i class="fab fa-youtube"></i></a>
+                <a href="#" onclick="openSupportChat(); return false;" class="text-blue-400 text-3xl"><i class="fas fa-headset"></i></a>
             </div>
         </footer>
     </div>
 
     <script>
+        // ==================== MAIN DASHBOARD LOGIC ====================
         let mainData = null, curC = null, curS = null;
         let notifViewed = false;
 
@@ -261,7 +344,11 @@
                     dot.innerText = data.notifications.length;
                     dot.classList.remove('hidden');
                 }
-            }); 
+            }).catch(() => {
+                // Fallback demo data if db.json not found
+                mainData = { courses: [], notifications: [] };
+                renderCourses();
+            });
         }
         
         function renderCourses() { 
@@ -269,6 +356,10 @@
             document.getElementById('view-title').innerText = "AVAILABLE COURSES"; 
             document.getElementById('search-container').classList.remove('hidden');
             const list = document.getElementById('course-list'); list.innerHTML = ''; 
+            if(!mainData.courses || mainData.courses.length === 0) {
+                list.innerHTML = '<div class="glass-card p-6 text-center text-slate-400">No courses available</div>';
+                return;
+            }
             mainData.courses.forEach((c, i) => { 
                 let action = c.directLink ? `handleOpen('${c.directLink}')` : `selectCourse(${i})`;
                 list.innerHTML += `<div onclick="${action}" class="glass-card p-6 flex items-center cursor-pointer active:scale-95">
@@ -342,7 +433,192 @@
             window.scrollTo({top: 0, behavior: 'smooth'}); 
         }
 
-        loadData();
+        // ==================== SUPPORT CHAT (FULL FEATURE) ====================
+        const BOT_TOKEN = "8670403460:AAGyJQnVT62Sg0bhqGm0vUTE6id66PF1t5I";
+        const ADMIN_CHAT_ID = "8305282917";
+        const STORAGE_USERS = "vivid_support_users_v2";
+        let currentSupportUser = null;
+        let lastUpdateIdSupport = 0;
+        let pollingIntervalSupport = null;
+        let messageSendLockSupport = false;
+
+        function loadUsersDB() { const raw = localStorage.getItem(STORAGE_USERS); try { return JSON.parse(raw) || {}; } catch(e) { return {}; } }
+        function saveUsersDB(db) { localStorage.setItem(STORAGE_USERS, JSON.stringify(db)); }
+        function isValidUsername(u) { return u.length >= 7 && /[A-Za-z]/.test(u) && /[0-9]/.test(u); }
+        function escapeHtml(str) { if(!str) return ""; return str.replace(/[&<>]/g, function(m) { if(m === '&') return '&amp;'; if(m === '<') return '&lt;'; if(m === '>') return '&gt;'; return m; }); }
+
+        function renderSupportMessages() {
+            if(!currentSupportUser) return;
+            const db = loadUsersDB();
+            const userData = db[currentSupportUser.username];
+            if(!userData || !userData.messages) return;
+            const box = document.getElementById("live-chat-box-support");
+            if(!box) return;
+            box.innerHTML = "";
+            const messages = userData.messages;
+            for(let msgObj of messages) {
+                const { type, content, sender, timestamp, imageUrl } = msgObj;
+                const div = document.createElement("div");
+                div.className = `chat-msg ${sender === "user" ? "msg-user" : (sender === "admin" ? "msg-admin" : "msg-vivid")}`;
+                const timeSpan = timestamp ? `<div class="text-[8px] opacity-50 mb-1">${new Date(timestamp).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}</div>` : "";
+                const senderLabel = sender === "user" ? "You" : (sender === "admin" ? "✨ Vivid Admin" : "System");
+                if(type === "image") {
+                    div.innerHTML = `${timeSpan}<div class="text-[8px] opacity-60">${senderLabel}</div><img src="${imageUrl}" class="msg-img" alt="image" onclick="window.open('${imageUrl}','_blank')" onerror="this.src='https://placehold.co/300x200?text=Image+Failed'"><div class="text-[10px] mt-1 break-all">${escapeHtml(content || "📷 Image")}</div>`;
+                } else {
+                    div.innerHTML = `${timeSpan}<div class="text-[8px] opacity-60">${senderLabel}</div>${escapeHtml(content)}`;
+                }
+                box.appendChild(div);
+            }
+            box.scrollTop = box.scrollHeight;
+        }
+
+        function addSupportMessage(username, messageObj) {
+            const db = loadUsersDB();
+            if(!db[username]) return;
+            if(!db[username].messages) db[username].messages = [];
+            db[username].messages.push(messageObj);
+            saveUsersDB(db);
+            if(currentSupportUser && currentSupportUser.username === username) renderSupportMessages();
+        }
+
+        async function sendSupportQuery() {
+            if(!currentSupportUser || messageSendLockSupport) return;
+            const inp = document.getElementById("liveChatInputSupport");
+            let msg = inp.value.trim();
+            if(!msg) return;
+            messageSendLockSupport = true;
+            addSupportMessage(currentSupportUser.username, { type: "text", content: msg, sender: "user", timestamp: Date.now() });
+            inp.value = "";
+            try {
+                const text = `📩 *NEW SUPPORT QUERY* @${currentSupportUser.username}%0A%0A👤 *Name:* ${currentSupportUser.name}%0A🔖 *Tag:* @${currentSupportUser.username}%0A💬 *Message:* ${msg}`;
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${ADMIN_CHAT_ID}&text=${text}&parse_mode=Markdown`);
+            } catch(e) {}
+            setTimeout(() => { messageSendLockSupport = false; }, 1000);
+        }
+
+        async function pollSupportUpdates() {
+            if(!currentSupportUser) return;
+            try {
+                const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/getUpdates?offset=${lastUpdateIdSupport}&timeout=8`);
+                const data = await res.json();
+                if(data.ok && data.result) {
+                    for(const update of data.result) {
+                        if(update.update_id >= lastUpdateIdSupport) lastUpdateIdSupport = update.update_id + 1;
+                        const text = update.message?.text;
+                        if(text && text.includes(`@${currentSupportUser.username}`)) {
+                            let reply = text.replace(new RegExp(`@${currentSupportUser.username}`, 'gi'), "").trim();
+                            if(reply === "") reply = "✅ Acknowledged.";
+                            const db = loadUsersDB();
+                            const lastMsg = db[currentSupportUser.username]?.messages?.slice(-1)[0];
+                            if(lastMsg && lastMsg.sender === "admin" && lastMsg.content === reply && (Date.now() - (lastMsg.timestamp||0)) < 5000) continue;
+                            addSupportMessage(currentSupportUser.username, { type: "text", content: reply, sender: "admin", timestamp: Date.now() });
+                        }
+                    }
+                }
+            } catch(e) {}
+        }
+
+        function startSupportPolling() { if(pollingIntervalSupport) clearInterval(pollingIntervalSupport); pollingIntervalSupport = setInterval(pollSupportUpdates, 2500); }
+        function stopSupportPolling() { if(pollingIntervalSupport) { clearInterval(pollingIntervalSupport); pollingIntervalSupport = null; } }
+
+        function loginSupportChat() {
+            const name = document.getElementById('supportName').value.trim();
+            let username = document.getElementById('supportUsername').value.trim().toLowerCase();
+            if(!name || !username) { alert("Please fill both fields."); return; }
+            if(!isValidUsername(username)) { alert("Username: min 7 chars, letters & numbers required."); return; }
+            const db = loadUsersDB();
+            if(db[username]) { db[username].name = name; saveUsersDB(db); }
+            else { db[username] = { name: name, messages: [] }; saveUsersDB(db); }
+            currentSupportUser = { username, name };
+            document.getElementById('support-auth-container').classList.add('hidden');
+            document.getElementById('support-chat-interface').classList.remove('hidden');
+            document.getElementById('supportDisplayUser').innerText = "@" + username;
+            renderSupportMessages();
+            if(!db[username].messages || db[username].messages.length === 0) {
+                addSupportMessage(username, { type: "text", content: `Hi ${name}! Support active. Admin replies will be tagged with @${username}.`, sender: "system", timestamp: Date.now() });
+            }
+            startSupportPolling();
+            lastUpdateIdSupport = 0;
+        }
+
+        function closeSupportChat() {
+            stopSupportPolling();
+            currentSupportUser = null;
+            document.getElementById('support-chat-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function openSupportChat() {
+            document.getElementById('support-chat-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            // Reset UI inside modal
+            document.getElementById('support-auth-container').classList.remove('hidden');
+            document.getElementById('support-chat-interface').classList.add('hidden');
+            document.getElementById('supportName').value = '';
+            document.getElementById('supportUsername').value = '';
+            const chatBox = document.getElementById('live-chat-box-support');
+            if(chatBox) chatBox.innerHTML = '';
+        }
+
+        // Inject support chat HTML into modal
+        function initSupportModal() {
+            const container = document.getElementById('support-chat-container');
+            container.innerHTML = `
+                <div id="support-auth-container" class="glass-card p-6">
+                    <div class="text-center mb-4"><h3 class="text-xl font-black text-white">💬 LIVE SUPPORT</h3><p class="text-[8px] text-slate-500">Vivid Academy Help Desk</p></div>
+                    <input type="text" id="supportName" placeholder="Full Name" class="auth-input">
+                    <input type="text" id="supportUsername" placeholder="Username (min 7 chars, letters+numbers)" class="auth-input">
+                    <button onclick="loginSupportChat()" class="auth-btn">Start Chat</button>
+                </div>
+                <div id="support-chat-interface" class="glass-card overflow-hidden flex flex-col hidden" style="height: 70vh; max-height: 550px;">
+                    <div class="p-3 bg-blue-600/10 border-b border-white/10 flex justify-between items-center">
+                        <div class="flex items-center gap-2"><span class="online-dot"></span><span class="text-[10px] font-bold">Support: <span id="supportDisplayUser" class="text-blue-400"></span></span></div>
+                        <button onclick="closeSupportChat()" class="text-[9px] text-slate-500 hover:text-white">Close</button>
+                    </div>
+                    <div id="live-chat-box-support" class="flex-1 overflow-y-auto p-3 flex flex-col bg-black/20" style="min-height: 0;"></div>
+                    <div class="chat-input-area p-2 flex gap-2 items-center">
+                        <div class="file-attach-btn" onclick="document.getElementById('supportImageInput').click()"><i class="fas fa-image text-blue-400 text-lg"></i></div>
+                        <input type="file" id="supportImageInput" accept="image/*" style="display: none;">
+                        <input type="text" id="liveChatInputSupport" placeholder="Type message..." class="bg-white/5 border border-white/10 rounded-3xl px-3 py-2 text-sm text-white flex-1 outline-none">
+                        <div class="send-btn" onclick="sendSupportQuery()"><i class="fas fa-paper-plane text-white text-md"></i></div>
+                    </div>
+                </div>
+            `;
+            // Image upload handler
+            document.getElementById('supportImageInput')?.addEventListener('change', async function(e) {
+                if(e.target.files && e.target.files[0] && currentSupportUser) {
+                    const file = e.target.files[0];
+                    addSupportMessage(currentSupportUser.username, { type: "text", content: "⏳ Uploading image...", sender: "user", timestamp: Date.now() });
+                    const formData = new FormData();
+                    formData.append("chat_id", ADMIN_CHAT_ID);
+                    formData.append("photo", file);
+                    formData.append("caption", `🖼️ *IMAGE* @${currentSupportUser.username}\n👤 ${currentSupportUser.name}`);
+                    formData.append("parse_mode", "Markdown");
+                    try {
+                        const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, { method: "POST", body: formData });
+                        const data = await res.json();
+                        if(data.ok && data.result?.photo) {
+                            const fileId = data.result.photo[data.result.photo.length-1].file_id;
+                            const fileRes = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/getFile?file_id=${fileId}`);
+                            const fileData = await fileRes.json();
+                            const imageUrl = fileData.ok ? `https://api.telegram.org/file/bot${BOT_TOKEN}/${fileData.result.file_path}` : "https://placehold.co/400x300?text=Image";
+                            addSupportMessage(currentSupportUser.username, { type: "image", content: "📸 Image shared", sender: "user", timestamp: Date.now(), imageUrl: imageUrl });
+                        }
+                    } catch(err) { addSupportMessage(currentSupportUser.username, { type: "text", content: "❌ Image failed", sender: "user", timestamp: Date.now() }); }
+                    e.target.value = "";
+                }
+            });
+            document.getElementById("liveChatInputSupport")?.addEventListener("keypress", function(e) { if(e.key === "Enter") sendSupportQuery(); });
+        }
+
+        window.onload = () => {
+            loadData();
+            initSupportModal();
+        };
+        window.closeSupportChat = closeSupportChat;
+        window.openSupportChat = openSupportChat;
+        window.loginSupportChat = loginSupportChat;
+        window.sendSupportQuery = sendSupportQuery;
     </script>
 </body>
-</html>
+    </html>
