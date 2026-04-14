@@ -121,7 +121,7 @@
         .support-msg-user { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255,255,255,0.12); border-bottom-right-radius: 5px; margin-left: auto; color: #fff; }
         .support-msg-admin { background: linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(34, 197, 94, 0.15)); border: 1px solid rgba(34,197,94,0.4); border-bottom-left-radius: 5px; color: #c6ffd9; }
         
-        /* Reaction Popup - Mobile Friendly */
+        /* Reaction Popup - Centered */
         .reaction-popup {
             position: fixed;
             background: rgba(0, 0, 0, 0.95);
@@ -134,6 +134,8 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
             border: 1px solid rgba(255,255,255,0.1);
             animation: popupFadeIn 0.2s ease;
+            transform: translateX(-50%);
+            left: 50%;
         }
         .reaction-popup span {
             font-size: 28px;
@@ -148,8 +150,8 @@
             transform: scale(1.2);
         }
         @keyframes popupFadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
+            from { opacity: 0; transform: translateX(-50%) scale(0.9); }
+            to { opacity: 1; transform: translateX(-50%) scale(1); }
         }
         
         .message-reaction {
@@ -651,26 +653,15 @@
         
         const reactions = ['👍', '❤️', '😂', '😮', '😢', '🙏'];
         
-        function showReactionPopup(x, y, messageId, messageText) {
+        function showReactionPopup(messageId, messageText) {
             hideReactionPopup();
             currentReactionMsgId = { id: messageId, text: messageText };
             
             const popup = document.createElement('div');
             popup.className = 'reaction-popup';
             
-            // Calculate position - keep within screen bounds for both left and right clicks
-            let popupWidth = 260;
-            let leftPos = x - (popupWidth / 2);
-            
-            // Ensure popup stays within screen bounds
-            if(leftPos < 10) leftPos = 10;
-            if(leftPos + popupWidth > window.innerWidth) leftPos = window.innerWidth - popupWidth - 10;
-            
-            let topPos = y - 70;
-            if(topPos < 10) topPos = y + 20;
-            if(topPos + 70 > window.innerHeight) topPos = y - 100;
-            
-            popup.style.left = leftPos + 'px';
+            // Position at center of screen (fixed)
+            let topPos = window.innerHeight / 2 - 40;
             popup.style.top = topPos + 'px';
             
             reactions.forEach(emoji => {
@@ -838,17 +829,14 @@
                 // Add long press / context menu for reactions
                 div.addEventListener('contextmenu', (e) => {
                     e.preventDefault();
-                    const rect = div.getBoundingClientRect();
-                    showReactionPopup(e.clientX, rect.top, msgId, displayText);
+                    showReactionPopup(msgId, displayText);
                 });
                 
                 // For mobile: touch and hold
                 let touchTimer;
                 div.addEventListener('touchstart', (e) => {
                     touchTimer = setTimeout(() => {
-                        const rect = div.getBoundingClientRect();
-                        const touch = e.touches[0];
-                        showReactionPopup(touch.clientX, rect.top, msgId, displayText);
+                        showReactionPopup(msgId, displayText);
                     }, 500);
                 });
                 div.addEventListener('touchend', () => {
@@ -902,7 +890,7 @@
             if(!currentUser) return;
             if(messageSendLock || sendCooldown) return;
             
-            // Check if muted
+            // Check if muted - show error message without logging out
             if(isUserMuted(currentUser.username)) {
                 addLocalMessage(currentUser.username, { type: "text", content: "⛔ You are muted by Vivid Admin. You cannot send messages.", sender: "system", timestamp: Date.now() });
                 return;
@@ -930,10 +918,13 @@
         
         async function handleImageUpload(file) {
             if(!currentUser) return;
+            
+            // Check if muted
             if(isUserMuted(currentUser.username)) {
-                addLocalMessage(currentUser.username, { type: "text", content: "⛔ You are muted. Cannot send images.", sender: "system", timestamp: Date.now() });
+                addLocalMessage(currentUser.username, { type: "text", content: "⛔ You are muted by Vivid Admin. Cannot send images.", sender: "system", timestamp: Date.now() });
                 return;
             }
+            
             if(!file || !file.type.startsWith("image/")) { alert("Please select an image file."); return; }
             if(file.size > 5 * 1024 * 1024) { alert("Image too large! Max 5MB."); return; }
             addLocalMessage(currentUser.username, { type: "text", content: "⏳ Uploading image...", sender: "user", timestamp: Date.now() });
@@ -965,6 +956,10 @@
                             if(targetUser) {
                                 muteUser(targetUser);
                                 await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${ADMIN_CHAT_ID}&text=✅ User @${targetUser} has been MUTED. They cannot send messages anymore.`);
+                                // Update muted badge if this is the current user
+                                if(currentUser && currentUser.username === targetUser) {
+                                    document.getElementById('mutedBadge').classList.remove('hidden');
+                                }
                             }
                             continue;
                         }
@@ -973,6 +968,10 @@
                             if(targetUser) {
                                 unmuteUser(targetUser);
                                 await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${ADMIN_CHAT_ID}&text=✅ User @${targetUser} has been UNMUTED. They can send messages again.`);
+                                // Update muted badge if this is the current user
+                                if(currentUser && currentUser.username === targetUser) {
+                                    document.getElementById('mutedBadge').classList.add('hidden');
+                                }
                             }
                             continue;
                         }
@@ -1010,12 +1009,7 @@
             if(!name || !username) { alert("Please fill both Name and Username."); return; }
             if(!isValidUsername(username)) { alert("Username error: Minimum 7 characters, must include letters and numbers. Example: john1234"); return; }
             
-            // Check if user is muted
-            if(isUserMuted(username)) {
-                alert("⚠️ This username has been MUTED by admin. You cannot access support. Please contact admin.");
-                return;
-            }
-            
+            // Check if user is muted - allow login but show muted badge
             const db = loadUsersDB();
             if(db[username]) {
                 db[username].name = name;
@@ -1044,7 +1038,7 @@
             saveCurrentSession(username, name);
             clearSupportUnreadCount();
             
-            // Show muted badge if needed
+            // Show muted badge if user is muted
             if(isUserMuted(username)) {
                 document.getElementById('mutedBadge').classList.remove('hidden');
             } else {
@@ -1086,9 +1080,6 @@
         function autoLoginSupport() {
             const session = loadCurrentSession();
             if(session && session.username && session.name) {
-                if(isUserMuted(session.username)) {
-                    return;
-                }
                 const db = loadUsersDB();
                 if(db[session.username]) {
                     currentUser = { username: session.username, name: session.name };
@@ -1102,6 +1093,13 @@
                         const box = document.getElementById('live-chat-box');
                         if(box) box.scrollTop = box.scrollHeight;
                     }, 100);
+                    
+                    // Show muted badge if user is muted
+                    if(isUserMuted(session.username)) {
+                        document.getElementById('mutedBadge').classList.remove('hidden');
+                    } else {
+                        document.getElementById('mutedBadge').classList.add('hidden');
+                    }
                 }
             }
             const unread = getSupportUnreadCount();
