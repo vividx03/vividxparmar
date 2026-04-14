@@ -1031,7 +1031,7 @@
                 document.getElementById('displayUser').innerText = "@" + username;
                 document.getElementById('support-auth').classList.add('hidden');
                 document.getElementById('live-support-ui').classList.remove('hidden');
-                addLocalMessage(username, { type: "text", content: `Hi ${name}! Your support session stsrted. Admin will reply you soon. Long press on any message to add reactions!`, sender: "system", timestamp: Date.now() });
+                addLocalMessage(username, { type: "text", content: `Hi ${name}! Your support session started. Admin will reply you soon. Long press on any message to add reactions!`, sender: "system", timestamp: Date.now() });
                 startPolling();
                 lastUpdateId = 0;
             }
