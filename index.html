@@ -921,7 +921,7 @@
             
             // Check if muted
             if(isUserMuted(currentUser.username)) {
-                addLocalMessage(currentUser.username, { type: "text", content: "⛔ You are muted by Vivid Admin. Cannot send images.", sender: "system", timestamp: Date.now() });
+                addLocalMessage(currentUser.username, { type: "text", content: "⛔ You are muted by Vivid. Cannot send images.", sender: "system", timestamp: Date.now() });
                 return;
             }
             
@@ -1031,7 +1031,7 @@
                 document.getElementById('displayUser').innerText = "@" + username;
                 document.getElementById('support-auth').classList.add('hidden');
                 document.getElementById('live-support-ui').classList.remove('hidden');
-                addLocalMessage(username, { type: "text", content: `Hi ${name}! Long press on any message to add reactions!`, sender: "system", timestamp: Date.now() });
+                addLocalMessage(username, { type: "text", content: `Hi ${name}! Your support session stsrted. Admin will reply you soon. Long press on any message to add reactions!`, sender: "system", timestamp: Date.now() });
                 startPolling();
                 lastUpdateId = 0;
             }
