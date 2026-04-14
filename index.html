@@ -183,7 +183,6 @@
             position: relative;
         }
         
-        /* Link styling */
         .message-link {
             color: #60a5fa;
             text-decoration: underline;
@@ -546,16 +545,18 @@
             }); 
         }
         
-        // Convert URLs to clickable links and hide bot token from image URLs
+        // Convert URLs to clickable links
         function linkifyText(text) {
             if(!text) return '';
-            // First, hide any bot token in image URLs by replacing with placeholder
-            let safeText = text.replace(/https:\/\/api\.telegram\.org\/file\/bot[^\/]+\//g, 'https://api.telegram.org/file/bot[HIDDEN]/');
-            // Convert URLs to clickable links
             const urlRegex = /(https?:\/\/[^\s]+)/g;
-            return safeText.replace(urlRegex, function(url) {
-                return `<a href="${url}" target="_blank" class="message-link" rel="noopener noreferrer">${escapeHtml(url)}</a>`;
+            return text.replace(urlRegex, function(url) {
+                return `<a href="${url}" target="_blank" class="message-link" rel="noopener noreferrer" onclick="event.stopPropagation()">${escapeHtml(url)}</a>`;
             });
+        }
+        
+        // Open image in new tab without showing bot token
+        function openImage(imageUrl) {
+            window.open(imageUrl, '_blank');
         }
         
         function getSupportUnreadCount() {
@@ -623,13 +624,7 @@
                     div.className = `support-chat-msg ${sender === "user" ? "support-msg-user" : (sender === "admin" ? "support-msg-admin" : "support-msg-vivid")}`;
                     const timeSpan = timestamp ? `<div class="text-[8px] opacity-50 mb-1">${new Date(timestamp).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}</div>` : "";
                     const senderLabel = sender === "user" ? "You" : (sender === "admin" ? "✨ Vivid Admin" : "System");
-                    // Use a blob URL or data URL to hide bot token - convert to base64 or use proxy
-                    let displayUrl = imageUrl;
-                    if(imageUrl && imageUrl.includes('api.telegram.org/file/bot')) {
-                        // Replace bot token with placeholder for display, but keep original for loading
-                        displayUrl = imageUrl.replace(/bot[^\/]+/, 'bot[HIDDEN]');
-                    }
-                    div.innerHTML = `${timeSpan}<div class="text-[8px] opacity-60">${senderLabel}</div><img src="${imageUrl}" class="support-msg-img" alt="shared image" onclick="window.open(this.src.replace(/bot[HIDDEN]/, 'bot${BOT_TOKEN}'), '_blank')" onerror="this.src='https://placehold.co/300x200?text=Image+Failed'"><div class="text-[10px] mt-1 break-all">${escapeHtml(content || "📷 Image")}</div>`;
+                    div.innerHTML = `${timeSpan}<div class="text-[8px] opacity-60">${senderLabel}</div><img src="${imageUrl}" class="support-msg-img" alt="shared image" onclick="openImage('${imageUrl}')" onerror="this.src='https://placehold.co/300x200?text=Image+Failed'"><div class="text-[10px] mt-1 break-all">${escapeHtml(content || "📷 Image")}</div>`;
                     box.appendChild(div);
                 } else {
                     const div = document.createElement("div");
@@ -849,6 +844,9 @@
                 }
             }
         }
+        
+        // Make openImage globally available
+        window.openImage = openImage;
         
         const chatInput = document.getElementById("liveChatInput");
         if(chatInput) {
