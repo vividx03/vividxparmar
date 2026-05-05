@@ -1644,6 +1644,12 @@
           "WEEKLY TESTS": []
         }
       ]
+    },
+    {
+      "name": "SELECTION WAY",
+      "teacher": "",
+      "directLink": "https://selectionway.edgeone.app/",
+      "subjects": []
     }
   ],
   "notifications": [
