@@ -1467,15 +1467,15 @@
       "subjects": []
     },
     {
-      "name": "SELECTION WAY",
-      "teacher": "",
-      "directLink": "https://selectionway.edgeone.app/",
-      "subjects": []
-    },
-    {
       "name": "SSC PRATHAM BATCH 2",
       "teacher": "CAREERWILL",
       "directLink": "https://vividxprathambatch.edgeone.app/",
+      "subjects": []
+    },
+    {
+      "name": "SELECTION WAY",
+      "teacher": "GAGAN PRATAP TEAM",
+      "directLink": "https://selectionwayvivid.edgeone.dev/",
       "subjects": []
     }
   ],
