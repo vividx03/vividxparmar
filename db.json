@@ -1477,6 +1477,17 @@
       "teacher": "GAGAN PRATAP TEAM",
       "directLink": "https://selectionwayvivid.edgeone.dev/",
       "subjects": []
+    },
+    {
+      "name": "PARMAR 5.0 GK",
+      "teacher": "PARMAR SIR",
+      "subjects": [
+        {
+          "name": "POLITY",
+          "CHAPTERS": [],
+          "WEEKLY TESTS": []
+        }
+      ]
     }
   ],
   "notifications": [
