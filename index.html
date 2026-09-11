@@ -41,7 +41,6 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Subtle grid background */
         body::before {
             content: '';
             position: fixed;
@@ -67,7 +66,6 @@
 
         .mono { font-family: 'JetBrains Mono', monospace; }
 
-        /* ============ PROGRESS BAR ============ */
         #progress-container {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 2px;
@@ -81,7 +79,6 @@
             transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* ============ SURFACES ============ */
         .surface {
             background: var(--bg-secondary);
             border: 1px solid var(--border-subtle);
@@ -100,7 +97,6 @@
             box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 8px 24px rgba(0,0,0,0.4);
         }
 
-        /* ============ BUTTONS ============ */
         .btn {
             font-weight: 600;
             letter-spacing: -0.01em;
@@ -128,7 +124,6 @@
         .btn-quiz { background: linear-gradient(180deg, #ec4899, #db2777); color: white; border-color: #9d174d; }
         .btn-ppt { background: linear-gradient(180deg, #06b6d4, #0891b2); color: white; border-color: #155e75; }
 
-        /* ============ MODALS ============ */
         .modal-overlay { 
             background: rgba(5, 5, 10, 0.92); 
             z-index: 9999; 
@@ -145,7 +140,6 @@
             border: none !important;
         }
 
-        /* ============ LOADER ============ */
         .loader {
             border: 2px solid var(--border-subtle);
             border-top: 2px solid var(--accent);
@@ -156,7 +150,6 @@
 
         .hidden { display: none !important; }
 
-        /* ============ NOTIFICATION BUTTON ============ */
         .notif-btn {
             position: relative;
             transition: all 0.2s ease;
@@ -210,7 +203,6 @@
             100% { transform: scale(1); }
         }
 
-        /* ============ MISC ============ */
         .divider {
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--border-subtle) 20%, var(--border-subtle) 80%, transparent);
@@ -241,7 +233,6 @@
             50% { opacity: 0.4; }
         }
 
-        /* Notification cards */
         .notif-card {
             position: relative;
             padding: 16px 18px;
@@ -270,7 +261,6 @@
             box-shadow: 0 0 8px var(--success);
         }
 
-        /* Course card */
         .course-card {
             position: relative;
             padding: 18px;
@@ -309,13 +299,11 @@
             flex-shrink: 0;
         }
 
-        /* Smooth scrollbar */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-        /* Fade in animation */
         .fade-in { animation: fadeIn 0.35s ease both; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(6px); }
@@ -328,7 +316,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Grid footer */
         .social-btn {
             width: 44px; height: 44px;
             display: flex;
@@ -345,7 +332,6 @@
         }
         .social-btn:active { transform: translateY(0); }
 
-        /* Header branding */
         .brand-mark {
             display: inline-flex;
             align-items: center;
@@ -358,16 +344,25 @@
             font-size: 18px;
             color: white;
         }
+
+        /* Popup pulse for attention */
+        .pulse-attention {
+            animation: pulseAttention 2s ease-in-out infinite;
+        }
+        @keyframes pulseAttention {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+            50% { box-shadow: 0 0 0 12px rgba(99, 102, 241, 0); }
+        }
     </style>
 </head>
 <body class="pb-32 relative">
 
     <div id="progress-container"><div id="progress-bar"></div></div>
 
-    <!-- ==================== JOIN LOCK OVERLAY ==================== -->
+    <!-- ==================== JOIN LOCK OVERLAY (SHOWS EVERY VISIT) ==================== -->
     <div id="join-lock-overlay" class="fixed inset-0 modal-overlay flex items-center justify-center p-4" style="z-index: 10001;">
         <div class="surface-elevated slide-up p-8 text-center" style="width: 92%; max-width: 420px;">
-            <div class="brand-mark mx-auto mb-5">V</div>
+            <div class="brand-mark mx-auto mb-5 pulse-attention">V</div>
             
             <div class="flex items-center justify-center gap-2 mb-2">
                 <span class="status-dot"></span>
@@ -410,7 +405,6 @@
     <!-- ==================== MAIN CONTENT ==================== -->
     <div id="main-content-wrapper" class="hidden relative z-10">
 
-        <!-- Notification Inbox -->
         <div id="inbox-modal" class="fixed inset-0 modal-overlay hidden flex items-start justify-center overflow-y-auto">
             <div class="full-page-notif flex flex-col min-h-screen" style="background: var(--bg-primary);">
                 <div class="p-5 border-b sticky top-0 z-10" style="background: rgba(10,10,15,0.95); backdrop-filter: blur(12px); border-color: var(--border-subtle);">
@@ -433,14 +427,12 @@
             </div>
         </div>
 
-        <!-- Redirect Loader -->
         <div id="redirect-overlay" class="fixed inset-0 modal-overlay hidden flex-col items-center justify-center text-center">
             <div class="loader mb-5"></div>
             <h3 class="text-indigo-400 font-bold tracking-widest uppercase text-xs mono">Establishing Connection</h3>
             <p class="text-slate-500 text-[10px] mt-2">Please wait...</p>
         </div>
 
-        <!-- Video Modal -->
         <div id="video-modal" class="fixed inset-0 hidden modal-overlay flex items-center justify-center p-4">
             <div class="surface-elevated p-5 relative w-full max-w-2xl text-center">
                 <button onclick="closeVideo()" class="absolute -top-12 right-0 w-9 h-9 rounded-lg flex items-center justify-center text-white" style="background: rgba(255,255,255,0.08); border: 1px solid var(--border-subtle);">
@@ -454,7 +446,6 @@
 
         <div class="max-w-md mx-auto px-4">
 
-            <!-- Header -->
             <header class="pt-12 pb-10 text-center fade-in">
                 <div class="brand-mark mx-auto mb-4">V</div>
                 <h1 class="text-3xl font-black tracking-tight text-white">
@@ -466,7 +457,6 @@
                 </div>
             </header>
 
-            <!-- Search + Notif -->
             <div id="search-container" class="mb-6 flex gap-2.5 fade-in">
                 <div class="surface flex-1 flex items-center px-4 py-3">
                     <i class="fas fa-search text-slate-500 mr-3 text-sm"></i>
@@ -482,7 +472,6 @@
                 </button>
             </div>
 
-            <!-- Section Title -->
             <div class="flex items-center justify-between mb-4">
                 <h2 id="view-title" class="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 mono">
                     Available Courses
@@ -490,14 +479,12 @@
                 <div class="h-px flex-1 ml-4" style="background: linear-gradient(90deg, var(--border-subtle), transparent);"></div>
             </div>
 
-            <!-- Course List -->
             <div id="course-list" class="grid gap-3"></div>
             <div id="no-results" class="hidden text-center py-20">
                 <i class="fas fa-inbox text-4xl text-slate-700 mb-3"></i>
                 <p class="text-slate-500 text-sm">No courses found</p>
             </div>
 
-            <!-- Subject Section -->
             <div id="subject-section" class="hidden grid gap-3">
                 <div id="subject-list" class="grid gap-3"></div>
                 <button onclick="renderCourses()" class="mt-6 py-3.5 surface font-semibold text-slate-400 hover:text-white text-[11px] tracking-widest uppercase flex items-center justify-center gap-2">
@@ -505,7 +492,6 @@
                 </button>
             </div>
 
-            <!-- Category Section -->
             <div id="category-section" class="hidden grid gap-3">
                 <div id="category-list" class="grid gap-3"></div>
                 <button onclick="toggle('subject-section')" class="mt-4 py-3.5 surface font-semibold text-slate-400 hover:text-white text-[11px] tracking-widest uppercase flex items-center justify-center gap-2">
@@ -513,7 +499,6 @@
                 </button>
             </div>
 
-            <!-- Content Section -->
             <div id="content-section" class="hidden grid gap-3 text-center">
                 <div id="chapter-list" class="grid gap-3"></div>
                 <button onclick="toggle('category-section')" class="mt-4 py-3.5 surface font-semibold text-slate-400 hover:text-white text-[11px] tracking-widest uppercase flex items-center justify-center gap-2 mb-6">
@@ -522,7 +507,6 @@
             </div>
         </div>
 
-        <!-- Footer -->
         <footer class="fixed bottom-0 left-0 w-full py-4" style="background: rgba(10,10,15,0.92); backdrop-filter: blur(16px); border-top: 1px solid var(--border-subtle);">
             <div class="flex justify-center gap-3 max-w-md mx-auto">
                 <a href="https://whatsapp.com/channel/0029VbDx2j1BadmU3wdvsv31" target="_blank" class="social-btn text-emerald-400 hover:text-emerald-300">
@@ -542,27 +526,22 @@
     </div>
 
     <script>
-        // ==================== JOIN LOCK ====================
-        const JOIN_KEY = "vivid_joined_official_v2";
+        // ==================== JOIN POPUP (ALWAYS SHOWS ON EVERY PAGE LOAD) ====================
+        // No localStorage check for the popup itself — it appears every single visit.
+        // Once user clicks "Join Official Channel", they get access for THIS session only.
+        // On next page load / refresh, the popup will show again.
         
         function unlockContent() {
-            localStorage.setItem(JOIN_KEY, "true");
+            // Simply hide the popup and show content — no persistent storage
             document.getElementById('join-lock-overlay').style.display = 'none';
             document.getElementById('main-content-wrapper').classList.remove('hidden');
             updateProgress(20);
             loadData();
         }
         
-        function checkJoinStatus() {
-            if (localStorage.getItem(JOIN_KEY) === "true") {
-                document.getElementById('join-lock-overlay').style.display = 'none';
-                document.getElementById('main-content-wrapper').classList.remove('hidden');
-                loadData();
-            } else {
-                document.getElementById('join-lock-overlay').style.display = 'flex';
-                document.getElementById('main-content-wrapper').classList.add('hidden');
-            }
-        }
+        // Always show the popup on load — content hidden behind it
+        document.getElementById('join-lock-overlay').style.display = 'flex';
+        document.getElementById('main-content-wrapper').classList.add('hidden');
 
         // ==================== MAIN DASHBOARD ====================
         let mainData = null, curC = null, curS = null;
@@ -853,8 +832,6 @@
             document.getElementById(id).classList.remove('hidden'); 
             window.scrollTo({top: 0, behavior: 'smooth'}); 
         }
-        
-        checkJoinStatus();
     </script>
 </body>
 </html>
