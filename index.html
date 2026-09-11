@@ -65,7 +65,6 @@
             letter-spacing: -0.011em;
         }
 
-        /* Ambient gradient orbs */
         .ambient-orb {
             position: fixed;
             border-radius: 50%;
@@ -82,7 +81,6 @@
             66% { transform: translate(-30px, 30px) scale(0.95); }
         }
 
-        /* Fine grid overlay */
         .grid-overlay {
             position: fixed;
             inset: 0;
@@ -96,14 +94,9 @@
             z-index: 1;
         }
 
-        /* ============ TYPOGRAPHY ============ */
         .mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace; }
         .tnum { font-variant-numeric: tabular-nums; }
-        .track-tight { letter-spacing: -0.025em; }
-        .track-wider { letter-spacing: 0.08em; }
-        .track-widest { letter-spacing: 0.18em; }
 
-        /* ============ PROGRESS BAR ============ */
         #progress-track {
             position: fixed;
             top: 0; left: 0; right: 0;
@@ -126,7 +119,6 @@
             100% { background-position: 200% 0%; }
         }
 
-        /* ============ SURFACES ============ */
         .surf {
             background: var(--bg-2);
             border: 1px solid var(--line-1);
@@ -145,7 +137,6 @@
                 0 24px 48px -12px rgba(0,0,0,0.7);
         }
 
-        /* ============ BUTTONS ============ */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -209,7 +200,6 @@
         .btn-ppt { background: linear-gradient(180deg, #06b6d4, #0891b2); color: white; border-color: #155e75; }
         .btn-ppt:hover { box-shadow: 0 0 16px rgba(6,182,212,0.4); }
 
-        /* ============ ICON CONTAINERS ============ */
         .icon-c {
             width: 44px;
             height: 44px;
@@ -224,7 +214,6 @@
             transition: all 0.2s ease;
         }
 
-        /* ============ MODAL ============ */
         .overlay {
             position: fixed;
             inset: 0;
@@ -257,19 +246,11 @@
             width: 100%;
             max-width: 420px;
         }
-        .modal-sheet::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(99,102,241,0.6), transparent);
-        }
         @keyframes sheetIn {
             from { opacity: 0; transform: translateY(24px) scale(0.98); }
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* ============ LOCK SCREEN ============ */
         .lock-screen {
             width: 100%;
             max-width: 440px;
@@ -360,7 +341,6 @@
             flex-shrink: 0;
         }
 
-        /* ============ HEADER ============ */
         .site-header {
             padding: 36px 0 28px;
             text-align: center;
@@ -390,7 +370,6 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
-        /* ============ SEARCH ============ */
         .search-field {
             display: flex;
             align-items: center;
@@ -469,7 +448,6 @@
             to { transform: scale(1); opacity: 1; }
         }
 
-        /* ============ SECTION HEADING ============ */
         .section-head {
             display: flex;
             align-items: center;
@@ -491,7 +469,6 @@
             background: linear-gradient(90deg, var(--line-1), transparent);
         }
 
-        /* ============ CARDS ============ */
         .card-item {
             position: relative;
             padding: 16px 18px;
@@ -555,7 +532,6 @@
         }
         .card-item:hover .card-chevron { color: var(--indigo-l); transform: translateX(3px); }
 
-        /* Content cards (with buttons) */
         .content-card {
             padding: 18px;
             background: var(--bg-2);
@@ -616,7 +592,6 @@
         }
         .action-grid .btn i { font-size: 10px; }
 
-        /* ============ NOTIFICATIONS ============ */
         .notif-row {
             padding: 16px 18px;
             background: var(--bg-2);
@@ -665,7 +640,6 @@
             letter-spacing: -0.005em;
         }
 
-        /* ============ FULL-PAGE INBOX ============ */
         .inbox-shell {
             position: fixed;
             inset: 0;
@@ -722,14 +696,14 @@
             gap: 10px;
         }
 
-        /* ============ FOOTER ============ */
+        /* ============ FOOTER — Enhanced Size ============ */
         .site-footer {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 14px 16px;
-            background: rgba(5,5,10,0.9);
+            padding: 16px 16px 20px;
+            background: rgba(5,5,10,0.92);
             backdrop-filter: blur(20px) saturate(150%);
             -webkit-backdrop-filter: blur(20px) saturate(150%);
             border-top: 1px solid var(--line-1);
@@ -738,28 +712,28 @@
         .social-row {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             max-width: var(--container);
             margin: 0 auto;
         }
 
         .social-btn {
-            width: 44px;
-            height: 44px;
-            border-radius: var(--r-md);
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
             background: var(--bg-2);
             border: 1px solid var(--line-1);
             color: var(--t-2);
-            font-size: 17px;
+            font-size: 20px;
             transition: all 0.2s ease;
             text-decoration: none;
             position: relative;
         }
         .social-btn:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
             border-color: var(--line-3);
             background: var(--bg-3);
             box-shadow: var(--sh-md);
@@ -769,9 +743,13 @@
         .social-btn.wa { color: #25d366; }
         .social-btn.tg { color: #29b6f6; }
         .social-btn.ig { color: #ec4899; }
-        .social-btn.yt { color: #ef4444; }
+        .social-btn.support { color: #a78bfa; }
 
-        /* ============ LOADER ============ */
+        .social-btn.support:hover {
+            border-color: rgba(167,139,250,0.5);
+            box-shadow: 0 0 20px rgba(167,139,250,0.3);
+        }
+
         .ldr {
             width: 40px;
             height: 40px;
@@ -782,7 +760,6 @@
         }
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* ============ UTILITIES ============ */
         .hidden { display: none !important; }
 
         .empty {
@@ -815,7 +792,6 @@
             }
         }
 
-        /* Toast */
         .toast {
             position: fixed;
             top: 20px;
@@ -844,7 +820,7 @@
         .toast i { color: var(--indigo-l); }
 
         /* ============================================================
-           DESKTOP RESPONSIVE — wider container, larger typography
+           DESKTOP RESPONSIVE
            ============================================================ */
         @media (min-width: 768px) {
             :root { --container: 720px; }
@@ -891,8 +867,9 @@
             .inbox-bar { padding: 20px; }
             .inbox-bar-inner h3 { font-size: 16px; }
 
-            .social-btn { width: 50px; height: 50px; font-size: 19px; border-radius: 12px; }
-            .site-footer { padding: 18px 16px; }
+            .social-btn { width: 60px; height: 60px; font-size: 24px; border-radius: 16px; }
+            .social-row { gap: 14px; }
+            .site-footer { padding: 20px 16px 24px; }
 
             .btn { font-size: 14px; padding: 14px 20px; }
             .btn-primary { font-size: 14px; padding: 15px 22px; }
@@ -902,20 +879,18 @@
             :root { --container: 900px; }
             .wordmark { font-size: 44px; }
             .lock-screen { max-width: 560px; }
+            .social-btn { width: 64px; height: 64px; font-size: 26px; border-radius: 18px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Ambient background -->
     <div class="ambient-orb orb-1"></div>
     <div class="ambient-orb orb-2"></div>
     <div class="grid-overlay"></div>
 
-    <!-- Progress -->
     <div id="progress-track"><div id="progress-fill"></div></div>
 
-    <!-- Toast -->
     <div id="toast" class="toast"><i class="fas fa-check-circle"></i><span id="toast-msg">Done</span></div>
 
     <!-- ==================== LOCK SCREEN (ALWAYS SHOWS) ==================== -->
@@ -979,7 +954,6 @@
     <!-- ==================== MAIN APP ==================== -->
     <div id="app" class="hidden" style="position: relative; z-index: 2;">
 
-        <!-- Inbox (full-page) -->
         <div id="inbox" class="inbox-shell hidden">
             <div class="inbox-bar">
                 <div class="inbox-bar-inner">
@@ -1002,7 +976,6 @@
             <div id="inbox-list" class="inbox-body"></div>
         </div>
 
-        <!-- Redirect overlay -->
         <div id="redirect" class="overlay hidden" style="z-index: 10000;">
             <div style="text-align: center;">
                 <div class="ldr" style="margin: 0 auto 20px;"></div>
@@ -1013,10 +986,8 @@
             </div>
         </div>
 
-        <!-- Main container -->
-        <div style="max-width: var(--container); margin: 0 auto; padding: 0 16px 140px;">
+        <div style="max-width: var(--container); margin: 0 auto; padding: 0 16px 160px;">
 
-            <!-- Header -->
             <header class="site-header">
                 <div class="brand-emblem" style="margin-bottom: 14px;">V</div>
                 <h1 class="wordmark">
@@ -1028,7 +999,6 @@
                 </div>
             </header>
 
-            <!-- Search + Notif -->
             <div id="search-bar" style="display: flex; gap: 10px; margin-bottom: 28px;">
                 <div class="search-field">
                     <i class="fas fa-search" style="color: var(--t-4); font-size: 13px;"></i>
@@ -1040,7 +1010,6 @@
                 </button>
             </div>
 
-            <!-- Course list view -->
             <div id="view-courses" class="view-anim">
                 <div class="section-head">
                     <h2 id="view-title">Available Courses</h2>
@@ -1053,7 +1022,6 @@
                 </div>
             </div>
 
-            <!-- Subject list view -->
             <div id="view-subjects" class="hidden view-anim">
                 <div class="section-head">
                     <h2 id="subject-title">Subjects</h2>
@@ -1066,7 +1034,6 @@
                 </button>
             </div>
 
-            <!-- Category list view -->
             <div id="view-categories" class="hidden view-anim">
                 <div class="section-head">
                     <h2 id="category-title">Categories</h2>
@@ -1079,7 +1046,6 @@
                 </button>
             </div>
 
-            <!-- Content list view -->
             <div id="view-content" class="hidden view-anim">
                 <div class="section-head">
                     <h2 id="content-title">Content</h2>
@@ -1106,8 +1072,8 @@
                 <a href="https://www.instagram.com/ellorvii" target="_blank" rel="noopener" class="social-btn ig" aria-label="Instagram">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="#" target="_blank" rel="noopener" class="social-btn yt" aria-label="YouTube">
-                    <i class="fas fa-youtube"></i>
+                <a href="https://t.me/Vividxzvbot" target="_blank" rel="noopener" class="social-btn support" aria-label="Support Bot">
+                    <i class="fas fa-headset"></i>
                 </a>
             </div>
         </footer>
@@ -1118,7 +1084,6 @@
     (function () {
         'use strict';
 
-        // ============ STATE ============
         const state = {
             data: null,
             currentCourse: null,
@@ -1127,10 +1092,9 @@
         };
 
         const KEYS = {
-            notifIds: 'vivid_viewed_ids_v4'
+            notifIds: 'vivid_viewed_ids_v5'
         };
 
-        // ============ UTILS ============
         const $ = (id) => document.getElementById(id);
 
         function loadViewedNotifs() {
@@ -1146,12 +1110,13 @@
             } catch {}
         }
 
-        // Deterministic unique ID per notification based on its content
-        function notifId(n, i) {
-            const raw = `${n.tag || ''}|${n.date || ''}|${n.message || ''}|${i}`;
+        // Stable unique ID for a notification based on its content
+        // (NOT on array position, so adding new items doesn't change existing IDs)
+        function notifId(n) {
+            const raw = `${n.tag || ''}|${n.date || ''}|${n.message || ''}`;
             try {
                 return btoa(unescape(encodeURIComponent(raw))).replace(/=/g, '');
-            } catch { return String(i); }
+            } catch { return raw; }
         }
 
         function setProgress(pct) {
@@ -1173,7 +1138,6 @@
             return d.innerHTML;
         }
 
-        // ============ UNLOCK ============
         window.unlockContent = function () {
             setTimeout(() => {
                 $('lock-screen').style.display = 'none';
@@ -1184,7 +1148,6 @@
             }, 200);
         };
 
-        // ============ DATA LOADING ============
         async function loadData() {
             try {
                 const res = await fetch('db.json?v=' + Date.now(), { cache: 'no-store' });
@@ -1197,7 +1160,6 @@
             updateBadge();
         }
 
-        // ============ VIEWS ============
         function hideAllViews() {
             $('view-courses').classList.add('hidden');
             $('view-subjects').classList.add('hidden');
@@ -1215,7 +1177,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // ============ COURSES ============
         function renderCourses() {
             setProgress(35);
             $('view-title').textContent = 'Available Courses';
@@ -1323,7 +1284,6 @@
             showView('view-courses');
         };
 
-        // ============ SUBJECTS ============
         window.openSubject = function (si) {
             state.currentSubject = si;
             setProgress(75);
@@ -1368,7 +1328,6 @@
             showView('view-subjects');
         };
 
-        // ============ CATEGORIES ============
         window.openCategory = function (type) {
             state.currentType = type;
             setProgress(100);
@@ -1430,7 +1389,6 @@
             showView('view-categories');
         };
 
-        // ============ CONTENT OPENING ============
         window.handleOpen = function (content) {
             if (!content) return;
             if (content.includes('<') && content.includes('>')) {
@@ -1454,21 +1412,20 @@
         }
 
         // ============ NOTIFICATIONS ============
-        // Badge only shows notifications that are NEW (never seen) on this device.
-        // It does NOT count total notifications. It counts only UNREAD ones.
+        // Each notification has a stable unique ID based on its content (tag + date + message).
+        // IDs are stored in localStorage after the user opens the inbox.
+        // Badge shows count of notifications whose IDs are NOT in localStorage.
 
         function getUnreadNotifications() {
             const notifs = (state.data && state.data.notifications) || [];
             if (notifs.length === 0) return [];
-
             const viewed = loadViewedNotifs();
-            return notifs.filter((n, i) => !viewed.includes(notifId(n, i)));
+            return notifs.filter(n => !viewed.includes(notifId(n)));
         }
 
         function updateBadge() {
             const badge = $('notif-badge');
             const trigger = $('notif-trigger');
-
             const unread = getUnreadNotifications();
 
             if (unread.length > 0) {
@@ -1485,8 +1442,7 @@
             $('inbox').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
             renderInbox();
-            // Mark ALL currently visible notifications as viewed —
-            // so unread badge only reflects notifications added AFTER this moment
+            // Mark all currently visible notifications as viewed
             markAllCurrentAsViewed();
         };
 
@@ -1514,8 +1470,7 @@
             list.innerHTML = '';
 
             notifs.slice().reverse().forEach((n, revIdx) => {
-                const originalIdx = notifs.length - 1 - revIdx;
-                const id = notifId(n, originalIdx);
+                const id = notifId(n);
                 const unread = !viewed.includes(id);
 
                 const card = document.createElement('div');
@@ -1534,13 +1489,12 @@
 
         function markAllCurrentAsViewed() {
             const notifs = (state.data && state.data.notifications) || [];
-            const ids = notifs.map((n, i) => notifId(n, i));
+            const ids = notifs.map(n => notifId(n));
             const merged = Array.from(new Set(loadViewedNotifs().concat(ids)));
             saveViewedNotifs(merged);
             updateBadge();
         }
 
-        // ============ INIT ============
         document.addEventListener('DOMContentLoaded', () => {
             setProgress(10);
         });
