@@ -87,19 +87,21 @@
         }
 
         #notif-dot {
-            min-width: 18px;
-            height: 18px;
-            padding: 0 4px;
-            font-size: 10px;
+            min-width: 20px;
+            height: 20px;
+            padding: 0 5px;
+            font-size: 11px;
             font-weight: bold;
             display: flex;
             align-items: center;
             justify-content: center;
-            top: -5px;
-            right: -5px;
+            top: -6px;
+            right: -6px;
             border: 2px solid #020617;
             position: absolute;
             border-radius: 50%;
+            background: #ef4444;
+            color: #fff;
         }
 
         .header-btn {
@@ -130,33 +132,46 @@
         .message-link:hover {
             color: #93c5fd;
         }
+
+        .notif-new-badge {
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            color: white;
+            font-size: 8px;
+            font-weight: 900;
+            padding: 2px 8px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 <body class="p-4 pb-28">
 
     <div id="progress-container"><div id="progress-bar"></div></div>
 
-    <div id="notice-modal" class="fixed inset-0 modal-overlay flex items-center justify-center p-4">
-        <div class="notice-content glass-card p-6 text-center border-t-4 border-blue-500 shadow-2xl" style="width: 90%; max-width: 400px;">
+    <!-- LOCK OVERLAY - Sirf join official wala -->
+    <div id="join-lock-overlay" class="fixed inset-0 modal-overlay flex items-center justify-center p-4" style="z-index: 10001;">
+        <div class="glass-card p-6 text-center border-t-4 border-blue-500 shadow-2xl" style="width: 90%; max-width: 400px;">
             <div class="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i class="fas fa-bullhorn text-blue-400 text-2xl animate-pulse"></i>
+                <i class="fas fa-lock text-blue-400 text-2xl animate-pulse"></i>
             </div>
-            <h2 class="text-xl font-black mb-3 text-white uppercase tracking-tight">📢 Important Notice</h2>
+            <h2 class="text-xl font-black mb-3 text-white uppercase tracking-tight">🔒 Access Locked</h2>
             <div class="text-[13px] text-gray-300 space-y-3 leading-relaxed mb-6 text-left border-l-2 border-blue-500/30 pl-3">
                 <p>All courses and materials on this website are provided <b>completely free of cost</b> by <span class="text-blue-400 font-bold px-1 bg-blue-500/10 rounded">VIVID</span>.</p>
                 <p>We do not charge any fees. If anyone asks you for money claiming to represent us, <span class="text-red-400 font-bold uppercase">please do not pay</span>.</p>
                 <p>Ask for a refund immediately and report the matter to us. This is the only official platform managed by <span class="text-blue-400 font-bold">VIVID</span>.</p>
+                <p class="text-white font-bold mt-2">👉 Join the official channel below to unlock all content.</p>
             </div>
             <div class="flex flex-col gap-2">
-                <a href="https://whatsapp.com/channel/0029VbDx2j1BadmU3wdvsv31" target="_blank" class="btn-video py-3 rounded-xl font-bold text-xs tracking-widest uppercase text-white">
+                <a href="https://whatsapp.com/channel/0029VbDx2j1BadmU3wdvsv31" target="_blank" onclick="unlockContent()" class="btn-video py-3 rounded-xl font-bold text-xs tracking-widest uppercase text-white">
                     🔔 JOIN OFFICIAL CHANNEL
                 </a>
-                <button onclick="closeNotice()" class="bg-slate-800/60 py-3 rounded-xl font-bold text-[10px] text-slate-400 uppercase tracking-widest">
-                    I Have Already Joined
-                </button>
             </div>
         </div>
     </div>
+
+    <!-- MAIN CONTENT WRAPPER (hidden until unlock) -->
+    <div id="main-content-wrapper" class="hidden">
 
     <div id="inbox-modal" class="fixed inset-0 modal-overlay hidden flex items-start justify-center overflow-y-auto">
         <div class="notice-content glass-card full-page-notif flex flex-col min-h-screen">
@@ -195,7 +210,7 @@
             </div>
             <button onclick="toggleInbox()" class="notif-btn glass-card w-14 h-14 flex items-center justify-center text-blue-500 relative">
                 <i class="fas fa-bell text-xl"></i>
-                <span id="notif-dot" class="hidden absolute bg-red-500 text-white rounded-full">0</span>
+                <span id="notif-dot" class="hidden absolute">0</span>
             </button>
         </div>
 
@@ -228,20 +243,106 @@
         </footer>
     </div>
 
+    </div><!-- END main-content-wrapper -->
+
     <script>
-        // ==================== MAIN DASHBOARD LOGIC ====================
-        let mainData = null, curC = null, curS = null;
-        let notifViewed = false;
+        // ==================== JOIN LOCK LOGIC ====================
+        const JOIN_KEY = "vivid_joined_official";
         
-        const NOTIF_VIEWED_KEY = "vivid_notifications_viewed";
-        
-        function markNotificationsViewed() {
-            notifViewed = true;
-            localStorage.setItem(NOTIF_VIEWED_KEY, "true");
+        function unlockContent() {
+            localStorage.setItem(JOIN_KEY, "true");
+            document.getElementById('join-lock-overlay').style.display = 'none';
+            document.getElementById('main-content-wrapper').classList.remove('hidden');
+            updateProgress(20);
+            loadData();
         }
         
-        function wasNotificationsViewed() {
-            return localStorage.getItem(NOTIF_VIEWED_KEY) === "true";
+        function checkJoinStatus() {
+            if (localStorage.getItem(JOIN_KEY) === "true") {
+                document.getElementById('join-lock-overlay').style.display = 'none';
+                document.getElementById('main-content-wrapper').classList.remove('hidden');
+                loadData();
+            } else {
+                document.getElementById('join-lock-overlay').style.display = 'flex';
+                document.getElementById('main-content-wrapper').classList.add('hidden');
+            }
+        }
+
+        // ==================== MAIN DASHBOARD LOGIC ====================
+        let mainData = null, curC = null, curS = null;
+        
+        // Notification tracking keys
+        const NOTIF_VIEWED_IDS_KEY = "vivid_viewed_notif_ids";
+        const NOTIF_LAST_COUNT_KEY = "vivid_last_notif_count";
+        
+        // Get viewed notification IDs (array)
+        function getViewedNotifIds() {
+            try {
+                const stored = localStorage.getItem(NOTIF_VIEWED_IDS_KEY);
+                return stored ? JSON.parse(stored) : [];
+            } catch(e) { return []; }
+        }
+        
+        // Save viewed notification IDs
+        function saveViewedNotifIds(ids) {
+            localStorage.setItem(NOTIF_VIEWED_IDS_KEY, JSON.stringify(ids));
+        }
+        
+        // Get last known count of notifications
+        function getLastNotifCount() {
+            return parseInt(localStorage.getItem(NOTIF_LAST_COUNT_KEY) || "0", 10);
+        }
+        
+        // Save last known count
+        function saveLastNotifCount(count) {
+            localStorage.setItem(NOTIF_LAST_COUNT_KEY, count.toString());
+        }
+        
+        // Generate a unique ID for each notification based on content
+        function generateNotifId(n, index) {
+            // Use message + date + tag to create unique identifier
+            return btoa((n.message || '') + '|' + (n.date || '') + '|' + (n.tag || '') + '|' + index).replace(/=/g, '');
+        }
+        
+        // Check for new notifications and update badge
+        function updateNotificationBadge() {
+            if (!mainData || !mainData.notifications) {
+                document.getElementById('notif-dot').classList.add('hidden');
+                return;
+            }
+            
+            const allNotifs = mainData.notifications;
+            const viewedIds = getViewedNotifIds();
+            
+            // Find notifications not yet viewed
+            const unreadNotifs = allNotifs.filter((n, i) => {
+                const id = generateNotifId(n, i);
+                return !viewedIds.includes(id);
+            });
+            
+            const unreadCount = unreadNotifs.length;
+            const dot = document.getElementById('notif-dot');
+            
+            if (unreadCount > 0) {
+                dot.innerText = unreadCount > 99 ? '99+' : unreadCount;
+                dot.classList.remove('hidden');
+            } else {
+                dot.classList.add('hidden');
+            }
+            
+            // Save current total count for reference
+            saveLastNotifCount(allNotifs.length);
+        }
+        
+        // Mark all notifications as viewed
+        function markAllNotificationsViewed() {
+            if (!mainData || !mainData.notifications) return;
+            
+            const allIds = mainData.notifications.map((n, i) => generateNotifId(n, i));
+            saveViewedNotifIds(allIds);
+            
+            // Hide badge
+            document.getElementById('notif-dot').classList.add('hidden');
         }
 
         function toggleInbox() {
@@ -250,8 +351,7 @@
             modal.classList.toggle('hidden');
             if(!modal.classList.contains('hidden')) {
                 renderNotifications();
-                dot.classList.add('hidden');
-                markNotificationsViewed();
+                markAllNotificationsViewed();
                 document.body.style.overflow = 'hidden'; 
             } else {
                 document.body.style.overflow = 'auto';
@@ -261,10 +361,18 @@
         function renderNotifications() {
             const list = document.getElementById('inbox-list');
             const msgs = mainData.notifications || [];
+            const viewedIds = getViewedNotifIds();
+            
             list.innerHTML = msgs.length ? '' : '<p class="text-center text-slate-500 text-xs py-20">No new updates</p>';
-            msgs.slice().reverse().forEach(n => {
+            
+            msgs.slice().reverse().forEach((n, revIdx) => {
+                const originalIdx = msgs.length - 1 - revIdx;
+                const notifId = generateNotifId(n, originalIdx);
+                const isNew = !viewedIds.includes(notifId);
+                
                 list.innerHTML += `
-                    <div class="glass-card p-5 border-l-4 border-blue-500 bg-white/5">
+                    <div class="glass-card p-5 border-l-4 ${isNew ? 'border-green-500' : 'border-blue-500'} bg-white/5 relative">
+                        ${isNew ? '<span class="notif-new-badge absolute top-3 right-3">NEW</span>' : ''}
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-blue-400 text-[10px] font-black uppercase tracking-widest bg-blue-500/10 px-2 py-0.5 rounded">${n.tag || 'UPDATE'}</span>
                             <span class="text-slate-600 text-[9px] font-bold">${n.date || ''}</span>
@@ -274,7 +382,6 @@
             });
         }
 
-        function closeNotice() { document.getElementById('notice-modal').style.display = 'none'; updateProgress(20); }
         function updateProgress(percent) { document.getElementById('progress-bar').style.width = percent + '%'; }
 
         function safeRedirect(url) {
@@ -300,17 +407,11 @@
             .then(data => { 
                 mainData = data; 
                 renderCourses();
-                if(!wasNotificationsViewed() && data.notifications && data.notifications.length > 0) {
-                    const dot = document.getElementById('notif-dot');
-                    dot.innerText = data.notifications.length;
-                    dot.classList.remove('hidden');
-                } else {
-                    const dot = document.getElementById('notif-dot');
-                    dot.classList.add('hidden');
-                }
+                updateNotificationBadge();
             }).catch(() => {
                 mainData = { courses: [], notifications: [] };
                 renderCourses();
+                updateNotificationBadge();
             });
         }
         
@@ -396,7 +497,8 @@
             window.scrollTo({top: 0, behavior: 'smooth'}); 
         }
         
-        loadData();
+        // Start
+        checkJoinStatus();
     </script>
 </body>
 </html>
