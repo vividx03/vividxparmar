@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <meta name="theme-color" content="#0a0a0f">
-    <title>Vivid Academy -- Learning Platform</title>
+    <title>Vivid Academy — Learning Platform</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <style>
         *, *::before, *::after { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         * { margin: 0; padding: 0; }
@@ -22,7 +22,7 @@
             --line-1: #1e1e2a;
             --line-2: #2a2a38;
             --line-3: #383848;
-            
+
             --indigo: #6366f1;
             --indigo-l: #818cf8;
             --indigo-d: #4f46e5;
@@ -30,21 +30,23 @@
             --emerald: #10b981;
             --rose: #f43f5e;
             --amber: #f59e0b;
-            
+
             --t-1: #f5f6f8;
             --t-2: #a0a4b0;
             --t-3: #6b7080;
             --t-4: #44485a;
-            
+
             --r-sm: 6px;
             --r-md: 10px;
             --r-lg: 14px;
             --r-xl: 20px;
-            
+
             --sh-sm: 0 1px 2px rgba(0,0,0,0.4);
             --sh-md: 0 4px 12px rgba(0,0,0,0.35);
             --sh-lg: 0 12px 32px rgba(0,0,0,0.5);
             --sh-glow: 0 0 24px rgba(99,102,241,0.3);
+
+            --container: 520px;
         }
 
         html { scroll-behavior: smooth; }
@@ -241,8 +243,6 @@
             to { opacity: 1; }
         }
 
-        .overlay-top { align-items: flex-start; }
-
         .modal-sheet {
             background: linear-gradient(180deg, var(--bg-2) 0%, var(--bg-1) 100%);
             border: 1px solid var(--line-2);
@@ -367,14 +367,6 @@
             position: relative;
         }
 
-        .logo-row {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 6px;
-        }
-
         .wordmark {
             font-size: 28px;
             font-weight: 900;
@@ -441,6 +433,7 @@
             cursor: pointer;
             position: relative;
             transition: all 0.2s ease;
+            flex-shrink: 0;
         }
         .notif-trigger:hover { border-color: var(--line-3); color: var(--t-1); }
         .notif-trigger:active { transform: scale(0.97); }
@@ -695,7 +688,7 @@
             z-index: 10;
         }
         .inbox-bar-inner {
-            max-width: 480px;
+            max-width: var(--container);
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -720,7 +713,7 @@
         .close-btn:active { transform: scale(0.94); }
 
         .inbox-body {
-            max-width: 480px;
+            max-width: var(--container);
             width: 100%;
             margin: 0 auto;
             padding: 20px 16px 120px;
@@ -746,7 +739,7 @@
             display: flex;
             justify-content: center;
             gap: 10px;
-            max-width: 480px;
+            max-width: var(--container);
             margin: 0 auto;
         }
 
@@ -791,9 +784,7 @@
 
         /* ============ UTILITIES ============ */
         .hidden { display: none !important; }
-        .flex-col-s { display: flex; flex-direction: column; }
 
-        /* Empty states */
         .empty {
             padding: 60px 20px;
             text-align: center;
@@ -809,7 +800,6 @@
             font-size: 13px;
         }
 
-        /* View transitions */
         .view-anim {
             animation: viewIn 0.35s cubic-bezier(0.16,1,0.3,1);
         }
@@ -818,7 +808,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Reduce motion */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
@@ -853,6 +842,67 @@
             opacity: 1;
         }
         .toast i { color: var(--indigo-l); }
+
+        /* ============================================================
+           DESKTOP RESPONSIVE — wider container, larger typography
+           ============================================================ */
+        @media (min-width: 768px) {
+            :root { --container: 720px; }
+
+            body { font-size: 16px; }
+
+            .site-header { padding: 56px 0 36px; }
+
+            .wordmark { font-size: 40px; }
+
+            .tagline { font-size: 11px; letter-spacing: 0.32em; }
+
+            .brand-emblem { width: 76px; height: 76px; font-size: 32px; border-radius: 20px; }
+            .site-header .brand-emblem { width: 64px; height: 64px; font-size: 26px; border-radius: 16px; }
+
+            .lock-screen { max-width: 520px; padding: 56px 48px; }
+            .lock-screen h2 { font-size: 32px !important; }
+            .lock-screen > p { font-size: 14px !important; max-width: 360px !important; }
+
+            .search-field { height: 58px; padding: 0 20px; border-radius: 12px; }
+            .search-field input { font-size: 15px; }
+            .notif-trigger { width: 58px; height: 58px; border-radius: 12px; }
+            .notif-trigger i { font-size: 17px; }
+
+            .section-head h2 { font-size: 12px; }
+
+            .card-item { padding: 20px 22px; gap: 16px; border-radius: 16px; }
+            .card-title { font-size: 15.5px; }
+            .card-meta { font-size: 11px; }
+            .icon-c { width: 50px; height: 50px; border-radius: 12px; }
+            .icon-c i { font-size: 17px !important; }
+
+            .content-card { padding: 22px; border-radius: 16px; }
+            .content-title { font-size: 15px; }
+            .idx-badge { min-width: 32px; height: 32px; font-size: 12px; }
+            .action-grid { gap: 10px; }
+            .action-grid .btn { padding: 13px 14px; font-size: 11.5px; border-radius: 10px; }
+
+            .notif-row { padding: 20px 22px; border-radius: 16px; }
+            .notif-body { font-size: 14px; }
+            .tag { font-size: 10px; padding: 4px 10px; }
+
+            .inbox-body { padding: 28px 20px 140px; gap: 12px; }
+            .inbox-bar { padding: 20px; }
+            .inbox-bar-inner h3 { font-size: 16px; }
+
+            .social-btn { width: 50px; height: 50px; font-size: 19px; border-radius: 12px; }
+            .site-footer { padding: 18px 16px; }
+
+            .btn { font-size: 14px; padding: 14px 20px; }
+            .btn-primary { font-size: 14px; padding: 15px 22px; }
+        }
+
+        @media (min-width: 1024px) {
+            :root { --container: 900px; }
+            .wordmark { font-size: 44px; }
+            .lock-screen { max-width: 560px; }
+        }
     </style>
 </head>
 <body>
@@ -894,7 +944,7 @@
             <div style="margin-bottom: 24px;">
                 <div class="check-row">
                     <i class="fas fa-circle-check"></i>
-                    <span>100% free courses -- no hidden fees</span>
+                    <span>100% free courses — no hidden fees</span>
                 </div>
                 <div class="check-row">
                     <i class="fas fa-circle-check"></i>
@@ -906,10 +956,10 @@
                 </div>
             </div>
 
-            <a href="https://whatsapp.com/channel/0029VbDx2j1BadmU3wdvsv31" 
-               target="_blank" 
+            <a href="https://whatsapp.com/channel/0029VbDx2j1BadmU3wdvsv31"
+               target="_blank"
                rel="noopener"
-               onclick="unlockContent()" 
+               onclick="unlockContent()"
                class="btn btn-primary"
                style="width: 100%; padding: 14px 18px; font-size: 13px;">
                 <i class="fab fa-whatsapp" style="font-size: 15px;"></i>
@@ -964,11 +1014,11 @@
         </div>
 
         <!-- Main container -->
-        <div style="max-width: 480px; margin: 0 auto; padding: 0 16px 140px;">
+        <div style="max-width: var(--container); margin: 0 auto; padding: 0 16px 140px;">
 
             <!-- Header -->
             <header class="site-header">
-                <div class="brand-emblem" style="width: 52px; height: 52px; font-size: 22px; border-radius: 14px; margin-bottom: 14px;">V</div>
+                <div class="brand-emblem" style="margin-bottom: 14px;">V</div>
                 <h1 class="wordmark">
                     Vivid <span class="wordmark-accent">Academy</span>
                 </h1>
@@ -1057,7 +1107,7 @@
                     <i class="fab fa-instagram"></i>
                 </a>
                 <a href="#" target="_blank" rel="noopener" class="social-btn yt" aria-label="YouTube">
-                    <i class="fab fa-youtube"></i>
+                    <i class="fas fa-youtube"></i>
                 </a>
             </div>
         </footer>
@@ -1073,12 +1123,11 @@
             data: null,
             currentCourse: null,
             currentSubject: null,
-            currentType: null,
-            viewedNotifs: loadViewedNotifs()
+            currentType: null
         };
 
         const KEYS = {
-            notifIds: 'vivid_viewed_ids_v3'
+            notifIds: 'vivid_viewed_ids_v4'
         };
 
         // ============ UTILS ============
@@ -1086,7 +1135,8 @@
 
         function loadViewedNotifs() {
             try {
-                return JSON.parse(localStorage.getItem(KEYS.notifIds) || '[]');
+                const raw = localStorage.getItem(KEYS.notifIds);
+                return raw ? JSON.parse(raw) : [];
             } catch { return []; }
         }
 
@@ -1096,10 +1146,12 @@
             } catch {}
         }
 
+        // Deterministic unique ID per notification based on its content
         function notifId(n, i) {
-            const raw = `${n.message || ''}|${n.date || ''}|${n.tag || ''}|${i}`;
-            try { return btoa(unescape(encodeURIComponent(raw))).replace(/=/g, ''); }
-            catch { return String(i); }
+            const raw = `${n.tag || ''}|${n.date || ''}|${n.message || ''}|${i}`;
+            try {
+                return btoa(unescape(encodeURIComponent(raw))).replace(/=/g, '');
+            } catch { return String(i); }
         }
 
         function setProgress(pct) {
@@ -1111,7 +1163,8 @@
             $('toast-msg').textContent = msg;
             t.querySelector('i').className = `fas ${icon}`;
             t.classList.add('show');
-            setTimeout(() => t.classList.remove('show'), 2400);
+            clearTimeout(t._timer);
+            t._timer = setTimeout(() => t.classList.remove('show'), 2400);
         }
 
         function escapeHtml(str) {
@@ -1122,7 +1175,6 @@
 
         // ============ UNLOCK ============
         window.unlockContent = function () {
-            // Simulate verification delay for realistic feel
             setTimeout(() => {
                 $('lock-screen').style.display = 'none';
                 $('app').classList.remove('hidden');
@@ -1157,7 +1209,6 @@
             hideAllViews();
             const el = $(id);
             el.classList.remove('hidden');
-            // Retrigger animation
             el.classList.remove('view-anim');
             void el.offsetWidth;
             el.classList.add('view-anim');
@@ -1356,7 +1407,6 @@
                     list.appendChild(card);
                 });
 
-                // Attach listeners
                 list.querySelectorAll('button[data-url]').forEach(b => {
                     b.addEventListener('click', (e) => {
                         e.stopPropagation();
@@ -1369,8 +1419,7 @@
         };
 
         function btn(label, cls, icon, url) {
-            const encoded = btoa(unescape(encodeURIComponent(url)));
-            return `<button class="btn ${cls}" data-url="${escapeHtml(url)}" data-encoded="${encoded}">
+            return `<button class="btn ${cls}" data-url="${escapeHtml(url)}">
                 <i class="fas ${icon}"></i> ${label}
             </button>`;
         }
@@ -1405,17 +1454,25 @@
         }
 
         // ============ NOTIFICATIONS ============
+        // Badge only shows notifications that are NEW (never seen) on this device.
+        // It does NOT count total notifications. It counts only UNREAD ones.
+
+        function getUnreadNotifications() {
+            const notifs = (state.data && state.data.notifications) || [];
+            if (notifs.length === 0) return [];
+
+            const viewed = loadViewedNotifs();
+            return notifs.filter((n, i) => !viewed.includes(notifId(n, i)));
+        }
+
         function updateBadge() {
             const badge = $('notif-badge');
             const trigger = $('notif-trigger');
-            const notifs = (state.data && state.data.notifications) || [];
 
-            const unread = notifs.filter((n, i) =>
-                !state.viewedNotifs.includes(notifId(n, i))
-            ).length;
+            const unread = getUnreadNotifications();
 
-            if (unread > 0) {
-                badge.textContent = unread > 99 ? '99+' : unread;
+            if (unread.length > 0) {
+                badge.textContent = unread.length > 99 ? '99+' : unread.length;
                 badge.classList.remove('hidden');
                 trigger.classList.add('has-unread');
             } else {
@@ -1428,7 +1485,9 @@
             $('inbox').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
             renderInbox();
-            markAllViewed();
+            // Mark ALL currently visible notifications as viewed —
+            // so unread badge only reflects notifications added AFTER this moment
+            markAllCurrentAsViewed();
         };
 
         window.closeInbox = function () {
@@ -1451,7 +1510,7 @@
                 return;
             }
 
-            const viewed = state.viewedNotifs;
+            const viewed = loadViewedNotifs();
             list.innerHTML = '';
 
             notifs.slice().reverse().forEach((n, revIdx) => {
@@ -1473,15 +1532,15 @@
             });
         }
 
-        function markAllViewed() {
+        function markAllCurrentAsViewed() {
             const notifs = (state.data && state.data.notifications) || [];
-            state.viewedNotifs = notifs.map((n, i) => notifId(n, i));
-            saveViewedNotifs(state.viewedNotifs);
+            const ids = notifs.map((n, i) => notifId(n, i));
+            const merged = Array.from(new Set(loadViewedNotifs().concat(ids)));
+            saveViewedNotifs(merged);
             updateBadge();
         }
 
         // ============ INIT ============
-        // Lock screen is always visible on load -- main app is hidden until unlock
         document.addEventListener('DOMContentLoaded', () => {
             setProgress(10);
         });
