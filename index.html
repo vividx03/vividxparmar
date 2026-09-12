@@ -1171,6 +1171,9 @@
         };
 
         const KEY = 'vivid_seen_ids_v6';
+        const LOCK_KEY = 'vivid_lock_unlock_ts_v1';
+        const LOCK_WINDOW_MS = 48 * 60 * 60 * 1000; // 48 hours
+
         const $ = id => document.getElementById(id);
 
         function loadSeen() {
@@ -1204,8 +1207,37 @@
             t._t = setTimeout(() => t.classList.remove('show'), 2400);
         }
 
-        // ==================== UNLOCK ====================
+        // ==================== LOCK / UNLOCK (48-HOUR WINDOW) ====================
+        function getLastUnlockTime() {
+            const raw = localStorage.getItem(LOCK_KEY);
+            return raw ? parseInt(raw, 10) : 0;
+        }
+
+        function withinLockWindow() {
+            const last = getLastUnlockTime();
+            if (!last) return false;
+            return (Date.now() - last) < LOCK_WINDOW_MS;
+        }
+
+        // On load — decide whether to show lock or go straight in
+        function initLock() {
+            if (withinLockWindow()) {
+                // Skip lock — user unlocked within last 48 hours
+                $('lock').style.display = 'none';
+                $('app').classList.add('active');
+                loadData();
+            } else {
+                // Show lock
+                $('lock').style.display = 'flex';
+                $('app').classList.remove('active');
+            }
+        }
+
         window.unlock = function () {
+            // Save unlock timestamp so popup won't show again for 48 hours
+            try { localStorage.setItem(LOCK_KEY, String(Date.now())); }
+            catch {}
+
             setTimeout(() => {
                 $('lock').style.display = 'none';
                 $('app').classList.add('active');
@@ -1482,7 +1514,6 @@
             $('inbox').classList.add('open');
             document.body.style.overflow = 'hidden';
             renderInbox();
-            // Mark everything visible now as seen
             const ns = (state.data && state.data.notifications) || [];
             const ids = ns.map(n => notifId(n));
             const merged = Array.from(new Set(loadSeen().concat(ids)));
@@ -1527,6 +1558,9 @@
                 list.appendChild(el);
             });
         }
+
+        // ==================== INIT ====================
+        initLock();
 
     })();
     </script>
