@@ -1484,7 +1484,17 @@
       "subjects": [
         {
           "name": "POLITY",
-          "CHAPTERS": [],
+          "CHAPTERS": [
+            {
+              "title": "MAKING OF CONSTITUTION LEC - 1",
+              "url": "https://www.youtube.com/live/UjmtJmpP4Bo",
+              "download_url": null,
+              "notes_en": null,
+              "notes_hi": null,
+              "quiz": null,
+              "handwritten": null
+            }
+          ],
           "WEEKLY TESTS": []
         }
       ]
