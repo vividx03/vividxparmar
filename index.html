@@ -750,6 +750,17 @@
             box-shadow: 0 0 0 3px var(--accent-soft);
         }
 
+        /* Clickable notification (has link) */
+        .notif-card.clickable {
+            cursor: pointer;
+        }
+        .notif-card.clickable:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-card-hover);
+            border-color: var(--accent);
+        }
+        .notif-card.clickable:active { transform: translateY(0); }
+
         .notif-top {
             display: flex;
             align-items: center;
@@ -781,6 +792,26 @@
             line-height: 1.6;
             color: var(--ink-2);
             letter-spacing: -0.005em;
+        }
+
+        /* Link indicator inside clickable notification */
+        .notif-link-hint {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+        .notif-link-hint i {
+            font-size: 10px;
+            transition: transform 0.2s ease;
+        }
+        .notif-card.clickable:hover .notif-link-hint i {
+            transform: translateX(3px);
         }
 
         /* ==================== FOOTER ==================== */
@@ -828,7 +859,7 @@
 
         .dock-btn.wa:hover { color: #25d366; }
         .dock-btn.tg:hover { color: #229ed9; }
-        .dock-btn.ig:hover { color: #e1306c; }
+        .dock-btn.yt:hover { color: #ff0000; }
         .dock-btn.support:hover { color: var(--accent); }
 
         /* ==================== LOADER / REDIRECT ==================== */
@@ -1124,8 +1155,8 @@
             <a href="https://t.me/vividx_03" target="_blank" rel="noopener" class="dock-btn tg" aria-label="Telegram">
                 <i class="fab fa-telegram"></i>
             </a>
-            <a href="https://www.instagram.com/ellorvii" target="_blank" rel="noopener" class="dock-btn ig" aria-label="Instagram">
-                <i class="fab fa-instagram"></i>
+            <a href="https://youtube.com/@vividhoon" target="_blank" rel="noopener" class="dock-btn yt" aria-label="YouTube">
+                <i class="fab fa-youtube"></i>
             </a>
             <a href="https://t.me/Vividxzvbot" target="_blank" rel="noopener" class="dock-btn support" aria-label="Support">
                 <i class="fas fa-headset"></i>
@@ -1172,7 +1203,7 @@
 
         const KEY = 'vivid_seen_ids_v6';
         const LOCK_KEY = 'vivid_lock_unlock_ts_v1';
-        const LOCK_WINDOW_MS = 48 * 60 * 60 * 1000; // 48 hours
+        const LOCK_WINDOW_MS = 24 * 60 * 60 * 1000; // 24 hours (1 day)
 
         const $ = id => document.getElementById(id);
 
@@ -1187,7 +1218,7 @@
 
         // Stable ID per notification — based only on content, not array position
         function notifId(n) {
-            const raw = `${n.tag || ''}::${n.date || ''}::${n.message || ''}`;
+            const raw = `${n.tag || ''}::${n.date || ''}::${n.message || ''}::${n.link || ''}`;
             try { return btoa(unescape(encodeURIComponent(raw))).replace(/=/g, ''); }
             catch { return raw; }
         }
@@ -1207,7 +1238,7 @@
             t._t = setTimeout(() => t.classList.remove('show'), 2400);
         }
 
-        // ==================== LOCK / UNLOCK (48-HOUR WINDOW) ====================
+        // ==================== LOCK / UNLOCK (24-HOUR WINDOW) ====================
         function getLastUnlockTime() {
             const raw = localStorage.getItem(LOCK_KEY);
             return raw ? parseInt(raw, 10) : 0;
@@ -1219,22 +1250,18 @@
             return (Date.now() - last) < LOCK_WINDOW_MS;
         }
 
-        // On load — decide whether to show lock or go straight in
         function initLock() {
             if (withinLockWindow()) {
-                // Skip lock — user unlocked within last 48 hours
                 $('lock').style.display = 'none';
                 $('app').classList.add('active');
                 loadData();
             } else {
-                // Show lock
                 $('lock').style.display = 'flex';
                 $('app').classList.remove('active');
             }
         }
 
         window.unlock = function () {
-            // Save unlock timestamp so popup won't show again for 48 hours
             try { localStorage.setItem(LOCK_KEY, String(Date.now())); }
             catch {}
 
@@ -1545,16 +1572,32 @@
 
             ns.slice().reverse().forEach((n, revIdx) => {
                 const isUnread = !seen.includes(notifId(n));
+                const hasLink = !!(n.link && String(n.link).trim());
+
                 const el = document.createElement('div');
-                el.className = 'notif-card' + (isUnread ? ' unread' : '');
+                el.className = 'notif-card' + (isUnread ? ' unread' : '') + (hasLink ? ' clickable' : '');
                 el.style.animationDelay = (revIdx * 40) + 'ms';
+
                 el.innerHTML = `
                     <div class="notif-top">
                         <span class="notif-tag">${esc(n.tag || 'Update')}</span>
                         <span class="notif-date">${esc(n.date || '')}</span>
                     </div>
                     <div class="notif-message">${esc(n.message || '')}</div>
+                    ${hasLink ? `
+                        <div class="notif-link-hint">
+                            <span>${esc(n.linkText || 'Open link')}</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    ` : ''}
                 `;
+
+                if (hasLink) {
+                    el.addEventListener('click', () => {
+                        handleOpen(n.link);
+                    });
+                }
+
                 list.appendChild(el);
             });
         }
