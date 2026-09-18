@@ -35,21 +35,6 @@
             }
           ],
           "WEEKLY TESTS": []
-        },
-        {
-          "name": "TESTING",
-          "CHAPTERS": [
-            {
-              "title": "TESTING",
-              "url": "git add . && git commit -m \"update\" && git push origin main DONS",
-              "download_url": null,
-              "notes_en": null,
-              "notes_hi": "DONE",
-              "quiz": null,
-              "handwritten": null
-            }
-          ],
-          "WEEKLY TESTS": []
         }
       ]
     },
@@ -1385,12 +1370,6 @@
       "name": "ABHINAY MATH'S FOUNDATION COURSE",
       "teacher": "ABHINAY SIR",
       "directLink": "pages/abhinay-maths-foundation-course.html",
-      "subjects": []
-    },
-    {
-      "name": "TESTING",
-      "teacher": "TESTING",
-      "directLink": "https://vividimage.edgeone.dev/",
       "subjects": []
     }
   ]
