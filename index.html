@@ -32,7 +32,6 @@
             --gold-soft: #fff4d6;
             --green: #15803d;
             --green-soft: #dcfce7;
-            --red: #dc2626;
             --radius: 22px;
             --radius-sm: 14px;
             --radius-xs: 10px;
@@ -72,7 +71,7 @@
         .mono { font-family: 'SF Mono', 'Menlo', ui-monospace, monospace; font-feature-settings: 'tnum'; }
         .hidden { display: none !important; }
 
-        /* ==================== LOADER (ELEGANT GOLD) ==================== */
+        /* ==================== LOADER ==================== */
         .loader {
             position: fixed;
             inset: 0;
@@ -81,8 +80,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background:
-                radial-gradient(circle at 50% 45%, #fff9e6 0%, #ffe9b3 20%, #f5c842 45%, #b8801a 78%, #2a1a08 100%);
+            background: radial-gradient(circle at 50% 45%, #fff9e6 0%, #ffe9b3 20%, #f5c842 45%, #b8801a 78%, #2a1a08 100%);
             overflow: hidden;
             animation: loaderFadeOut 0.8s ease 3s forwards;
         }
@@ -90,7 +88,6 @@
             to { opacity: 0; visibility: hidden; pointer-events: none; }
         }
 
-        /* Soft floating particles (subtle, not fire) */
         .loader-particle {
             position: absolute;
             width: 5px; height: 5px;
@@ -113,7 +110,6 @@
             100% { opacity: 0; transform: translateY(-30px) scale(0.4); }
         }
 
-        /* Main scene */
         .loader-scene {
             position: relative;
             width: 260px;
@@ -123,7 +119,6 @@
             justify-content: center;
         }
 
-        /* Outer soft halo behind everything */
         .loader-halo {
             position: absolute;
             inset: 0;
@@ -138,7 +133,6 @@
             50% { transform: scale(1.15); opacity: 1; }
         }
 
-        /* Expanding soft ring (one gentle pulse) */
         .loader-pulse-ring {
             position: absolute;
             width: 200px;
@@ -153,7 +147,6 @@
             100% { transform: scale(1.5); opacity: 0; }
         }
 
-        /* Rotating gold ring around the image */
         .loader-image-wrap {
             position: relative;
             width: 190px;
@@ -187,7 +180,6 @@
             to { transform: rotate(360deg); }
         }
 
-        /* The circular image container */
         .loader-image-inner {
             position: relative;
             width: 150px;
@@ -253,13 +245,8 @@
             color: #fff9e6;
             text-shadow: 0 2px 8px rgba(180, 100, 0, 0.6);
             z-index: 1;
-            opacity: 1;
-        }
-        .loader-image-inner.has-img .loader-image-fallback {
-            opacity: 0;
         }
 
-        /* Brand under loader */
         .loader-brand {
             position: relative;
             z-index: 4;
@@ -273,10 +260,7 @@
             text-shadow: 0 1px 0 rgba(255, 240, 200, 0.7);
             animation: brandFade 1s ease 0.6s both;
         }
-        .loader-brand em {
-            font-style: italic;
-            color: #8b3a00;
-        }
+        .loader-brand em { font-style: italic; color: #8b3a00; }
         @keyframes brandFade {
             from { opacity: 0; transform: translateY(12px); }
             to { opacity: 1; transform: translateY(0); }
@@ -294,7 +278,6 @@
             animation: brandFade 1s ease 0.85s both;
         }
 
-        /* Progress bar */
         .loader-bar {
             position: absolute;
             bottom: 64px;
@@ -315,16 +298,13 @@
             animation: barFill 2.8s cubic-bezier(0.4, 0, 0.2, 1) forwards, barShimmer 1.4s linear infinite;
             box-shadow: 0 0 12px rgba(255, 200, 60, 0.9);
         }
-        @keyframes barFill {
-            0% { width: 0%; }
-            100% { width: 100%; }
-        }
+        @keyframes barFill { 0% { width: 0%; } 100% { width: 100%; } }
         @keyframes barShimmer {
             from { background-position: 0% 0%; }
             to { background-position: 200% 0%; }
         }
 
-        /* ==================== LOCK SCREEN ==================== */
+        /* ==================== LOCK ==================== */
         .lock-backdrop {
             position: fixed;
             inset: 0;
@@ -676,29 +656,36 @@
             width: 48px;
             height: 48px;
             border-radius: 14px;
-            background-image: url('https://vividimage.edgeone.dev/');
+            background-color: var(--ink);
             background-size: cover;
             background-position: center;
-            background-color: var(--ink);
             box-shadow: 0 0 0 2px var(--paper), 0 0 0 3px var(--line), 0 8px 20px -8px rgba(255,87,34,0.4);
             position: relative;
             overflow: hidden;
-        }
-        .drawer-logo::after {
-            content: 'V';
-            position: absolute;
-            inset: 0;
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        .drawer-logo-fallback {
             font-family: 'Fraunces', serif;
             font-style: italic;
             font-size: 22px;
             color: #fff9e6;
             background: linear-gradient(135deg, var(--accent), var(--gold));
-            z-index: -1;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .drawer-brand-text { min-width: 0; }
+        .drawer-logo img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 2;
+        }
         .drawer-brand-title {
             font-family: 'Fraunces', serif;
             font-optical-sizing: auto;
@@ -829,14 +816,13 @@
             font-family: 'SF Mono', ui-monospace, monospace;
         }
 
-        /* Main container */
         .main {
             max-width: var(--container);
             margin: 0 auto;
             padding: 20px 20px 140px;
         }
 
-        /* Welcome strip */
+        /* Welcome */
         .welcome {
             margin-bottom: 28px;
             padding: 20px 22px;
@@ -862,14 +848,37 @@
             width: 56px;
             height: 56px;
             border-radius: 16px;
-            background-image: url('https://vividimage.edgeone.dev/');
+            background-color: var(--ink);
             background-size: cover;
             background-position: center;
-            background-color: var(--ink);
             flex-shrink: 0;
             box-shadow: 0 0 0 2px var(--paper), 0 0 0 3px var(--line), 0 8px 20px -8px rgba(255,87,34,0.35);
             position: relative;
             z-index: 1;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .welcome-avatar-fallback {
+            font-family: 'Fraunces', serif;
+            font-style: italic;
+            font-size: 24px;
+            color: #fff9e6;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .welcome-avatar img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 2;
         }
         .welcome-text { position: relative; z-index: 1; min-width: 0; }
         .welcome-title {
@@ -886,7 +895,6 @@
             font-size: 12.5px;
             color: var(--ink-2);
             margin-top: 3px;
-            letter-spacing: -0.005em;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -901,7 +909,6 @@
             margin-bottom: 20px;
             font-size: 12px;
             font-weight: 500;
-            color: var(--ink-3);
         }
         .crumb-item {
             padding: 4px 10px;
@@ -927,7 +934,7 @@
         }
         .crumb-sep { color: var(--ink-4); font-size: 10px; }
 
-        /* Section title */
+        /* Section label */
         .section-label {
             display: flex;
             align-items: baseline;
@@ -962,7 +969,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* List container */
         .list {
             display: flex;
             flex-direction: column;
@@ -970,7 +976,7 @@
         }
         .list.grid-2 { display: grid; grid-template-columns: 1fr; gap: 12px; }
 
-        /* ==================== IMAGE CARD (Exam) ==================== */
+        /* Exam card */
         .exam-card {
             position: relative;
             background: var(--card);
@@ -1029,8 +1035,8 @@
             content: '';
             position: absolute;
             left: 0; right: 0; bottom: 0;
-            height: 60%;
-            background: linear-gradient(180deg, transparent, rgba(26,22,19,0.5));
+            height: 50%;
+            background: linear-gradient(180deg, transparent, rgba(26,22,19,0.45));
             z-index: 3;
             pointer-events: none;
         }
@@ -1039,7 +1045,7 @@
             padding: 18px 20px 20px;
             position: relative;
             z-index: 4;
-            margin-top: -32px;
+            margin-top: -28px;
         }
         .exam-title {
             font-family: 'Fraunces', serif;
@@ -1060,7 +1066,7 @@
             font-family: 'SF Mono', ui-monospace, monospace;
         }
 
-        /* ==================== THUMB ITEM (subject / coaching) ==================== */
+        /* Item (subject / coaching) */
         .item {
             background: var(--card);
             border: 1px solid var(--line);
@@ -1116,9 +1122,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Fraunces', serif;
-            font-style: italic;
-            font-weight: 500;
             font-size: 22px;
             color: var(--accent-2);
             z-index: 1;
@@ -1158,6 +1161,8 @@
             justify-content: center;
             font-size: 12px;
             transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
         }
         .item:hover .item-arrow {
             background: var(--ink);
@@ -1517,7 +1522,6 @@
             font-size: 14px;
             line-height: 1.6;
             color: var(--ink-2);
-            letter-spacing: -0.005em;
         }
         .notif-link-hint {
             display: inline-flex;
@@ -1580,40 +1584,7 @@
         .dock-btn.yt:hover { color: #ff0000; }
         .dock-btn.support:hover { color: var(--accent); }
 
-        /* ==================== REDIRECT / TOAST ==================== */
-        .redirect {
-            position: fixed;
-            inset: 0;
-            background: rgba(245, 241, 234, 0.95);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            z-index: 300;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 20px;
-            animation: fadeIn 0.2s ease;
-        }
-        .redirect.active { display: flex; }
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 2px solid var(--line);
-            border-top-color: var(--accent);
-            border-radius: 50%;
-            animation: spin 0.7s linear infinite;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .redirect-label {
-            font-family: 'Fraunces', serif;
-            font-optical-sizing: auto;
-            font-style: italic;
-            font-size: 20px;
-            color: var(--ink);
-            letter-spacing: -0.02em;
-        }
-
+        /* ==================== TOAST ==================== */
         .toast {
             position: fixed;
             top: 20px;
@@ -1642,7 +1613,7 @@
         }
         .toast i { color: var(--accent); font-size: 14px; }
 
-        /* ==================== EMPTY STATE ==================== */
+        /* Empty state */
         .empty {
             padding: 60px 20px;
             text-align: center;
@@ -1780,10 +1751,10 @@
                 <div class="loader-image-ring-2"></div>
                 <div class="loader-image-inner" id="loader-img-inner">
                     <span class="loader-image-fallback">V</span>
-                    <img src="https://vividimage.edgeone.dev/"
-                         alt="Vivid Academy"
-                         onload="document.getElementById('loader-img-inner').classList.add('has-img')"
-                         onerror="this.style.display='none'">
+                    <img id="loader-img" src="" alt="Vivid Academy"
+                         onload="this.style.display='block'"
+                         onerror="this.style.display='none'"
+                         style="display:none;">
                 </div>
             </div>
         </div>
@@ -1794,7 +1765,7 @@
         <div class="loader-bar"><div class="loader-bar-fill"></div></div>
     </div>
 
-    <!-- ==================== LOCK SCREEN ==================== -->
+    <!-- ==================== LOCK ==================== -->
     <div id="lock" class="lock-backdrop">
         <div class="lock-card">
             <div class="lock-badge">
@@ -1837,7 +1808,12 @@
     <aside id="drawer" class="drawer">
         <div class="drawer-head">
             <div class="drawer-brand">
-                <div class="drawer-logo"></div>
+                <div class="drawer-logo" id="drawer-logo">
+                    <div class="drawer-logo-fallback">V</div>
+                    <img id="drawer-logo-img" src="" alt="" style="display:none;"
+                         onload="this.style.display='block'; document.querySelector('#drawer-logo .drawer-logo-fallback').style.display='none';"
+                         onerror="this.style.display='none';">
+                </div>
                 <div class="drawer-brand-text">
                     <div class="drawer-brand-title serif">Vivid <em>Academy</em></div>
                     <div class="drawer-brand-sub">Learning Platform</div>
@@ -1847,16 +1823,16 @@
 
         <div class="drawer-body">
             <div class="drawer-label">Navigate</div>
-            <button class="drawer-item active" data-nav="home" onclick="navHome()">
+            <button class="drawer-item active" onclick="navHome()">
                 <span class="drawer-item-icon"><i class="fas fa-house"></i></span>
                 <span>Home</span>
             </button>
-            <button class="drawer-item" data-nav="favorites" onclick="navFavorites()">
+            <button class="drawer-item" onclick="navFavorites()">
                 <span class="drawer-item-icon"><i class="fas fa-star"></i></span>
                 <span>Favorites</span>
                 <span id="drawer-fav-count" class="drawer-item-badge hidden">0</span>
             </button>
-            <button class="drawer-item" data-nav="notifications" onclick="closeDrawer(); openInbox();">
+            <button class="drawer-item" onclick="closeDrawer(); openInbox();">
                 <span class="drawer-item-icon"><i class="fas fa-bell"></i></span>
                 <span>Notifications</span>
                 <span id="drawer-notif-count" class="drawer-item-badge hidden">0</span>
@@ -1923,7 +1899,12 @@
         <div class="main">
 
             <div class="welcome" id="welcome-strip">
-                <div class="welcome-avatar"></div>
+                <div class="welcome-avatar" id="welcome-avatar">
+                    <div class="welcome-avatar-fallback">V</div>
+                    <img id="welcome-avatar-img" src="" alt="" style="display:none;"
+                         onload="this.style.display='block'; document.querySelector('#welcome-avatar .welcome-avatar-fallback').style.display='none';"
+                         onerror="this.style.display='none';">
+                </div>
                 <div class="welcome-text">
                     <div class="welcome-title serif">Welcome back, <em>learner.</em></div>
                     <div class="welcome-sub" id="welcome-sub">Pick an exam to get started</div>
@@ -1943,7 +1924,7 @@
             <div id="view-explore" class="view">
                 <div class="section-label">
                     <h2>Explore by</h2>
-                    <span class="count" id="explore-count">2 options</span>
+                    <span class="count" id="explore-count">—</span>
                 </div>
                 <div id="explore-list" class="list"></div>
             </div>
@@ -1962,7 +1943,7 @@
             <div id="view-types" class="view">
                 <div class="section-label">
                     <h2>Choose content</h2>
-                    <span class="count" id="types-count">2 options</span>
+                    <span class="count" id="types-count">—</span>
                 </div>
                 <div id="types-list" class="list"></div>
                 <button class="back-btn" onclick="backToLists()">
@@ -2034,11 +2015,6 @@
         <div id="inbox-list" class="inbox-body"></div>
     </div>
 
-    <div id="redirect" class="redirect">
-        <div class="spinner"></div>
-        <div class="redirect-label">Opening...</div>
-    </div>
-
     <div id="toast" class="toast">
         <i class="fas fa-check"></i>
         <span id="toast-text">Done</span>
@@ -2058,14 +2034,13 @@
             favorites: []
         };
 
-        const KEY = 'vivid_seen_ids_v6';
+        const KEY = 'vivid_seen_ids_v7';
         const LOCK_KEY = 'vivid_lock_ts_v7';
         const FAV_KEY = 'vivid_favorites_v1';
-        const LOCK_WINDOW_MS = 24 * 60 * 60 * 1000; // 24 hours
+        const LOCK_WINDOW_MS = 24 * 60 * 60 * 1000;
 
         const $ = id => document.getElementById(id);
 
-        /* ---------- Safe storage (localStorage → sessionStorage → cookie) ---------- */
         function storageGet(key) {
             try { const v = localStorage.getItem(key); if (v !== null) return v; } catch(e) {}
             try { const v = sessionStorage.getItem(key); if (v !== null) return v; } catch(e) {}
@@ -2089,9 +2064,7 @@
             if (!raw) return fallback;
             try { return JSON.parse(raw); } catch { return fallback; }
         }
-        function saveJSON(key, val) {
-            storageSet(key, JSON.stringify(val));
-        }
+        function saveJSON(key, val) { storageSet(key, JSON.stringify(val)); }
 
         function loadSeen() { return loadJSON(KEY, []); }
         function saveSeen(ids) { saveJSON(KEY, ids); }
@@ -2122,7 +2095,7 @@
             t._t = setTimeout(() => t.classList.remove('show'), 2400);
         }
 
-        /* ---------- Drawer ---------- */
+        // ==================== DRAWER ====================
         window.openDrawer = function () {
             $('drawer').classList.add('open');
             $('drawer-backdrop').classList.add('open');
@@ -2134,14 +2107,13 @@
             document.body.classList.remove('no-scroll');
         };
 
-        /* ---------- Lock / Unlock (24-hour) ---------- */
+        // ==================== LOCK ====================
         function withinLockWindow() {
             const raw = storageGet(LOCK_KEY);
             const last = raw ? parseInt(raw, 10) : 0;
             if (!last) return false;
             return (Date.now() - last) < LOCK_WINDOW_MS;
         }
-
         function initLock() {
             if (withinLockWindow()) {
                 $('lock').style.display = 'none';
@@ -2152,9 +2124,7 @@
                 $('app').classList.remove('active');
             }
         }
-
         window.unlock = function () {
-            // Save timestamp immediately — before navigating
             storageSet(LOCK_KEY, String(Date.now()));
             setTimeout(() => {
                 $('lock').style.display = 'none';
@@ -2164,22 +2134,40 @@
             }, 200);
         };
 
-        /* ---------- Data ---------- */
+        // ==================== DATA ====================
         async function loadData() {
             try {
                 const res = await fetch('db.json?v=' + Date.now(), { cache: 'no-store' });
                 if (!res.ok) throw new Error();
                 state.data = await res.json();
             } catch {
-                state.data = { exams: [], courses: [], notifications: [] };
+                state.data = { site: {}, exams: [], notifications: [] };
             }
             state.favorites = loadJSON(FAV_KEY, []);
+            applySiteImage();
             renderExams();
             updateBadge();
             updateDrawerBadges();
         }
 
-        /* ---------- Views ---------- */
+        function applySiteImage() {
+            const url = state.data?.site?.image;
+            if (!url) return;
+
+            // Loader image
+            const li = $('loader-img');
+            if (li) li.src = url;
+
+            // Drawer logo
+            const dli = $('drawer-logo-img');
+            if (dli) dli.src = url;
+
+            // Welcome avatar
+            const wai = $('welcome-avatar-img');
+            if (wai) wai.src = url;
+        }
+
+        // ==================== VIEWS ====================
         function hideAllViews() {
             ['view-exams','view-explore','view-lists','view-types','view-items','view-detail','view-favorites'].forEach(v => {
                 const el = $(v);
@@ -2209,40 +2197,10 @@
             }).join('');
         }
 
-        /* ---------- Exams ---------- */
+        // ==================== EXAMS ====================
         function getExams() {
-            if (state.data && state.data.exams && state.data.exams.length) return state.data.exams;
-            if (state.data && state.data.courses && state.data.courses.length) {
-                return state.data.courses.map(c => ({
-                    name: c.name,
-                    icon: c.icon || 'graduation-cap',
-                    image: c.image || c.cover || '',
-                    subjects: c.subjects || [],
-                    coachings: [],
-                    _legacy: true
-                }));
-            }
+            if (state.data && Array.isArray(state.data.exams)) return state.data.exams;
             return [];
-        }
-
-        /* Image helper — returns img markup with icon fallback underneath */
-        function thumbMarkup(url, alt, iconClass, extraClass) {
-            const cls = extraClass || '';
-            const safeUrl = url ? esc(url) : '';
-            const img = safeUrl
-                ? `<img src="${safeUrl}" alt="${esc(alt || '')}" loading="lazy" onerror="this.remove()">`
-                : '';
-            const fb = `<div class="item-thumb-fb"><i class="fas fa-${esc(iconClass || 'folder')}"></i></div>`;
-            return `<div class="item-thumb ${cls}">${fb}${img}</div>`;
-        }
-
-        function examCoverMarkup(url, alt, iconClass) {
-            const safeUrl = url ? esc(url) : '';
-            const img = safeUrl
-                ? `<img src="${safeUrl}" alt="${esc(alt || '')}" loading="lazy" onerror="this.remove()">`
-                : '';
-            const fb = `<div class="exam-cover-fb"><i class="fas fa-${esc(iconClass || 'graduation-cap')}"></i></div>`;
-            return `<div class="exam-cover">${fb}${img}</div>`;
         }
 
         function renderExams() {
@@ -2267,14 +2225,22 @@
                 const card = document.createElement('div');
                 card.className = 'exam-card';
                 card.style.animationDelay = (i * 55) + 'ms';
-                const iconClass = ex.icon ? String(ex.icon).replace(/^fa-/, '') : 'graduation-cap';
+
+                const iconName = String(ex.icon || 'graduation-cap').replace(/^fa-/, '');
                 const subCount = (ex.subjects || []).length;
                 const coachCount = (ex.coachings || []).length;
                 const metaText = `${subCount} subject${subCount !== 1 ? 's' : ''} · ${coachCount} institute${coachCount !== 1 ? 's' : ''}`;
-                const coverUrl = ex.image || ex.cover || '';
+
+                const imgUrl = ex.image || ex.cover || '';
+                const imgTag = imgUrl
+                    ? `<img src="${esc(imgUrl)}" alt="${esc(ex.name)}" loading="lazy" onerror="this.remove()">`
+                    : '';
 
                 card.innerHTML = `
-                    ${examCoverMarkup(coverUrl, ex.name, iconClass)}
+                    <div class="exam-cover">
+                        <div class="exam-cover-fb"><i class="fas fa-${esc(iconName)}"></i></div>
+                        ${imgTag}
+                    </div>
                     <div class="exam-info">
                         <div class="exam-title serif">${esc(ex.name || 'Untitled')}</div>
                         <div class="exam-meta">${esc(metaText)}</div>
@@ -2305,7 +2271,11 @@
                 { label: exam.name || 'Exam' }
             ]);
 
-            $('explore-count').textContent = '2 options';
+            const options = [];
+            if (subCount > 0) options.push('subject');
+            if (coachCount > 0) options.push('coaching');
+
+            $('explore-count').textContent = options.length + ' option' + (options.length !== 1 ? 's' : '');
 
             if (subCount > 0) {
                 const c1 = document.createElement('div');
@@ -2330,7 +2300,7 @@
                 c2.innerHTML = `
                     <div class="explore-icon green"><i class="fas fa-school"></i></div>
                     <div>
-                        <div class="explore-title serif">By Coaching</div>
+                        <div class="explore-title serif">By Institution</div>
                         <div class="explore-sub">${coachCount} institute${coachCount !== 1 ? 's' : ''} available</div>
                     </div>
                     <div class="explore-arrow"><i class="fas fa-arrow-right"></i></div>
@@ -2361,6 +2331,7 @@
             }
         };
 
+        // ==================== SUBJECTS / COACHINGS ====================
         window.openMethod = function (method) {
             state.method = method;
             state.subject = null;
@@ -2393,13 +2364,22 @@
                     const el = document.createElement('div');
                     el.className = 'item';
                     el.style.animationDelay = (si * 45) + 'ms';
+
                     const chapCount = (s.CHAPTERS || []).length;
                     const testCount = (s['WEEKLY TESTS'] || []).length;
                     const thumbIcon = method === 'subjects' ? 'book' : 'school';
                     const thumbCls = method === 'coachings' ? 'green' : '';
+
                     const imgUrl = s.image || s.cover || '';
+                    const imgTag = imgUrl
+                        ? `<img src="${esc(imgUrl)}" alt="${esc(s.name)}" loading="lazy" onerror="this.remove()">`
+                        : '';
+
                     el.innerHTML = `
-                        ${thumbMarkup(imgUrl, s.name, thumbIcon, thumbCls)}
+                        <div class="item-thumb ${thumbCls}">
+                            <div class="item-thumb-fb"><i class="fas fa-${thumbIcon}"></i></div>
+                            ${imgTag}
+                        </div>
                         <div class="item-body">
                             <div class="item-title">${esc(s.name || 'Untitled')}</div>
                             <div class="item-meta">${chapCount} chapters · ${testCount} tests</div>
@@ -2420,13 +2400,12 @@
             else navHome();
         };
 
+        // ==================== TYPES ====================
         window.openSubject = function (si) {
             state.subject = si;
             const exam = getExams()[state.exam];
             const list = (state.method === 'subjects' ? exam.subjects : exam.coachings) || [];
             const subj = list[si];
-
-            $('types-count').textContent = '2 options';
 
             setCrumb([
                 { label: 'Home', onclick: 'navHome()' },
@@ -2445,6 +2424,8 @@
                 { type: 'CHAPTERS', title: 'Chapters & Lectures', sub: `${chapCount} item${chapCount !== 1 ? 's' : ''}`, icon: 'fa-book-open', cls: '' },
                 { type: 'WEEKLY TESTS', title: 'Mock Tests', sub: `${testCount} test${testCount !== 1 ? 's' : ''}`, icon: 'fa-flask', cls: 'green' }
             ];
+
+            $('types-count').textContent = cards.length + ' options';
 
             cards.forEach((c, i) => {
                 const el = document.createElement('div');
@@ -2471,6 +2452,7 @@
             else navHome();
         };
 
+        // ==================== ITEMS ====================
         window.openType = function (type) {
             state.type = type;
             const exam = getExams()[state.exam];
@@ -2510,7 +2492,7 @@
                     const resourceCount = [ch.url, ch.notes_en, ch.notes_hi, ch.quiz, ch.handwritten].filter(Boolean).length;
 
                     el.innerHTML = `
-                        <button class="fav-star ${isFav ? 'active' : ''}" aria-label="Favorite" data-fav="1">
+                        <button class="fav-star ${isFav ? 'active' : ''}" data-fav="1">
                             <i class="fas fa-star"></i>
                         </button>
                         <div class="content-head">
@@ -2535,7 +2517,6 @@
                     });
 
                     el.addEventListener('click', () => openDetail(i));
-
                     container.appendChild(el);
                 });
             }
@@ -2549,6 +2530,7 @@
             else navHome();
         };
 
+        // ==================== DETAIL ====================
         window.openDetail = function (i) {
             state.item = i;
             const exam = getExams()[state.exam];
@@ -2584,14 +2566,14 @@
             card.style.position = 'relative';
             card.style.padding = '26px';
             card.innerHTML = `
-                <button class="fav-star ${isFav ? 'active' : ''}" id="detail-fav" aria-label="Favorite">
+                <button class="fav-star ${isFav ? 'active' : ''}" id="detail-fav">
                     <i class="fas fa-star"></i>
                 </button>
                 <div style="margin-bottom: 20px;">
                     <div style="font-size: 11px; font-family: 'SF Mono', monospace; color: var(--ink-3); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;">
                         ${esc(exam.name)} · ${esc(subj.name)}
                     </div>
-                    <div style="font-family: 'Fraunces', serif; font-optical-sizing: auto; font-size: 24px; font-weight: 400; letter-spacing: -0.03em; color: var(--ink); line-height: 1.2;">
+                    <div style="font-family: 'Fraunces', serif; font-size: 24px; font-weight: 400; letter-spacing: -0.03em; color: var(--ink); line-height: 1.2;">
                         ${esc(ch.title || 'Untitled')}
                     </div>
                 </div>
@@ -2599,7 +2581,6 @@
                     ${buttons.join('') || '<div style="grid-column:1/-1; text-align:center; color: var(--ink-3); font-size: 13px; padding: 16px;">No resources available yet</div>'}
                 </div>
             `;
-
             container.appendChild(card);
 
             const favBtn = card.querySelector('#detail-fav');
@@ -2611,7 +2592,7 @@
             card.querySelectorAll('button[data-url]').forEach(b => {
                 b.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    handleOpen(b.dataset.url);
+                    window.open(b.dataset.url, '_blank', 'noopener');
                 });
             });
 
@@ -2625,7 +2606,7 @@
             </button>`;
         }
 
-        /* ---------- Favorites ---------- */
+        // ==================== FAVORITES ====================
         function isFavorite(examName, subjectName, chapterTitle) {
             const id = favId(examName, subjectName, chapterTitle);
             return state.favorites.some(f => f.id === id);
@@ -2686,7 +2667,7 @@
                             <div class="item-title">${esc(f.chapter)}</div>
                             <div class="item-meta">${esc(f.exam)} · ${esc(f.subject)}</div>
                         </div>
-                        <button class="item-arrow" style="background: transparent; border: none; cursor: pointer;" data-remove="${i}" aria-label="Remove">
+                        <button class="item-arrow" data-remove="${i}" aria-label="Remove">
                             <i class="fas fa-times"></i>
                         </button>
                     `;
@@ -2727,23 +2708,7 @@
             renderExams();
         };
 
-        /* ---------- Open / Redirect ---------- */
-        window.handleOpen = function (content) {
-            if (!content) return;
-            if (content.includes('<') && content.includes('>')) {
-                const w = window.open('', '_blank');
-                if (w) { w.document.write(content); w.document.close(); }
-            } else {
-                const r = $('redirect');
-                r.classList.add('active');
-                setTimeout(() => {
-                    window.open(content, '_blank', 'noopener');
-                    r.classList.remove('active');
-                }, 700);
-            }
-        };
-
-        /* ---------- Notifications ---------- */
+        // ==================== NOTIFICATIONS ====================
         function getUnread() {
             const ns = (state.data && state.data.notifications) || [];
             if (ns.length === 0) return [];
@@ -2836,14 +2801,16 @@
                 `;
 
                 if (hasLink) {
-                    el.addEventListener('click', () => handleOpen(n.link));
+                    el.addEventListener('click', () => {
+                        window.open(n.link, '_blank', 'noopener');
+                    });
                 }
 
                 list.appendChild(el);
             });
         }
 
-        /* ---------- Topbar scroll ---------- */
+        // ==================== SCROLL ====================
         window.addEventListener('scroll', () => {
             const tb = $('topbar');
             if (!tb) return;
@@ -2851,9 +2818,8 @@
             else tb.classList.remove('scrolled');
         }, { passive: true });
 
-        /* ---------- Init ---------- */
+        // ==================== INIT ====================
         window.addEventListener('load', () => {
-            // Loader runs for 3 seconds (CSS), then initLock decides lock/app
             setTimeout(initLock, 2900);
         });
 
