@@ -3,7 +3,7 @@
     {
       "tag": "TESTING",
       "message": "hello!!!",
-      "date": "26 Feb 2026, 11:56 pm"
+      "date": "03 DEC 2025, 03:11 am"
     },
     {
       "tag": "UPDATE...",
@@ -16,16 +16,13 @@
       "date": "12 Sept 2026, 2:40 am"
     }
   ],
-  "exams": [
+  "courses": [
     {
       "name": "PARMAR 4.0 GK",
-      "icon": "graduation-cap",
-      "image": null,
-      "directLink": null,
+      "teacher": "PARMAR SIR",
       "subjects": [
         {
           "name": "BIOLOGY",
-          "image": null,
           "CHAPTERS": [
             {
               "title": "CELL - LEC 1",
@@ -159,7 +156,6 @@
         },
         {
           "name": "ECONOMICS",
-          "image": null,
           "CHAPTERS": [
             {
               "title": "BASICS OF ECONOMY - LEC 1",
@@ -292,7 +288,6 @@
         },
         {
           "name": "STATIC G.K",
-          "image": null,
           "CHAPTERS": [
             {
               "title": "CLASSICAL DANCE - LEC 1",
@@ -344,7 +339,6 @@
         },
         {
           "name": "CHEMISTRY",
-          "image": null,
           "CHAPTERS": [
             {
               "title": "STATES OF MATTER - LEC 1",
@@ -411,127 +405,60 @@
             },
             {
               "title": "CARBON AND ITS COMPOUNDS - LEC 8",
-              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69bf92e728e78901690fd2c9",
+              "url": "https://vividxcarbon.edgeone.app/",
               "download_url": null,
-              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69bf930028e78901690fd2cd",
-              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69bf930e28e78901690fd2cf",
-              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69bf92f328e78901690fd2cb",
-              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69bf931e28e78901690fd2d1"
+              "notes_en": null,
+              "notes_hi": null,
+              "quiz": null,
+              "handwritten": "https://vividxcarbonppt.edgeone.app/"
             },
             {
               "title": "CARBON AND ITS COMPOUNDS PART 2 - LEC 9",
-              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69bf932828e78901690fd2d3",
-              "download_url": null,
-              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69bf933628e78901690fd2d5",
-              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69bf934228e78901690fd2d9",
-              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69bf934d28e78901690fd2db",
-              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69bf935828e78901690fd2dd"
-            }
-          ],
-          "WEEKLY TESTS": [
-            {
-              "title": "CHEMISTRY FULL TEST",
-              "url": null,
+              "url": "https://vividxcarbonpart2.edgeone.app/",
               "download_url": null,
               "notes_en": null,
               "notes_hi": null,
-              "quiz": "https://vividxchemistrytest.edgeone.app/",
+              "quiz": null,
               "handwritten": null
             }
-          ]
+          ],
+          "WEEKLY TESTS": []
         },
         {
           "name": "PHYSICS",
-          "image": null,
           "CHAPTERS": [
             {
               "title": "MOTION - LEC 1",
-              "url": "https://www.youtube.com/live/QrJPCY6GxlM?si=X0VBx2yFV9aDlN0c",
-              "download_url": null,
-              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69bf936628e78901690fd2df",
-              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69bf937228e78901690fd2e1",
-              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69bf937b28e78901690fd2e3",
-              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69bf938528e78901690fd2e5"
-            },
-            {
-              "title": "FORCE AND LAWS OF MOTION - LEC 2",
-              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69bbd0ab911839277fe01062",
-              "download_url": null,
-              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69bf93a028e78901690fd2ec",
-              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69bf93a928e78901690fd2ee",
-              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69bf93b128e78901690fd2f0",
-              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69bf93bb28e78901690fd2f2"
-            },
-            {
-              "title": "GRAVITATION AND WORK DONE - LEC 3",
-              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69bf96d228e78901690fd2f8",
-              "download_url": null,
-              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c17f09b2ea87e77ff5a68c",
-              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c17f11b2ea87e77ff5a68e",
-              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69be49646abf9573a5e1436a",
-              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69bdaeb36abf9573a5e142d2"
-            },
-            {
-              "title": "SOUND - LEC 4",
-              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69c0d20bb2ea87e77ff5a5f8",
-              "download_url": null,
-              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8cfe203ce62c2c595f8fa",
-              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8cfea03ce62c2c595f8fc",
-              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c17f18b2ea87e77ff5a690",
-              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c17f20b2ea87e77ff5a692"
-            },
-            {
-              "title": "REFLECTION AND REFRACTION - LEC 5",
-              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69c3e4e45e326e12e26763d7",
-              "download_url": null,
-              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8d00b03ce62c2c595f903",
-              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8d01203ce62c2c595f905",
-              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c3e50c5e326e12e26763d9",
-              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c3e5125e326e12e26763db"
-            },
-            {
-              "title": "HUMAN EYE AND VISION - LEC 6",
-              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69c3e3d85e326e12e26763d5",
-              "download_url": null,
-              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8d03503ce62c2c595f90a",
-              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8d03c03ce62c2c595f90c",
-              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8d04403ce62c2c595f90e",
-              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8d04c03ce62c2c595f910"
-            },
-            {
-              "title": "ELECTRICITY - LEC 7",
-              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69c4c7522924e5555c455a28",
-              "download_url": null,
-              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8d05b03ce62c2c595f913",
-              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8d06203ce62c2c595f915",
-              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8d06903ce62c2c595f917",
-              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8d07103ce62c2c595f919"
-            },
-            {
-              "title": "MAGNETIC EFFECTS OF ELECTRIC CURRENT - LEC 8",
-              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69c8d07a03ce62c2c595f91b",
-              "download_url": null,
-              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8efc703ce62c2c595f98c",
-              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8efcf03ce62c2c595f98e",
-              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8d08303ce62c2c595f91d",
-              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8d08a03ce62c2c595f91f"
-            }
-          ],
-          "WEEKLY TESTS": [
-            {
-              "title": "PHYSICS FULL TEST",
-              "url": null,
+              "url": "https://www.youtube.com/live/QrJPCY6GxlM?si=G0rHDjlcAdLQY_FC",
               "download_url": null,
               "notes_en": null,
               "notes_hi": null,
-              "quiz": "https://vividxphysicstest.edgeone.app/",
+              "quiz": null,
+              "handwritten": null
+            },
+            {
+              "title": "FORCE AND LAWS OF MOTION - LEC 2",
+              "url": "https://vividxforceandlawsofmotion.edgeone.app/",
+              "download_url": null,
+              "notes_en": null,
+              "notes_hi": null,
+              "quiz": null,
+              "handwritten": null
+            },
+            {
+              "title": "GRAVITATION - LEC 3",
+              "url": "https://vividxgravitation.edgeone.app/",
+              "download_url": null,
+              "notes_en": null,
+              "notes_hi": null,
+              "quiz": null,
               "handwritten": null
             }
-          ]
+          ],
+          "WEEKLY TESTS": []
         },
         {
           "name": "POLITY",
-          "image": null,
           "CHAPTERS": [
             {
               "title": "MAKING OF CONSTITUTION - LEC 1",
@@ -705,48 +632,10 @@
               "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b910a613a84022525e5f2c"
             }
           ],
-          "WEEKLY TESTS": [
-            {
-              "title": "POLITY TEST 1",
-              "url": null,
-              "download_url": null,
-              "notes_en": null,
-              "notes_hi": null,
-              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8d4cc03ce62c2c595f92f",
-              "handwritten": null
-            },
-            {
-              "title": "POLITY TEST 2",
-              "url": null,
-              "download_url": null,
-              "notes_en": null,
-              "notes_hi": null,
-              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8d4d203ce62c2c595f931",
-              "handwritten": null
-            },
-            {
-              "title": "POLITY TEST 3",
-              "url": null,
-              "download_url": null,
-              "notes_en": null,
-              "notes_hi": null,
-              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8d4d703ce62c2c595f933",
-              "handwritten": null
-            },
-            {
-              "title": "FULL POLITY TEST",
-              "url": null,
-              "download_url": null,
-              "notes_en": null,
-              "notes_hi": null,
-              "quiz": "https://vividxfullpolitytest.edgeone.app/",
-              "handwritten": null
-            }
-          ]
+          "WEEKLY TESTS": []
         },
         {
           "name": "ANCIENT HISTORY",
-          "image": null,
           "CHAPTERS": [
             {
               "title": "STONE AGE - LEC 1",
@@ -857,30 +746,10 @@
               "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9046313a84022525e5c58"
             }
           ],
-          "WEEKLY TESTS": [
-            {
-              "title": "HISTORY TEST 1",
-              "url": null,
-              "download_url": null,
-              "notes_en": null,
-              "notes_hi": null,
-              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8d4aa03ce62c2c595f923",
-              "handwritten": null
-            },
-            {
-              "title": "HISTORY TEST 2",
-              "url": null,
-              "download_url": null,
-              "notes_en": null,
-              "notes_hi": null,
-              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8d4af03ce62c2c595f925",
-              "handwritten": null
-            }
-          ]
+          "WEEKLY TESTS": []
         },
         {
           "name": "MEDIEVAL HISTORY",
-          "image": null,
           "CHAPTERS": [
             {
               "title": "INVANSION OF ISLAM - LEC 1",
@@ -973,30 +842,10 @@
               "handwritten": null
             }
           ],
-          "WEEKLY TESTS": [
-            {
-              "title": "HISTORY TEST 3",
-              "url": null,
-              "download_url": null,
-              "notes_en": null,
-              "notes_hi": null,
-              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8d4b503ce62c2c595f927",
-              "handwritten": null
-            },
-            {
-              "title": "HISTORY TEST 4",
-              "url": null,
-              "download_url": null,
-              "notes_en": null,
-              "notes_hi": null,
-              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8d4bb03ce62c2c595f929",
-              "handwritten": null
-            }
-          ]
+          "WEEKLY TESTS": []
         },
         {
           "name": "MODERN HISTORY",
-          "image": null,
           "CHAPTERS": [
             {
               "title": "ADVENT OF EUROPEANS - LEC 1",
@@ -1080,30 +929,10 @@
               "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9080b13a84022525e5d29"
             }
           ],
-          "WEEKLY TESTS": [
-            {
-              "title": "HISTORY TEST 5",
-              "url": null,
-              "download_url": null,
-              "notes_en": null,
-              "notes_hi": null,
-              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8d4c103ce62c2c595f92b",
-              "handwritten": null
-            },
-            {
-              "title": "FULL HISTORY TEST",
-              "url": null,
-              "download_url": null,
-              "notes_en": null,
-              "notes_hi": null,
-              "quiz": "https://vividxfullhistorytest.edgeone.app/",
-              "handwritten": null
-            }
-          ]
+          "WEEKLY TESTS": []
         },
         {
           "name": "GEOGRAPHY",
-          "image": null,
           "CHAPTERS": [
             {
               "title": "SOLAR SYSTEM - LEC 1",
@@ -1233,7 +1062,7 @@
             },
             {
               "title": "PLAINS AND ISLANDS - LEC 15",
-              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69ca0965b22de884d2a0f039",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8fe3913a84022525e5b2e DO BE",
               "download_url": null,
               "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fe4113a84022525e5b30",
               "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fe4b13a84022525e5b32",
@@ -1367,75 +1196,10 @@
               "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9014b13a84022525e5bb6"
             }
           ],
-          "WEEKLY TESTS": [
-            {
-              "title": "GEOGRAPHY TEST 1",
-              "url": null,
-              "download_url": null,
-              "notes_en": null,
-              "notes_hi": null,
-              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8d4f003ce62c2c595f937",
-              "handwritten": null
-            },
-            {
-              "title": "GEOGRAPHY TEST 2",
-              "url": null,
-              "download_url": null,
-              "notes_en": null,
-              "notes_hi": null,
-              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8d4f603ce62c2c595f939",
-              "handwritten": null
-            },
-            {
-              "title": "GEOGRAPHY TEST 3",
-              "url": null,
-              "download_url": null,
-              "notes_en": null,
-              "notes_hi": null,
-              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8d4fb03ce62c2c595f93b",
-              "handwritten": null
-            },
-            {
-              "title": "GEOGRAPHY TEST 4",
-              "url": null,
-              "download_url": null,
-              "notes_en": null,
-              "notes_hi": null,
-              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8d50103ce62c2c595f93d",
-              "handwritten": null
-            },
-            {
-              "title": "GEOGRAPHY TEST 5",
-              "url": null,
-              "download_url": null,
-              "notes_en": null,
-              "notes_hi": null,
-              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8d51203ce62c2c595f93f",
-              "handwritten": null
-            },
-            {
-              "title": "GEOGRAPHY TEST 6",
-              "url": null,
-              "download_url": null,
-              "notes_en": null,
-              "notes_hi": null,
-              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69c8d51d03ce62c2c595f941",
-              "handwritten": null
-            },
-            {
-              "title": "FULL GEOGRAPHY TEST",
-              "url": null,
-              "download_url": null,
-              "notes_en": null,
-              "notes_hi": null,
-              "quiz": "https://vividxfullgeotest.edgeone.app/",
-              "handwritten": null
-            }
-          ]
+          "WEEKLY TESTS": []
         },
         {
           "name": "ENVIROMENT AND ECOLOGY",
-          "image": null,
           "CHAPTERS": [
             {
               "title": "DIFFERENT CYCLES",
@@ -1476,58 +1240,65 @@
           ],
           "WEEKLY TESTS": []
         }
-      ],
-      "coachings": []
+      ]
+    },
+    {
+      "name": "MATH'S SPL VOD BATCH",
+      "teacher": "GAGAN PRATAP SIR",
+      "directLink": "https://vividxmathsplvodgagansirbatch.edgeone.app/",
+      "subjects": []
     },
     {
       "name": "REASONING SPL 60",
-      "icon": "graduation-cap",
-      "image": null,
+      "teacher": "PIYUSH VARSHNEY SIR",
       "directLink": "https://vividxreasoningspl60batch.edgeone.app/",
-      "subjects": [],
-      "coachings": []
+      "subjects": []
+    },
+    {
+      "name": "ENGLISH SPECIAL 1",
+      "teacher": "AMAN VASHISHTH SIR",
+      "directLink": "https://vividxengspecial1.edgeone.app/",
+      "subjects": []
+    },
+    {
+      "name": "MATH'S SPL 48",
+      "teacher": "RAKESH YADAV SIR",
+      "directLink": "https://vividmathscourse.edgeone.app/",
+      "subjects": []
     },
     {
       "name": "ENGLISH PRACTICE 26",
-      "icon": "graduation-cap",
-      "image": null,
+      "teacher": "JAIDEEP SINGH SIR",
       "directLink": "https://vividxengpractice26.edgeone.app/",
-      "subjects": [],
-      "coachings": []
+      "subjects": []
     },
     {
       "name": "COMPUTER SPL 29",
-      "icon": "graduation-cap",
-      "image": null,
+      "teacher": "YATENDRA SIR",
       "directLink": "https://vividxcomputerspl29.edgeone.app/",
-      "subjects": [],
-      "coachings": []
+      "subjects": []
+    },
+    {
+      "name": "MATH'S SPECIAL VOD BATCH 2",
+      "teacher": "GAGAN PRATAP SIR",
+      "directLink": "https://vividxmathsspecialvod2.edgeone.app/",
+      "subjects": []
     },
     {
       "name": "SSC PRATHAM BATCH 2",
-      "icon": "graduation-cap",
-      "image": null,
       "directLink": "https://vividxprathambatch.edgeone.app/",
-      "subjects": [],
-      "coachings": []
+      "subjects": []
     },
     {
       "name": "SELECTION WAY",
-      "icon": "graduation-cap",
-      "image": null,
       "directLink": "https://selectionwayvivid.edgeone.dev/",
-      "subjects": [],
-      "coachings": []
+      "subjects": []
     },
     {
       "name": "PARMAR 5.0 GK",
-      "icon": "graduation-cap",
-      "image": null,
-      "directLink": null,
       "subjects": [
         {
           "name": "POLITY",
-          "image": null,
           "CHAPTERS": [
             {
               "title": "MAKING OF CONSTITUTION LEC - 1",
@@ -1541,66 +1312,37 @@
           ],
           "WEEKLY TESTS": []
         }
-      ],
-      "coachings": []
+      ]
     },
     {
       "name": "ACHIEVERS 8.0",
-      "icon": "graduation-cap",
-      "image": null,
       "directLink": "https://achievers8byvivid.edgeone.dev/",
-      "subjects": [],
-      "coachings": []
+      "subjects": []
     },
     {
       "name": "BHUTESH MATH'S FOUNDATION",
-      "icon": "graduation-cap",
-      "image": null,
       "directLink": "https://bhuteshmathsbyvivid.edgeone.dev/",
-      "subjects": [],
-      "coachings": []
+      "subjects": []
     },
     {
       "name": "PARMAR PC 2.0",
-      "icon": "graduation-cap",
-      "image": null,
       "directLink": "https://parmarpc2byvivid.edgeone.dev/",
-      "subjects": [],
-      "coachings": []
+      "subjects": []
     },
     {
       "name": "PARMAR REASONING FOUNDATION",
-      "icon": "graduation-cap",
-      "image": null,
       "directLink": "https://parmarreasoningbyvivid.edgeone.dev/",
-      "subjects": [],
-      "coachings": []
+      "subjects": []
     },
     {
       "name": "ADITYA SIR VOD 3.0",
-      "icon": "graduation-cap",
-      "image": null,
       "directLink": "pages/aditya-sir-vod-30.html",
-      "subjects": [],
-      "coachings": []
+      "subjects": []
     },
     {
       "name": "ABHINAY MATH'S FOUNDATION COURSE",
-      "icon": "graduation-cap",
-      "image": null,
       "directLink": "pages/abhinay-maths-foundation-course.html",
-      "subjects": [],
-      "coachings": []
-    },
-    {
-      "name": "SSC",
-      "icon": "earth",
-      "image": "images/exam-thumbnail-1789764147587.png",
-      "subjects": [],
-      "coachings": []
+      "subjects": []
     }
-  ],
-  "site": {
-    "image": "/sdcard/Pictures/vividki.jpg"
-  }
+  ]
 }
