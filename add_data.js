@@ -1,247 +1,655 @@
+#!/usr/bin/env node
+'use strict';
+
 const fs = require('fs');
 const path = require('path');
 const readline = require('readline-sync');
 
-function loadDB() { return JSON.parse(fs.readFileSync('db.json', 'utf8')); }
-function saveDB(db) { fs.writeFileSync('db.json', JSON.stringify(db, null, 2)); }
+const DB_FILE = 'db.json';
+const BACKUP_FILE = 'db.backup.json';
+const IMAGES_DIR = 'images';
+const PAGES_DIR = 'pages';
 
-function main() {
-    let db = loadDB();
-    const options = [
-        'Add/Update Content', 
-        'Manage/Delete Data', 
-        'Add Notification', 
-        'Delete Notifications'
-    ];
-    
-    const index = readline.keyInSelect(options, 'What do you want to do?');
+// ============================================================
+// UTILITIES
+// ============================================================
 
-    if (index === 0) addNewOrUpdate(db);
-    else if (index === 1) manageData(db);
-    else if (index === 2) addNotification(db);
-    else if (index === 3) deleteNotification(db);
+function loadDB() {
+  if (!fs.existsSync(DB_FILE)) return { site: {}, exams: [], notifications: [] };
+  try { return JSON.parse(fs.readFileSync(DB_FILE, 'utf8')); }
+  catch (e) {
+    console.error('❌ db.json is corrupted. Fix it manually before running.');
+    process.exit(1);
+  }
 }
 
-// --- HELPER: HTML file ko pages/ me copy karo aur path return karo ---
+function saveDB(db) {
+  fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2), 'utf8');
+}
+
+function backupOnce() {
+  if (fs.existsSync(DB_FILE) && !fs.existsSync(BACKUP_FILE)) {
+    try { fs.copyFileSync(DB_FILE, BACKUP_FILE); console.log('📦 Backup: db.backup.json'); }
+    catch (e) {}
+  }
+}
 
 function slugify(str) {
-    return String(str).toLowerCase()
-        .replace(/[^a-z0-9\s-]/g, '')
-        .trim()
-        .replace(/\s+/g, '-')
-        .replace(/-+/g, '-') || 'course-' + Date.now();
+  return String(str).toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim().replace(/\s+/g, '-').replace(/-+/g, '-') || 'item-' + Date.now();
 }
 
-function copyHtmlToPages(htmlFilePath, courseName) {
-    if (!fs.existsSync(htmlFilePath)) {
-        console.log(`❌ File not found: ${htmlFilePath}`);
-        return null;
+function hr(title) {
+  console.log('\n' + '─'.repeat(58));
+  if (title) console.log('  ' + title);
+  console.log('─'.repeat(58));
+}
+
+function ensureDir(dir) {
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+}
+
+// ============================================================
+// IMAGE / FILE RESOLVER
+// ============================================================
+
+/**
+ * Accepts either an https URL or a local file path.
+ * - URL          → returned as-is
+ * - Local file   → copied into ./images/ and relative path returned
+ * - Empty        → returns null
+ */
+function resolveImage(input, nameHint) {
+  if (!input) return null;
+  const cleaned = String(input).trim().replace(/^["']|["']$/g, '');
+  if (!cleaned) return null;
+
+  if (/^https?:\/\//i.test(cleaned)) return cleaned;
+
+  if (cleaned.startsWith(IMAGES_DIR + '/') && fs.existsSync(cleaned)) return cleaned;
+
+  if (fs.existsSync(cleaned)) {
+    ensureDir(IMAGES_DIR);
+    const ext = path.extname(cleaned) || '.jpg';
+    const destName = slugify(nameHint || 'img') + '-' + Date.now() + ext;
+    const dest = path.join(IMAGES_DIR, destName);
+    try {
+      fs.copyFileSync(cleaned, dest);
+      console.log(`   📁 Saved → ${dest}`);
+      return dest;
+    } catch (e) {
+      console.log(`   ⚠️  Copy failed: ${e.message}`);
+      return cleaned;
     }
-    const pagesDir = 'pages';
-    if (!fs.existsSync(pagesDir)) fs.mkdirSync(pagesDir, { recursive: true });
+  }
 
-    const slug = slugify(courseName);
-    const destPath = path.join(pagesDir, slug + '.html');
-    fs.copyFileSync(htmlFilePath, destPath);
-    return `pages/${slug}.html`;
+  return cleaned;
 }
 
-// --- NOTIFICATION LOGIC (Fixed for Long Messages with DONE) ---
+function copyHtmlToPages(htmlFilePath, nameHint) {
+  const cleaned = String(htmlFilePath).trim().replace(/^["']|["']$/g, '');
+  if (!fs.existsSync(cleaned)) { console.log(`❌ File not found: ${cleaned}`); return null; }
+  ensureDir(PAGES_DIR);
+  const dest = path.join(PAGES_DIR, slugify(nameHint) + '.html');
+  fs.copyFileSync(cleaned, dest);
+  return `${PAGES_DIR}/${slugify(nameHint)}.html`;
+}
+
+// ============================================================
+// INTERACTIVE HELPERS
+// ============================================================
+
+function askImageInput(label) {
+  console.log(`\n🖼️  ${label} (thumbnail)`);
+  console.log('   → Paste image URL  (e.g. https://i.imgur.com/x.jpg)');
+  console.log('   → Or local path    (e.g. /sdcard/Pictures/ssc.jpg)');
+  console.log('   → Press ENTER to skip');
+  const input = readline.question('   > ').trim();
+  if (!input) return null;
+  return resolveImage(input, label);
+}
+
+function readMultiLine(promptText) {
+  console.log(`\n${promptText}`);
+  console.log("   (Write lines one by one. Type 'DONE' on a new line to finish.)");
+  const lines = [];
+  while (true) {
+    const line = readline.question('   > ');
+    if (line.trim().toUpperCase() === 'DONE') break;
+    lines.push(line);
+  }
+  return lines.join(' ').replace(/(\r\n|\n|\r)/gm, ' ').trim();
+}
+
+function confirmTwice(label) {
+  console.log(`\n⚠️  About to DELETE: ${label}`);
+  if (!readline.keyInYN('   Confirmation 1/2 — Continue?')) return false;
+  if (!readline.keyInYN('   ⚠️  FINAL confirmation 2/2 — Really delete?')) return false;
+  return true;
+}
+
+// ============================================================
+// MIGRATION: legacy "courses" → new "exams"
+// ============================================================
+
+function migrateIfNeeded(db) {
+  const legacyCount = (db.courses || []).length;
+  if (legacyCount === 0) return false;
+
+  const hasNew = (db.exams || []).length > 0;
+
+  if (hasNew) {
+    console.log(`\n⚠️  Found ${legacyCount} legacy course(s) AND ${db.exams.length} exam(s).`);
+    if (!readline.keyInYN('   Merge legacy courses into exams?')) return false;
+  } else {
+    console.log(`\n🔄 Converting ${legacyCount} legacy course(s) → exams structure...`);
+  }
+
+  if (!db.exams) db.exams = [];
+
+  db.courses.forEach(c => {
+    db.exams.push({
+      name: c.name || 'Untitled',
+      icon: c.icon || 'graduation-cap',
+      image: c.image || c.cover || null,
+      directLink: c.directLink || null,
+      subjects: (c.subjects || []).map(s => ({
+        name: s.name || 'Untitled',
+        image: s.image || null,
+        'CHAPTERS': s.CHAPTERS || [],
+        'WEEKLY TESTS': s['WEEKLY TESTS'] || []
+      })),
+      coachings: []
+    });
+  });
+
+  delete db.courses;
+  saveDB(db);
+  console.log(`✅ Migrated ${legacyCount} course(s) into exams.`);
+  return true;
+}
+
+// ============================================================
+// SITE SETTINGS
+// ============================================================
+
+function manageSiteSettings(db) {
+  hr('SITE SETTINGS');
+  console.log(`   Current site image: ${db.site?.image || '(not set)'}`);
+
+  const opts = ['🖼️  Set / change site image', '🗑️  Clear site image'];
+  const idx = readline.keyInSelect(opts, 'Choose:');
+  if (idx === -1) return;
+
+  if (idx === 0) {
+    const img = askImageInput('Site image');
+    if (!img) { console.log('❌ Cancelled.'); return; }
+    if (!db.site) db.site = {};
+    db.site.image = img;
+    saveDB(db);
+    console.log(`✅ Site image set → ${img}`);
+  } else if (idx === 1) {
+    if (db.site) db.site.image = null;
+    saveDB(db);
+    console.log('✅ Site image cleared.');
+  }
+}
+
+// ============================================================
+// ADD / UPDATE CONTENT (main content flow)
+// ============================================================
+
+function addNewOrUpdate(db) {
+  hr('ADD / UPDATE CONTENT');
+  const exams = db.exams || [];
+  const names = exams.map(e => `${e.name}  (${(e.subjects||[]).length} sub · ${(e.coachings||[]).length} inst)`);
+  names.push('➕ ADD NEW EXAM');
+
+  const idx = readline.keyInSelect(names, 'Select an exam:');
+  if (idx === -1) return;
+  if (idx === names.length - 1) { addNewExam(db); return; }
+  manageExam(db, exams[idx]);
+}
+
+// ---------- Add new exam ----------
+
+function addNewExam(db) {
+  hr('ADD NEW EXAM');
+  const name = readline.question('Exam name (e.g. SSC, JEE, NEET): ').trim().toUpperCase();
+  if (!name) { console.log('❌ Cancelled.'); return; }
+
+  console.log('\n💡 Common icons: landmark, train, atom, dna, brain, bank, shield,');
+  console.log('   graduation-cap, book, flask, language, earth, laptop-code');
+  const icon = readline.question('Icon name [graduation-cap]: ').trim() || 'graduation-cap';
+
+  const image = askImageInput('Exam thumbnail');
+
+  console.log('\nMode:');
+  const modes = [
+    'Full hierarchy (Subjects / Coachings)',
+    'Direct Link (redirect to URL)',
+    'HTML File (self-hosted page)'
+  ];
+  const modeIdx = readline.keyInSelect(modes, 'Choose:');
+  if (modeIdx === -1) return;
+
+  const exam = { name, icon, image: image || null, subjects: [], coachings: [] };
+
+  if (modeIdx === 1) {
+    const link = readline.question('Redirect URL: ').trim();
+    if (!link) { console.log('❌ URL required.'); return; }
+    exam.directLink = link;
+  } else if (modeIdx === 2) {
+    const p = readline.question('HTML file path: ').trim();
+    const rel = copyHtmlToPages(p, name);
+    if (!rel) return;
+    exam.directLink = rel;
+  }
+
+  if (!db.exams) db.exams = [];
+  db.exams.push(exam);
+  saveDB(db);
+  console.log(`\n✅ Exam "${name}" added.`);
+}
+
+// ---------- Manage existing exam ----------
+
+function manageExam(db, exam) {
+  hr(`Exam: ${exam.name}`);
+  const subC = (exam.subjects || []).length;
+  const coaC = (exam.coachings || []).length;
+  console.log(`   ${subC} subjects · ${coaC} coachings · directLink: ${exam.directLink ? 'yes' : 'no'}`);
+
+  const opts = [
+    '📚 By Subject',
+    '🏫 By Institution (Coaching)',
+    '✏️  Edit Exam (name / icon / image)',
+    '🔗 Set / Change Direct Redirect',
+    '🗑️  Delete this Exam'
+  ];
+  const idx = readline.keyInSelect(opts, 'Choose:');
+  if (idx === -1) return;
+  if (idx === 0) bySubjectFlow(db, exam);
+  else if (idx === 1) byInstitutionFlow(db, exam);
+  else if (idx === 2) editExam(db, exam);
+  else if (idx === 3) setDirectLink(db, exam);
+  else if (idx === 4) deleteExam(db, exam);
+}
+
+function bySubjectFlow(db, exam) {
+  const subjects = exam.subjects || [];
+  const names = subjects.map(s => `${s.name}  (${(s.CHAPTERS||[]).length} ch · ${(s['WEEKLY TESTS']||[]).length} tests)`);
+  names.push('➕ ADD NEW SUBJECT');
+
+  const idx = readline.keyInSelect(names, 'Subjects:');
+  if (idx === -1) return;
+  if (idx === names.length - 1) { addSubject(db, exam); return; }
+  manageContainer(db, exam, subjects[idx], 'subject');
+}
+
+function byInstitutionFlow(db, exam) {
+  const coachings = exam.coachings || [];
+  const names = coachings.map(s => `${s.name}  (${(s.CHAPTERS||[]).length} ch · ${(s['WEEKLY TESTS']||[]).length} tests)`);
+  names.push('➕ ADD NEW COACHING / INSTITUTION');
+
+  const idx = readline.keyInSelect(names, 'Coachings:');
+  if (idx === -1) return;
+  if (idx === names.length - 1) { addCoaching(db, exam); return; }
+  manageContainer(db, exam, coachings[idx], 'coaching');
+}
+
+// ---------- Add subject / coaching ----------
+
+function addSubject(db, exam) {
+  hr(`Add Subject → ${exam.name}`);
+  const name = readline.question('Subject name: ').trim().toUpperCase();
+  if (!name) { console.log('❌ Cancelled.'); return; }
+  const image = askImageInput('Subject thumbnail');
+
+  if (!exam.subjects) exam.subjects = [];
+  exam.subjects.push({ name, image: image || null, CHAPTERS: [], 'WEEKLY TESTS': [] });
+  saveDB(db);
+  console.log(`✅ Subject "${name}" added.`);
+}
+
+function addCoaching(db, exam) {
+  hr(`Add Coaching → ${exam.name}`);
+  const name = readline.question('Coaching / Institution name: ').trim().toUpperCase();
+  if (!name) { console.log('❌ Cancelled.'); return; }
+  const image = askImageInput('Coaching thumbnail');
+
+  if (!exam.coachings) exam.coachings = [];
+  exam.coachings.push({ name, image: image || null, CHAPTERS: [], 'WEEKLY TESTS': [] });
+  saveDB(db);
+  console.log(`✅ Coaching "${name}" added.`);
+}
+
+// ---------- Manage a subject or coaching ----------
+
+function manageContainer(db, exam, container, kind) {
+  hr(`${container.name} — ${kind}`);
+  const opts = [
+    '📖 Add / Update Chapters',
+    '📝 Add / Update Mock Tests',
+    '✏️  Edit name / image',
+    '🔗 Set / Change Direct Redirect',
+    `🗑️  Delete this ${kind}`
+  ];
+  const idx = readline.keyInSelect(opts, 'Choose:');
+  if (idx === -1) return;
+  if (idx === 0) addChapterOrTest(db, container, 'CHAPTERS');
+  else if (idx === 1) addChapterOrTest(db, container, 'WEEKLY TESTS');
+  else if (idx === 2) editContainer(db, container, kind);
+  else if (idx === 3) setContainerDirectLink(db, container);
+  else if (idx === 4) deleteContainer(db, exam, container, kind);
+}
+
+function editContainer(db, container, kind) {
+  console.log(`\nEditing ${kind}: ${container.name}`);
+  const name = readline.question(`New name [${container.name}]: `).trim().toUpperCase() || container.name;
+  container.name = name;
+
+  console.log(`Current image: ${container.image || '(none)'}`);
+  if (readline.keyInYN('   Change image?')) {
+    const img = askImageInput(`${kind} thumbnail`);
+    if (img) container.image = img;
+  }
+  saveDB(db);
+  console.log('✅ Updated.');
+}
+
+function setContainerDirectLink(db, container) {
+  console.log(`\n🔗 Direct redirect for: ${container.name}`);
+  console.log(`   Current: ${container.directLink || '(none)'}`);
+  const link = readline.question('   New URL (blank = remove): ').trim();
+  if (link) container.directLink = link;
+  else delete container.directLink;
+  saveDB(db);
+  console.log('✅ Updated.');
+}
+
+function deleteContainer(db, exam, container, kind) {
+  if (!confirmTwice(`${kind} "${container.name}"`)) { console.log('❌ Cancelled.'); return; }
+  const arr = kind === 'subject' ? exam.subjects : exam.coachings;
+  const i = arr.indexOf(container);
+  if (i >= 0) arr.splice(i, 1);
+  saveDB(db);
+  console.log(`🗑️  ${kind} deleted.`);
+}
+
+// ---------- Chapters / Mock Tests ----------
+
+function addChapterOrTest(db, container, cat) {
+  const list = container[cat] || [];
+  const titles = list.map(i => i.title);
+  titles.push('➕ ADD NEW');
+
+  const idx = readline.keyInSelect(titles, `Select ${cat} item:`);
+  if (idx === -1) return;
+
+  const isNew = idx === titles.length - 1;
+  const existing = isNew ? null : list[idx];
+
+  let title;
+  if (isNew) {
+    title = readline.question('Title: ').trim();
+    if (!title) { console.log('❌ Cancelled.'); return; }
+  } else {
+    console.log(`\nEditing: ${existing.title}`);
+    title = readline.question(`New title [${existing.title}]: `).trim() || existing.title;
+  }
+
+  let url = existing?.url || null;
+  console.log(`\n📺 Lecture link or HTML code`);
+  console.log(`   (leave blank to keep existing${existing?.url ? ' — currently set' : ''}; type SKIP to clear)`);
+  const lectureInput = readMultiLine('   Lecture input:');
+  if (lectureInput && lectureInput.toUpperCase() === 'SKIP') url = null;
+  else if (lectureInput) url = lectureInput;
+
+  let download_url = existing?.download_url || null;
+  if (url && url.includes('<')) {
+    const dl = readline.question(`Download link [${download_url || 'none'}]: `).trim();
+    if (dl) download_url = dl;
+  }
+
+  const notes_en = readline.question(`English Notes [${existing?.notes_en || 'none'}]: `).trim() || existing?.notes_en || null;
+  const notes_hi = readline.question(`Hindi Notes [${existing?.notes_hi || 'none'}]: `).trim() || existing?.notes_hi || null;
+  const quiz     = readline.question(`Quiz [${existing?.quiz || 'none'}]: `).trim() || existing?.quiz || null;
+  const ppt      = readline.question(`PPT / Other [${existing?.handwritten || 'none'}]: `).trim() || existing?.handwritten || null;
+
+  const newItem = {
+    title,
+    url: url || null,
+    download_url: download_url || null,
+    notes_en: notes_en || null,
+    notes_hi: notes_hi || null,
+    quiz: quiz || null,
+    handwritten: ppt || null
+  };
+
+  if (isNew) { if (!container[cat]) container[cat] = []; container[cat].push(newItem); }
+  else container[cat][idx] = newItem;
+
+  saveDB(db);
+  console.log(`\n✅ ${cat} "${title}" ${isNew ? 'added' : 'updated'}.`);
+}
+
+// ---------- Edit exam metadata ----------
+
+function editExam(db, exam) {
+  hr(`Edit: ${exam.name}`);
+  const name = readline.question(`New name [${exam.name}]: `).trim().toUpperCase() || exam.name;
+  const icon = readline.question(`Icon [${exam.icon || 'graduation-cap'}]: `).trim() || exam.icon || 'graduation-cap';
+
+  exam.name = name;
+  exam.icon = icon;
+
+  console.log(`Current image: ${exam.image || '(none)'}`);
+  if (readline.keyInYN('   Change image?')) {
+    const img = askImageInput('Exam thumbnail');
+    if (img) exam.image = img;
+  }
+
+  saveDB(db);
+  console.log('✅ Exam updated.');
+}
+
+function setDirectLink(db, exam) {
+  hr(`Direct redirect for: ${exam.name}`);
+  console.log(`   Current: ${exam.directLink || '(none)'}`);
+  const link = readline.question('   New URL (blank = remove): ').trim();
+  if (link) exam.directLink = link;
+  else delete exam.directLink;
+  saveDB(db);
+  console.log('✅ Updated.');
+}
+
+function deleteExam(db, exam) {
+  if (!confirmTwice(`Exam "${exam.name}" (with all subjects/coachings)`)) { console.log('❌ Cancelled.'); return; }
+  const i = db.exams.indexOf(exam);
+  if (i >= 0) db.exams.splice(i, 1);
+  saveDB(db);
+  console.log(`🗑️  Exam deleted.`);
+}
+
+// ============================================================
+// MANAGE / DELETE (standalone delete menu)
+// ============================================================
+
+function manageData(db) {
+  hr('MANAGE / DELETE DATA');
+  const opts = [
+    '🗑️  Delete an Exam',
+    '🗑️  Delete a Subject',
+    '🗑️  Delete a Coaching',
+    '🗑️  Delete a Chapter / Test'
+  ];
+  const idx = readline.keyInSelect(opts, 'Choose:');
+  if (idx === -1) return;
+  if (idx === 0) standaloneDeleteExam(db);
+  else if (idx === 1) standaloneDeleteContainer(db, 'subjects');
+  else if (idx === 2) standaloneDeleteContainer(db, 'coachings');
+  else if (idx === 3) standaloneDeleteChapter(db);
+}
+
+function standaloneDeleteExam(db) {
+  const exams = db.exams || [];
+  if (exams.length === 0) { console.log('❌ No exams.'); return; }
+  const idx = readline.keyInSelect(exams.map(e => e.name), 'Exam to delete:');
+  if (idx === -1) return;
+  const exam = exams[idx];
+  if (!confirmTwice(`Exam "${exam.name}"`)) { console.log('❌ Cancelled.'); return; }
+  db.exams.splice(idx, 1);
+  saveDB(db);
+  console.log('🗑️  Exam deleted.');
+}
+
+function standaloneDeleteContainer(db, key) {
+  const exams = db.exams || [];
+  if (exams.length === 0) { console.log('❌ No exams.'); return; }
+
+  const eIdx = readline.keyInSelect(exams.map(e => e.name), 'Exam:');
+  if (eIdx === -1) return;
+  const exam = exams[eIdx];
+  const list = exam[key] || [];
+  if (list.length === 0) { console.log(`❌ No ${key}.`); return; }
+
+  const sIdx = readline.keyInSelect(list.map(s => s.name), `Select ${key}:`);
+  if (sIdx === -1) return;
+  const item = list[sIdx];
+
+  if (!confirmTwice(`${key} "${item.name}"`)) { console.log('❌ Cancelled.'); return; }
+  list.splice(sIdx, 1);
+  saveDB(db);
+  console.log(`🗑️  Deleted.`);
+}
+
+function standaloneDeleteChapter(db) {
+  const exams = db.exams || [];
+  if (exams.length === 0) { console.log('❌ No exams.'); return; }
+
+  const eIdx = readline.keyInSelect(exams.map(e => e.name), 'Exam:');
+  if (eIdx === -1) return;
+  const exam = exams[eIdx];
+
+  const allContainers = [
+    ...(exam.subjects || []).map(s => ({ label: '📚 ' + s.name, ref: s })),
+    ...(exam.coachings || []).map(s => ({ label: '🏫 ' + s.name, ref: s }))
+  ];
+  if (allContainers.length === 0) { console.log('❌ No subjects or coachings.'); return; }
+
+  const cIdx = readline.keyInSelect(allContainers.map(c => c.label), 'Pick subject / coaching:');
+  if (cIdx === -1) return;
+  const container = allContainers[cIdx].ref;
+
+  const catIdx = readline.keyInSelect(['CHAPTERS', 'WEEKLY TESTS'], 'Category:');
+  if (catIdx === -1) return;
+  const cat = catIdx === 0 ? 'CHAPTERS' : 'WEEKLY TESTS';
+
+  const list = container[cat] || [];
+  if (list.length === 0) { console.log('❌ Nothing to delete.'); return; }
+
+  const iIdx = readline.keyInSelect(list.map(i => i.title), 'Item to delete:');
+  if (iIdx === -1) return;
+
+  if (!confirmTwice(`"${list[iIdx].title}" from ${cat}`)) { console.log('❌ Cancelled.'); return; }
+  list.splice(iIdx, 1);
+  saveDB(db);
+  console.log('🗑️  Deleted.');
+}
+
+// ============================================================
+// NOTIFICATIONS
+// ============================================================
 
 function addNotification(db) {
-    console.log("\n--- ADD NEW NOTIFICATION ---");
-    
-    let titleInput = readline.question('Enter Notification Title (e.g., TESTING, ALERT): ');
-    if (!titleInput) titleInput = "UPDATE"; 
+  hr('ADD NOTIFICATION');
+  const tag = readline.question('Tag [UPDATE]: ').trim().toUpperCase() || 'UPDATE';
 
-    console.log("\n[ENTER NOTIFICATION MESSAGE]");
-    console.log("Write your message, press ENTER for new lines.");
-    console.log("Type 'DONE' on a new line and press ENTER to save.");
-    
-    let lines = [];
-    while (true) {
-        let line = readline.question('>');
-        if (line.trim().toUpperCase() === 'DONE') break;
-        lines.push(line);
-    }
-    
-    // Join lines with space and clean up
-    let msg = lines.join(" ").replace(/(\r\n|\n|\r)/gm, " ").trim();
+  console.log('\n📝 Message (multi-line, end with DONE):');
+  const message = readMultiLine('   Message input:');
+  if (!message) { console.log('❌ Message required.'); return; }
 
-    if (!msg) {
-        console.log("❌ Message cannot be empty!");
-        return;
-    }
+  console.log('\n🔗 Optional link — where should this open when tapped?');
+  const link = readline.question('   Link URL (blank = no link): ').trim();
 
-    if (!db.notifications) db.notifications = [];
-    
-    db.notifications.push({
-        tag: titleInput.toUpperCase(),       
-        message: msg,
-        date: new Date().toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' })
-    });
-    
-    saveDB(db);
-    console.log('\n✅ Notification Added Successfully!');
-    console.log(`Label (Tag): ${titleInput.toUpperCase()}`);
-    console.log(`Message: ${msg}`);
+  let linkText = null;
+  if (link) linkText = readline.question('   Link text [Open link]: ').trim() || 'Open link';
+
+  const notif = {
+    tag,
+    message,
+    date: new Date().toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' })
+  };
+  if (link) { notif.link = link; notif.linkText = linkText; }
+
+  if (!db.notifications) db.notifications = [];
+  db.notifications.push(notif);
+  saveDB(db);
+
+  console.log('\n✅ Notification added.');
+  if (link) console.log(`   🔗 Links to: ${link}`);
 }
 
 function deleteNotification(db) {
-    if (!db.notifications || db.notifications.length === 0) {
-        console.log("❌ No notifications found.");
-        return;
-    }
+  const list = db.notifications || [];
+  if (list.length === 0) { console.log('❌ No notifications.'); return; }
 
-    let notifList = db.notifications.map(n => `[${n.tag || 'NOTIF'}] ${n.message.substring(0, 30)}...`);
-    let index = readline.keyInSelect(notifList, 'Select Notification to Delete:');
-    
-    if (index !== -1) {
-        db.notifications.splice(index, 1);
-        saveDB(db);
-        console.log('🗑️ Notification Deleted!');
-    }
+  const preview = list.map(n => `[${n.tag || 'UPDATE'}] ${(n.message || '').slice(0, 45)}...`);
+  const idx = readline.keyInSelect(preview, 'Notification to delete:');
+  if (idx === -1) return;
+
+  const target = list[idx];
+  if (!confirmTwice(`Notification: "${(target.message || '').slice(0, 60)}..."`)) {
+    console.log('❌ Cancelled.');
+    return;
+  }
+  list.splice(idx, 1);
+  saveDB(db);
+  console.log('🗑️  Notification deleted.');
 }
 
-// --- ORIGINAL CONTENT LOGIC ---
+// ============================================================
+// MAIN
+// ============================================================
 
-function addNewOrUpdate(db) {
-    let courseNames = db.courses.map(c => c.name);
-    courseNames.push("ADD ANOTHER COURSE (+)");
-    let cIndex = readline.keyInSelect(courseNames, 'Select Course:');
-    if (cIndex === -1) return;
-
-    if (cIndex === courseNames.length - 1) {
-        let newCourseName = readline.question('Enter New Course Name: ').toUpperCase();
-        let teacherName = readline.question('Enter Teacher Name: ').toUpperCase();
-        
-        const modeOptions = [
-            'Regular Course (with Subjects/Chapters)',
-            'Direct Link (Redirect to URL)',
-            'HTML File Upload (Self-hosted)'
-        ];
-        let modeIndex = readline.keyInSelect(modeOptions, 'Select Mode for ' + newCourseName + ':');
-        
-        if (modeIndex === 1) {
-            let directLink = readline.question('Enter Direct Redirect Link: ');
-            db.courses.push({ name: newCourseName, teacher: teacherName, directLink: directLink, subjects: [] });
-            saveDB(db);
-            console.log('✅ Redirect Course Added!');
-            return;
-        } else if (modeIndex === 2) {
-            let filePath = readline.question('Enter HTML File Path (e.g., /sdcard/Download/file.html): ').trim().replace(/^["']|["']$/g, '');
-            let relPath = copyHtmlToPages(filePath, newCourseName);
-            if (!relPath) return;
-            db.courses.push({ name: newCourseName, teacher: teacherName, directLink: relPath, subjects: [] });
-            saveDB(db);
-            console.log(`✅ HTML Course Added! File saved at: ${relPath}`);
-            return;
-        } else {
-            db.courses.push({ name: newCourseName, teacher: teacherName, subjects: [] });
-            saveDB(db);
-            console.log('✅ Regular Course Added!');
-            return;
-        }
-    }
-
-    let course = db.courses[cIndex];
-    let subjectNames = course.subjects.map(s => s.name);
-    subjectNames.push("ADD NEW SUBJECT (+)");
-    let sIndex = readline.keyInSelect(subjectNames, 'Select Subject:');
-    if (sIndex === -1) return;
-
-    if (sIndex === subjectNames.length - 1) {
-        let newSubName = readline.question('Enter New Subject Name: ').toUpperCase();
-        course.subjects.push({ name: newSubName, CHAPTERS: [], "WEEKLY TESTS": [] });
-        saveDB(db);
-        console.log('✅ Subject added!');
-        return;
-    }
-
-    let sub = course.subjects[sIndex];
-    const types = ['CHAPTERS', 'WEEKLY TESTS'];
-    let tIndex = readline.keyInSelect(types, 'Select Category:');
-    if (tIndex === -1) return;
-    let cat = types[tIndex];
-
-    let list = sub[cat].map(item => item.title);
-    list.push("ADD NEW " + cat);
-    let itemIndex = readline.keyInSelect(list, 'Select Item:');
-    if (itemIndex === -1) return;
-
-    let title, existing = null;
-    if (itemIndex === list.length - 1) title = readline.question('Enter Title: ');
-    else { existing = sub[cat][itemIndex]; title = existing.title; }
-
-    console.log("\n[LECTURE LINK / HTML CODE]");
-    console.log("Paste code, press ENTER, type 'DONE' and press ENTER.");
-    let lines = [];
-    while (true) {
-        let line = readline.question('>');
-        if (line.trim().toUpperCase() === 'DONE') break;
-        lines.push(line);
-    }
-    let link = lines.join(" ").replace(/(\r\n|\n|\r)/gm, " ").trim();
-    if (!link && existing) link = existing.url;
-
-    let dLink = existing ? existing.download_url : null;
-    if (link && link.includes('<')) {
-        dLink = readline.question('Lecture Download Link: ');
-    }
-
-    let nEn = readline.question('Eng Notes: ', {defaultInput: existing ? existing.notes_en : ''});
-    let nHi = readline.question('Hindi Notes: ', {defaultInput: existing ? existing.notes_hi : ''});
-    let quiz = readline.question('Quiz: ', {defaultInput: existing ? existing.quiz : ''});
-    let ppt = readline.question('PPT/Other: ', {defaultInput: existing ? existing.handwritten : ''});
-
-    let newData = { title, url: link || null, download_url: dLink || null, notes_en: nEn || null, notes_hi: nHi || null, quiz: quiz || null, handwritten: ppt || null };
-    if (existing) sub[cat][itemIndex] = newData; else sub[cat].push(newData);
-    saveDB(db);
-    console.log('\n✅ Saved Successfully!');
+function printSummary(db) {
+  const e = (db.exams || []).length;
+  const n = (db.notifications || []).length;
+  const img = db.site?.image ? '✅' : '—';
+  console.log(`   Exams: ${e}  |  Notifications: ${n}  |  Site image: ${img}`);
 }
 
-function manageData(db) {
-    let cIndex = readline.keyInSelect(db.courses.map(c => c.name), 'Select Course:');
-    if (cIndex === -1) return;
+function main() {
+  backupOnce();
 
-    if (readline.keyInYN('Delete FULL Course "' + db.courses[cIndex].name + '"? (Confirm 1/2)')) {
-        if (readline.keyInYN('WARNING: Final Confirmation. Confirm? (Confirm 2/2)')) {
-            db.courses.splice(cIndex, 1);
-            saveDB(db);
-            console.log('🗑️ Course Deleted!');
-            return;
-        }
-    }
+  while (true) {
+    const db = loadDB();
+    migrateIfNeeded(db);
 
-    if (db.courses[cIndex].subjects.length === 0) return;
+    hr('VIVID ACADEMY — CONTENT MANAGER');
+    printSummary(db);
 
-    let sIndex = readline.keyInSelect(db.courses[cIndex].subjects.map(s => s.name), 'Select Subject:');
-    if (sIndex === -1) return;
+    const opts = [
+      '📚 Add / Update Content',
+      '🗑️  Manage / Delete Data',
+      '🔔 Add Notification',
+      '❌ Delete Notifications',
+      '⚙️  Site Settings',
+      '🚪 Exit'
+    ];
+    const idx = readline.keyInSelect(opts, 'What do you want to do?');
 
-    let sub = db.courses[cIndex].subjects[sIndex];
-    if (readline.keyInYN('Delete Subject "' + sub.name + '"? (Confirm 1/2)')) {
-        if (readline.keyInYN('Confirm Deletion? (Confirm 2/2)')) {
-            db.courses[cIndex].subjects.splice(sIndex, 1);
-            saveDB(db);
-            console.log('🗑️ Subject Deleted!');
-            return;
-        }
-    }
+    if (idx === 0) addNewOrUpdate(db);
+    else if (idx === 1) manageData(db);
+    else if (idx === 2) addNotification(db);
+    else if (idx === 3) deleteNotification(db);
+    else if (idx === 4) manageSiteSettings(db);
+    else break;
+  }
 
-    let catIndex = readline.keyInSelect(['CHAPTERS', 'WEEKLY TESTS'], 'Select Category:');
-    if (catIndex === -1) return;
-    let cat = catIndex === 0 ? 'CHAPTERS' : 'WEEKLY TESTS';
-
-    let itemIndex = readline.keyInSelect(sub[cat].map(i => i.title), 'Delete item?');
-    if (itemIndex !== -1) {
-        if (readline.keyInYN('Confirm 1/2?')) {
-            if (readline.keyInYN('Final Confirm 2/2?')) {
-                sub[cat].splice(itemIndex, 1);
-                saveDB(db);
-                console.log('🗑️ Item Deleted!');
-            }
-        }
-    }
+  console.log('\n👋 Done.\n');
 }
 
 main();
