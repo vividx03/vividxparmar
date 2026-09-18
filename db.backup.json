@@ -1,31 +1,11 @@
 {
-  "notifications": [
-    {
-      "tag": "TESTING",
-      "message": "hello!!!",
-      "date": "26 Feb 2026, 11:56 pm"
-    },
-    {
-      "tag": "UPDATE...",
-      "message": "WHATSAPP CHANNEL SUIISCRIBE KROOO...",
-      "date": "9 Sept 2026, 9:02 pm"
-    },
-    {
-      "tag": "UPDATE...",
-      "message": "Contact us on Telegram: @Vividxzvbot",
-      "date": "12 Sept 2026, 2:40 am"
-    }
-  ],
-  "exams": [
+  "courses": [
     {
       "name": "PARMAR 4.0 GK",
-      "icon": "graduation-cap",
-      "image": null,
-      "directLink": null,
+      "teacher": "PARMAR SIR",
       "subjects": [
         {
           "name": "BIOLOGY",
-          "image": null,
           "CHAPTERS": [
             {
               "title": "CELL - LEC 1",
@@ -159,7 +139,6 @@
         },
         {
           "name": "ECONOMICS",
-          "image": null,
           "CHAPTERS": [
             {
               "title": "BASICS OF ECONOMY - LEC 1",
@@ -292,7 +271,6 @@
         },
         {
           "name": "STATIC G.K",
-          "image": null,
           "CHAPTERS": [
             {
               "title": "CLASSICAL DANCE - LEC 1",
@@ -344,7 +322,6 @@
         },
         {
           "name": "CHEMISTRY",
-          "image": null,
           "CHAPTERS": [
             {
               "title": "STATES OF MATTER - LEC 1",
@@ -442,7 +419,6 @@
         },
         {
           "name": "PHYSICS",
-          "image": null,
           "CHAPTERS": [
             {
               "title": "MOTION - LEC 1",
@@ -531,7 +507,6 @@
         },
         {
           "name": "POLITY",
-          "image": null,
           "CHAPTERS": [
             {
               "title": "MAKING OF CONSTITUTION - LEC 1",
@@ -746,7 +721,6 @@
         },
         {
           "name": "ANCIENT HISTORY",
-          "image": null,
           "CHAPTERS": [
             {
               "title": "STONE AGE - LEC 1",
@@ -880,7 +854,6 @@
         },
         {
           "name": "MEDIEVAL HISTORY",
-          "image": null,
           "CHAPTERS": [
             {
               "title": "INVANSION OF ISLAM - LEC 1",
@@ -996,7 +969,6 @@
         },
         {
           "name": "MODERN HISTORY",
-          "image": null,
           "CHAPTERS": [
             {
               "title": "ADVENT OF EUROPEANS - LEC 1",
@@ -1103,7 +1075,6 @@
         },
         {
           "name": "GEOGRAPHY",
-          "image": null,
           "CHAPTERS": [
             {
               "title": "SOLAR SYSTEM - LEC 1",
@@ -1435,7 +1406,6 @@
         },
         {
           "name": "ENVIROMENT AND ECOLOGY",
-          "image": null,
           "CHAPTERS": [
             {
               "title": "DIFFERENT CYCLES",
@@ -1476,58 +1446,44 @@
           ],
           "WEEKLY TESTS": []
         }
-      ],
-      "coachings": []
+      ]
     },
     {
       "name": "REASONING SPL 60",
-      "icon": "graduation-cap",
-      "image": null,
+      "teacher": "PIYUSH VARSHNEY SIR",
       "directLink": "https://vividxreasoningspl60batch.edgeone.app/",
-      "subjects": [],
-      "coachings": []
+      "subjects": []
     },
     {
       "name": "ENGLISH PRACTICE 26",
-      "icon": "graduation-cap",
-      "image": null,
+      "teacher": "JAIDEEP SINGH SIR",
       "directLink": "https://vividxengpractice26.edgeone.app/",
-      "subjects": [],
-      "coachings": []
+      "subjects": []
     },
     {
       "name": "COMPUTER SPL 29",
-      "icon": "graduation-cap",
-      "image": null,
+      "teacher": "YATENDRA SIR",
       "directLink": "https://vividxcomputerspl29.edgeone.app/",
-      "subjects": [],
-      "coachings": []
+      "subjects": []
     },
     {
       "name": "SSC PRATHAM BATCH 2",
-      "icon": "graduation-cap",
-      "image": null,
+      "teacher": "CAREERWILL",
       "directLink": "https://vividxprathambatch.edgeone.app/",
-      "subjects": [],
-      "coachings": []
+      "subjects": []
     },
     {
       "name": "SELECTION WAY",
-      "icon": "graduation-cap",
-      "image": null,
+      "teacher": "GAGAN PRATAP TEAM",
       "directLink": "https://selectionwayvivid.edgeone.dev/",
-      "subjects": [],
-      "coachings": []
+      "subjects": []
     },
     {
       "name": "PARMAR 5.0 GK",
-      "icon": "graduation-cap",
-      "image": null,
-      "directLink": null,
+      "teacher": "PARMAR SIR",
       "subjects": [
         {
           "name": "POLITY",
-          "image": null,
           "CHAPTERS": [
             {
               "title": "MAKING OF CONSTITUTION LEC - 1",
@@ -1541,59 +1497,60 @@
           ],
           "WEEKLY TESTS": []
         }
-      ],
-      "coachings": []
+      ]
     },
     {
       "name": "ACHIEVERS 8.0",
-      "icon": "graduation-cap",
-      "image": null,
+      "teacher": "RANI MADAM JII",
       "directLink": "https://achievers8byvivid.edgeone.dev/",
-      "subjects": [],
-      "coachings": []
+      "subjects": []
     },
     {
       "name": "BHUTESH MATH'S FOUNDATION",
-      "icon": "graduation-cap",
-      "image": null,
+      "teacher": "BHUTESH SIR",
       "directLink": "https://bhuteshmathsbyvivid.edgeone.dev/",
-      "subjects": [],
-      "coachings": []
+      "subjects": []
     },
     {
       "name": "PARMAR PC 2.0",
-      "icon": "graduation-cap",
-      "image": null,
+      "teacher": "AMAN SIR",
       "directLink": "https://parmarpc2byvivid.edgeone.dev/",
-      "subjects": [],
-      "coachings": []
+      "subjects": []
     },
     {
       "name": "PARMAR REASONING FOUNDATION",
-      "icon": "graduation-cap",
-      "image": null,
+      "teacher": "KAMAL SIR",
       "directLink": "https://parmarreasoningbyvivid.edgeone.dev/",
-      "subjects": [],
-      "coachings": []
+      "subjects": []
     },
     {
       "name": "ADITYA SIR VOD 3.0",
-      "icon": "graduation-cap",
-      "image": null,
+      "teacher": "ADITYA RANJAN",
       "directLink": "pages/aditya-sir-vod-30.html",
-      "subjects": [],
-      "coachings": []
+      "subjects": []
     },
     {
       "name": "ABHINAY MATH'S FOUNDATION COURSE",
-      "icon": "graduation-cap",
-      "image": null,
+      "teacher": "ABHINAY SIR",
       "directLink": "pages/abhinay-maths-foundation-course.html",
-      "subjects": [],
-      "coachings": []
+      "subjects": []
     }
   ],
-  "site": {
-    "image": "/sdcard/Pictures/vividki.jpg"
-  }
+  "notifications": [
+    {
+      "tag": "TESTING",
+      "message": "hello!!!",
+      "date": "26 Feb 2026, 11:56 pm"
+    },
+    {
+      "tag": "UPDATE...",
+      "message": "WHATSAPP CHANNEL SUIISCRIBE KROOO...",
+      "date": "9 Sept 2026, 9:02 pm"
+    },
+    {
+      "tag": "UPDATE...",
+      "message": "Contact us on Telegram: @Vividxzvbot",
+      "date": "12 Sept 2026, 2:40 am"
+    }
+  ]
 }
