@@ -1,21 +1,4 @@
 {
-  "notifications": [
-    {
-      "tag": "TESTING",
-      "message": "hello!!!",
-      "date": "03 DEC 2025, 03:11 am"
-    },
-    {
-      "tag": "UPDATE...",
-      "message": "WHATSAPP CHANNEL SUIISCRIBE KROOO...",
-      "date": "9 Sept 2026, 9:02 pm"
-    },
-    {
-      "tag": "UPDATE...",
-      "message": "Contact us on Telegram: @Vividxzvbot",
-      "date": "12 Sept 2026, 2:40 am"
-    }
-  ],
   "courses": [
     {
       "name": "PARMAR 4.0 GK",
@@ -24,146 +7,1254 @@
         {
           "name": "BIOLOGY",
           "CHAPTERS": [
-            { "title": "CELL - LEC 1", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90b3f13a84022525e5df2", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90b4913a84022525e5df4", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90b5213a84022525e5df6", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90b5c13a84022525e5df8", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90b6913a84022525e5dfa" },
-            { "title": "PLANT TISSUES - LEC 2", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90b6f13a84022525e5dfc", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90b7813a84022525e5dfe", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90b8113a84022525e5e00", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90b8913a84022525e5e02", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90b9213a84022525e5e04" },
-            { "title": "ANIMAL TISSUES - LEC 3", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90b9a13a84022525e5e06", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90ba313a84022525e5e08", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90bac13a84022525e5e0a", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90bb613a84022525e5e0c", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90bbd13a84022525e5e0e" },
-            { "title": "PLANT KINGDOM - LEC 4", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90bc613a84022525e5e10", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90bcf13a84022525e5e12", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90bd713a84022525e5e14", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90bdf13a84022525e5e16", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90be913a84022525e5e18" },
-            { "title": "ANIMAL KINGDOM - LEC 5", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90bf313a84022525e5e1a", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90bfb13a84022525e5e1c", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c0413a84022525e5e1e", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c0c13a84022525e5e20", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c1613a84022525e5e22" },
-            { "title": "NERVOUS SYSTEM - LEC 6", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90c2213a84022525e5e24", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c2a13a84022525e5e26", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c3213a84022525e5e2a", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c3913a84022525e5e2c", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c4113a84022525e5e2e" },
-            { "title": "HORMONES & PLANT MOVEMENTS - LEC 7", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90c4a13a84022525e5e30", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c5413a84022525e5e32", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c5e13a84022525e5e34", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c6513a84022525e5e36", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c7113a84022525e5e38" },
-            { "title": "REPRODUCTION - LEC 8", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90c7a13a84022525e5e3a", "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/6999a9ccd59ec0ed1c8eae58", "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c8213a84022525e5e3c", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c8a13a84022525e5e3e", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c9113a84022525e5e40", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c9913a84022525e5e42" },
-            { "title": "DIGESTIVE AND RESPIRATORY SYSTEM - LEC 9", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90ca213a84022525e5e44", "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/699bee92079b6e6aba672ec3", "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90ca913a84022525e5e46", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90cb013a84022525e5e48", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90cb613a84022525e5e4a", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90cc013a84022525e5e4c" },
-            { "title": "CIRCULATORY AND EXCRETORY SYSTEM - LEC 10", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90cc913a84022525e5e4e", "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/699d420af82e73da0d009db6", "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90cd213a84022525e5e50", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90cd913a84022525e5e52", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90ce113a84022525e5e54", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90cea13a84022525e5e56" },
-            { "title": "DISEASES - LEC 11", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90cf313a84022525e5e58", "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/699e988f6324dee97ea9577b", "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90cff13a84022525e5e5a", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90d0713a84022525e5e5c", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90d0f13a84022525e5e5f", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90d1b13a84022525e5e61" },
-            { "title": "NUTRITION - LEC 12", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90d2713a84022525e5e63", "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/699fe54f42ba9673f171cb91", "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90d5713a84022525e5e69", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90d6013a84022525e5e6f", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90d6813a84022525e5e71", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90d7013a84022525e5e73" },
-            { "title": "GENETICS AND SKELETAL SYSTEM - LEC 13", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90d8313a84022525e5e75", "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69a137c4dcb55ad542e194c3", "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90d9213a84022525e5e77", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90d9c13a84022525e5e79", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90da613a84022525e5e7b", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90daf13a84022525e5e7d" }
+            {
+              "title": "CELL - LEC 1",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90b3f13a84022525e5df2",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90b4913a84022525e5df4",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90b5213a84022525e5df6",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90b5c13a84022525e5df8",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90b6913a84022525e5dfa"
+            },
+            {
+              "title": "PLANT TISSUES - LEC 2",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90b6f13a84022525e5dfc",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90b7813a84022525e5dfe",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90b8113a84022525e5e00",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90b8913a84022525e5e02",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90b9213a84022525e5e04"
+            },
+            {
+              "title": "ANIMAL TISSUES - LEC 3",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90b9a13a84022525e5e06",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90ba313a84022525e5e08",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90bac13a84022525e5e0a",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90bb613a84022525e5e0c",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90bbd13a84022525e5e0e"
+            },
+            {
+              "title": "PLANT KINGDOM - LEC 4",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90bc613a84022525e5e10",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90bcf13a84022525e5e12",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90bd713a84022525e5e14",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90bdf13a84022525e5e16",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90be913a84022525e5e18"
+            },
+            {
+              "title": "ANIMAL KINGDOM - LEC 5",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90bf313a84022525e5e1a",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90bfb13a84022525e5e1c",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c0413a84022525e5e1e",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c0c13a84022525e5e20",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c1613a84022525e5e22"
+            },
+            {
+              "title": "NERVOUS SYSTEM - LEC 6",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90c2213a84022525e5e24",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c2a13a84022525e5e26",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c3213a84022525e5e2a",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c3913a84022525e5e2c",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c4113a84022525e5e2e"
+            },
+            {
+              "title": "HORMONES & PLANT MOVEMENTS - LEC 7",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90c4a13a84022525e5e30",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c5413a84022525e5e32",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c5e13a84022525e5e34",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c6513a84022525e5e36",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c7113a84022525e5e38"
+            },
+            {
+              "title": "REPRODUCTION - LEC 8",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90c7a13a84022525e5e3a",
+              "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/6999a9ccd59ec0ed1c8eae58",
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c8213a84022525e5e3c",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c8a13a84022525e5e3e",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c9113a84022525e5e40",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90c9913a84022525e5e42"
+            },
+            {
+              "title": "DIGESTIVE AND RESPIRATORY SYSTEM - LEC 9",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90ca213a84022525e5e44",
+              "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/699bee92079b6e6aba672ec3",
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90ca913a84022525e5e46",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90cb013a84022525e5e48",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90cb613a84022525e5e4a",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90cc013a84022525e5e4c"
+            },
+            {
+              "title": "CIRCULATORY AND EXCRETORY SYSTEM - LEC 10",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90cc913a84022525e5e4e",
+              "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/699d420af82e73da0d009db6",
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90cd213a84022525e5e50",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90cd913a84022525e5e52",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90ce113a84022525e5e54",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90cea13a84022525e5e56"
+            },
+            {
+              "title": "DISEASES - LEC 11",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90cf313a84022525e5e58",
+              "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/699e988f6324dee97ea9577b",
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90cff13a84022525e5e5a",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90d0713a84022525e5e5c",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90d0f13a84022525e5e5f",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90d1b13a84022525e5e61"
+            },
+            {
+              "title": "NUTRITION - LEC 12",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90d2713a84022525e5e63",
+              "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/699fe54f42ba9673f171cb91",
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90d5713a84022525e5e69",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90d6013a84022525e5e6f",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90d6813a84022525e5e71",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90d7013a84022525e5e73"
+            },
+            {
+              "title": "GENETICS AND SKELETAL SYSTEM - LEC 13",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90d8313a84022525e5e75",
+              "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69a137c4dcb55ad542e194c3",
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90d9213a84022525e5e77",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90d9c13a84022525e5e79",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90da613a84022525e5e7b",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90daf13a84022525e5e7d"
+            }
           ],
           "WEEKLY TESTS": [
-            { "title": "BIOLOGY FULL TEST", "url": null, "download_url": null, "notes_en": null, "notes_hi": null, "quiz": "https://vividxbiofulltest.edgeone.app/", "handwritten": null }
+            {
+              "title": "BIOLOGY FULL TEST",
+              "url": null,
+              "download_url": null,
+              "notes_en": null,
+              "notes_hi": null,
+              "quiz": "https://vividxbiofulltest.edgeone.app/",
+              "handwritten": null
+            }
           ]
         },
         {
           "name": "ECONOMICS",
           "CHAPTERS": [
-            { "title": "BASICS OF ECONOMY - LEC 1", "url": "https://www.youtube.com/live/UANZRZ6Mk9c?si=O_YZfT1uxW--vMt4", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9082013a84022525e5d2f", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9082913a84022525e5d33", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9083113a84022525e5d38", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9083813a84022525e5d3c" },
-            { "title": "MICROECONOMICS - LEC 2", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9084013a84022525e5d40", "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69a19dde6f54f56440f4bc00", "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9084713a84022525e5d42", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9085113a84022525e5d43", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9085f13a84022525e5d47", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9086e13a84022525e5d4e" },
-            { "title": "INFLATION AND UNEMPLOYMENT - LEC 3", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9087e13a84022525e5d53", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9088913a84022525e5d55", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9089313a84022525e5d56", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b908b913a84022525e5d60", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b908c213a84022525e5d63" },
-            { "title": "NATIONAL INCOME - LEC 4", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b908cc13a84022525e5d65", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b908d413a84022525e5d69", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b908dd13a84022525e5d6b", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b908e513a84022525e5d6d", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b908ec13a84022525e5d6f" },
-            { "title": "NATIONAL INCOME - MCQs", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b908f413a84022525e5d71", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b908fd13a84022525e5d73", "notes_hi": null, "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9090313a84022525e5d75", "handwritten": null },
-            { "title": "BUDGET AND TAXATION - LEC 5", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9090b13a84022525e5d77", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9091313a84022525e5d79", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9091b13a84022525e5d7b", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9092213a84022525e5d7d", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9092b13a84022525e5d7f" },
-            { "title": "MONETRY POLICY - LEC 6", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9093413a84022525e5d81", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9094813a84022525e5d83", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9094f13a84022525e5d85", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9095713a84022525e5d87", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9095f13a84022525e5d89" },
-            { "title": "BANKING SYSTEM - LEC 7", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9096813a84022525e5d8b", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9096f13a84022525e5d8d", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9097613a84022525e5d8f", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9097e13a84022525e5d91", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9098613a84022525e5d93" },
-            { "title": "BANKING SYSTEM PART 2 - LEC 8", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9098e13a84022525e5d95", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9099613a84022525e5d97", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9099e13a84022525e5d99", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b909a513a84022525e5d9b", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b909af13a84022525e5d9d" },
-            { "title": "BALANCE OF PAYMENTS - LEC 9", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b909b713a84022525e5d9f", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b909bf13a84022525e5da1", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b909c713a84022525e5da3", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b909cf13a84022525e5da5", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b909d613a84022525e5da7" },
-            { "title": "POVERTY - LEC 10", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b909df13a84022525e5da9", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b909e713a84022525e5dab", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b909ef13a84022525e5dad", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b909f713a84022525e5daf", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90a0613a84022525e5db1" },
-            { "title": "5 YEAR PLAN - LEC 11", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90a0e13a84022525e5db3", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90a1713a84022525e5db5", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90a2013a84022525e5db7", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90a2713a84022525e5db9", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90a3213a84022525e5dbb" }
+            {
+              "title": "BASICS OF ECONOMY - LEC 1",
+              "url": "https://www.youtube.com/live/UANZRZ6Mk9c?si=O_YZfT1uxW--vMt4",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9082013a84022525e5d2f",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9082913a84022525e5d33",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9083113a84022525e5d38",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9083813a84022525e5d3c"
+            },
+            {
+              "title": "MICROECONOMICS - LEC 2",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9084013a84022525e5d40",
+              "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69a19dde6f54f56440f4bc00",
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9084713a84022525e5d42",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9085113a84022525e5d43",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9085f13a84022525e5d47",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9086e13a84022525e5d4e"
+            },
+            {
+              "title": "INFLATION AND UNEMPLOYMENT - LEC 3",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9087e13a84022525e5d53",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9088913a84022525e5d55",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9089313a84022525e5d56",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b908b913a84022525e5d60",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b908c213a84022525e5d63"
+            },
+            {
+              "title": "NATIONAL INCOME - LEC 4",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b908cc13a84022525e5d65",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b908d413a84022525e5d69",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b908dd13a84022525e5d6b",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b908e513a84022525e5d6d",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b908ec13a84022525e5d6f"
+            },
+            {
+              "title": "NATIONAL INCOME - MCQs",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b908f413a84022525e5d71",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b908fd13a84022525e5d73",
+              "notes_hi": null,
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9090313a84022525e5d75",
+              "handwritten": null
+            },
+            {
+              "title": "BUDGET AND TAXATION - LEC 5",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9090b13a84022525e5d77",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9091313a84022525e5d79",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9091b13a84022525e5d7b",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9092213a84022525e5d7d",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9092b13a84022525e5d7f"
+            },
+            {
+              "title": "MONETRY POLICY - LEC 6",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9093413a84022525e5d81",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9094813a84022525e5d83",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9094f13a84022525e5d85",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9095713a84022525e5d87",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9095f13a84022525e5d89"
+            },
+            {
+              "title": "BANKING SYSTEM - LEC 7",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9096813a84022525e5d8b",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9096f13a84022525e5d8d",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9097613a84022525e5d8f",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9097e13a84022525e5d91",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9098613a84022525e5d93"
+            },
+            {
+              "title": "BANKING SYSTEM PART 2 - LEC 8",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9098e13a84022525e5d95",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9099613a84022525e5d97",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9099e13a84022525e5d99",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b909a513a84022525e5d9b",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b909af13a84022525e5d9d"
+            },
+            {
+              "title": "BALANCE OF PAYMENTS - LEC 9",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b909b713a84022525e5d9f",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b909bf13a84022525e5da1",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b909c713a84022525e5da3",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b909cf13a84022525e5da5",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b909d613a84022525e5da7"
+            },
+            {
+              "title": "POVERTY - LEC 10",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b909df13a84022525e5da9",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b909e713a84022525e5dab",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b909ef13a84022525e5dad",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b909f713a84022525e5daf",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90a0613a84022525e5db1"
+            },
+            {
+              "title": "5 YEAR PLAN - LEC 11",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90a0e13a84022525e5db3",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90a1713a84022525e5db5",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90a2013a84022525e5db7",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90a2713a84022525e5db9",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90a3213a84022525e5dbb"
+            }
           ],
           "WEEKLY TESTS": [
-            { "title": "ECO WEEKLY TEST 1", "url": null, "notes_en": null, "notes_hi": null, "quiz": "https://vividecotest1.edgeone.app/", "handwritten": null },
-            { "title": "FULL ECONOMICS TEST", "url": null, "download_url": null, "notes_en": null, "notes_hi": null, "quiz": "https://vividxecofulltest.edgeone.app/", "handwritten": null }
+            {
+              "title": "ECO WEEKLY TEST 1",
+              "url": null,
+              "notes_en": null,
+              "notes_hi": null,
+              "quiz": "https://vividecotest1.edgeone.app/",
+              "handwritten": null
+            },
+            {
+              "title": "FULL ECONOMICS TEST",
+              "url": null,
+              "download_url": null,
+              "notes_en": null,
+              "notes_hi": null,
+              "quiz": "https://vividxecofulltest.edgeone.app/",
+              "handwritten": null
+            }
           ]
         },
         {
           "name": "STATIC G.K",
           "CHAPTERS": [
-            { "title": "CLASSICAL DANCE - LEC 1", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b910b313a84022525e5f2e", "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69a8729326779a7245d7aa83", "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b910bd13a84022525e5f30", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b910c413a84022525e5f32", "quiz": "https://vividxclassicalddance.edgeone.app/", "handwritten": null },
-            { "title": "FOLK DANCES PART 1 - LEC 2", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b910d313a84022525e5f36", "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69a9726449368302c8f16503", "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b910db13a84022525e5f38", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b910e313a84022525e5f3a", "quiz": "https://vividxfolkdances.edgeone.app/", "handwritten": null },
-            { "title": "FOLK DANCES PART 2 - LEC 3", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b910f413a84022525e5f3e", "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69a9727949368302c8f16509", "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b910fb13a84022525e5f40", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9110313a84022525e5f42", "quiz": null, "handwritten": null },
-            { "title": "FESTIVALS OF INDIA PART 1 - LEC 4", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9110b13a84022525e5f44", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9111213a84022525e5f46", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9111913a84022525e5f48", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9112013a84022525e5f4a", "handwritten": null },
-            { "title": "FESTIVALS OF INDIA PART 2 - LEC 5", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9112913a84022525e5f4c", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9113013a84022525e5f4e", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9113813a84022525e5f50", "quiz": null, "handwritten": null }
+            {
+              "title": "CLASSICAL DANCE - LEC 1",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b910b313a84022525e5f2e",
+              "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69a8729326779a7245d7aa83",
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b910bd13a84022525e5f30",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b910c413a84022525e5f32",
+              "quiz": "https://vividxclassicalddance.edgeone.app/",
+              "handwritten": null
+            },
+            {
+              "title": "FOLK DANCES PART 1 - LEC 2",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b910d313a84022525e5f36",
+              "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69a9726449368302c8f16503",
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b910db13a84022525e5f38",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b910e313a84022525e5f3a",
+              "quiz": "https://vividxfolkdances.edgeone.app/",
+              "handwritten": null
+            },
+            {
+              "title": "FOLK DANCES PART 2 - LEC 3",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b910f413a84022525e5f3e",
+              "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69a9727949368302c8f16509",
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b910fb13a84022525e5f40",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9110313a84022525e5f42",
+              "quiz": null,
+              "handwritten": null
+            },
+            {
+              "title": "FESTIVALS OF INDIA PART 1 - LEC 4",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9110b13a84022525e5f44",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9111213a84022525e5f46",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9111913a84022525e5f48",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9112013a84022525e5f4a",
+              "handwritten": null
+            },
+            {
+              "title": "FESTIVALS OF INDIA PART 2 - LEC 5",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9112913a84022525e5f4c",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9113013a84022525e5f4e",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9113813a84022525e5f50",
+              "quiz": null,
+              "handwritten": null
+            }
           ],
           "WEEKLY TESTS": []
         },
         {
           "name": "CHEMISTRY",
           "CHAPTERS": [
-            { "title": "STATES OF MATTER - LEC 1", "url": "https://www.youtube.com/live/jMYO5GMZRJM?si=44z3hlYajcMr159c", "download_url": null, "notes_en": "https://vividxmattereng.edgeone.app/", "notes_hi": "https://vividxmatterhindi.edgeone.app/", "quiz": "https://vividxmatters.edgeone.app/", "handwritten": "https://vividxmatterppt.edgeone.app/" },
-            { "title": "ISS MATTER PURE? - LEC 2", "url": "https://vividximatterpurelecture.edgeone.app/", "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69ad0aea522131182bea2e2e", "notes_en": "https://vividxismatterpureeng.edgeone.app/", "notes_hi": "https://vividxismatterpurehindi.edgeone.app/", "quiz": "https://issmatterpurexvivid.edgeone.app/", "handwritten": "https://vividxismatterpureppt.edgeone.app/" },
-            { "title": "ATOM & ITS STRUCTURE - LEC 3", "url": "https://vividxatomz.edgeone.app/", "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69ad0b06522131182bea2e36", "notes_en": "https://vividxatomenglish.edgeone.app/", "notes_hi": "https://vividxatomhindi.edgeone.app/", "quiz": "https://vividxatom.edgeone.app/", "handwritten": "https://vividxatomppt.edgeone.app/" },
-            { "title": "PERIODIC TABLE - LEC 4", "url": "https://vividxperiodictablelecture.edgeone.app/", "download_url": null, "notes_en": "https://vividxperiodiceng.edgeone.app/", "notes_hi": "https://vividxperiodichindi.edgeone.app/", "quiz": "https://vividxperiodicquiz.edgeone.app/", "handwritten": "https://vividxperiodicppt.edgeone.app/" },
-            { "title": "CHEMICAL REACTIONS - LEC 5", "url": "https://vividxchemicalreactions.edgeone.app/", "download_url": null, "notes_en": "https://vividxchemicaleng.edgeone.app/", "notes_hi": "https://vividxchemicalhindi.edgeone.app/", "quiz": "https://vividxchemicalquiz.edgeone.app/", "handwritten": "https://vividxchemicalppt.edgeone.app/" },
-            { "title": "METALS AND NON-METALS - LEC 6", "url": "https://vividxmetalandnon-metal.edgeone.app/", "download_url": null, "notes_en": "https://vividxmetalnonmetaleng.edgeone.app/", "notes_hi": "https://vividxmetalnonmetalhindi.edgeone.app/", "quiz": "https://vividxmetalquiz.edgeone.app/", "handwritten": "https://vividxmetalnonmetalppt.edgeone.app/" },
-            { "title": "ACID, BASE & SALTS - LEC 7", "url": "https://vividxacidbasesandsalts.edgeone.app/", "download_url": null, "notes_en": "https://vividxacidbaseandsaltseng.edgeone.app/", "notes_hi": "https://vividxacidbaseandsaltshin.edgeone.app/", "quiz": "https://vividxacidbasesandsaltsquiz.edgeone.app/", "handwritten": "https://vividxacidbasesandsaltsppt.edgeone.app/" },
-            { "title": "CARBON AND ITS COMPOUNDS - LEC 8", "url": "https://vividxcarbon.edgeone.app/", "download_url": null, "notes_en": null, "notes_hi": null, "quiz": null, "handwritten": "https://vividxcarbonppt.edgeone.app/" },
-            { "title": "CARBON AND ITS COMPOUNDS PART 2 - LEC 9", "url": "https://vividxcarbonpart2.edgeone.app/", "download_url": null, "notes_en": null, "notes_hi": null, "quiz": null, "handwritten": null }
+            {
+              "title": "STATES OF MATTER - LEC 1",
+              "url": "https://www.youtube.com/live/jMYO5GMZRJM?si=44z3hlYajcMr159c",
+              "download_url": null,
+              "notes_en": "https://vividxmattereng.edgeone.app/",
+              "notes_hi": "https://vividxmatterhindi.edgeone.app/",
+              "quiz": "https://vividxmatters.edgeone.app/",
+              "handwritten": "https://vividxmatterppt.edgeone.app/"
+            },
+            {
+              "title": "ISS MATTER PURE? - LEC 2",
+              "url": "https://vividximatterpurelecture.edgeone.app/",
+              "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69ad0aea522131182bea2e2e",
+              "notes_en": "https://vividxismatterpureeng.edgeone.app/",
+              "notes_hi": "https://vividxismatterpurehindi.edgeone.app/",
+              "quiz": "https://issmatterpurexvivid.edgeone.app/",
+              "handwritten": "https://vividxismatterpureppt.edgeone.app/"
+            },
+            {
+              "title": "ATOM & ITS STRUCTURE - LEC 3",
+              "url": "https://vividxatomz.edgeone.app/",
+              "download_url": "https://hell-fs1-oot-c9eb9b92ba45.herokuapp.com/dl/69ad0b06522131182bea2e36",
+              "notes_en": "https://vividxatomenglish.edgeone.app/",
+              "notes_hi": "https://vividxatomhindi.edgeone.app/",
+              "quiz": "https://vividxatom.edgeone.app/",
+              "handwritten": "https://vividxatomppt.edgeone.app/"
+            },
+            {
+              "title": "PERIODIC TABLE - LEC 4",
+              "url": "https://vividxperiodictablelecture.edgeone.app/",
+              "download_url": null,
+              "notes_en": "https://vividxperiodiceng.edgeone.app/",
+              "notes_hi": "https://vividxperiodichindi.edgeone.app/",
+              "quiz": "https://vividxperiodicquiz.edgeone.app/",
+              "handwritten": "https://vividxperiodicppt.edgeone.app/"
+            },
+            {
+              "title": "CHEMICAL REACTIONS - LEC 5",
+              "url": "https://vividxchemicalreactions.edgeone.app/",
+              "download_url": null,
+              "notes_en": "https://vividxchemicaleng.edgeone.app/",
+              "notes_hi": "https://vividxchemicalhindi.edgeone.app/",
+              "quiz": "https://vividxchemicalquiz.edgeone.app/",
+              "handwritten": "https://vividxchemicalppt.edgeone.app/"
+            },
+            {
+              "title": "METALS AND NON-METALS - LEC 6",
+              "url": "https://vividxmetalandnon-metal.edgeone.app/",
+              "download_url": null,
+              "notes_en": "https://vividxmetalnonmetaleng.edgeone.app/",
+              "notes_hi": "https://vividxmetalnonmetalhindi.edgeone.app/",
+              "quiz": "https://vividxmetalquiz.edgeone.app/",
+              "handwritten": "https://vividxmetalnonmetalppt.edgeone.app/"
+            },
+            {
+              "title": "ACID, BASE & SALTS - LEC 7",
+              "url": "https://vividxacidbasesandsalts.edgeone.app/",
+              "download_url": null,
+              "notes_en": "https://vividxacidbaseandsaltseng.edgeone.app/",
+              "notes_hi": "https://vividxacidbaseandsaltshin.edgeone.app/",
+              "quiz": "https://vividxacidbasesandsaltsquiz.edgeone.app/",
+              "handwritten": "https://vividxacidbasesandsaltsppt.edgeone.app/"
+            },
+            {
+              "title": "CARBON AND ITS COMPOUNDS - LEC 8",
+              "url": "https://vividxcarbon.edgeone.app/",
+              "download_url": null,
+              "notes_en": null,
+              "notes_hi": null,
+              "quiz": null,
+              "handwritten": "https://vividxcarbonppt.edgeone.app/"
+            },
+            {
+              "title": "CARBON AND ITS COMPOUNDS PART 2 - LEC 9",
+              "url": "https://vividxcarbonpart2.edgeone.app/",
+              "download_url": null,
+              "notes_en": null,
+              "notes_hi": null,
+              "quiz": null,
+              "handwritten": null
+            }
           ],
           "WEEKLY TESTS": []
         },
         {
           "name": "PHYSICS",
           "CHAPTERS": [
-            { "title": "MOTION - LEC 1", "url": "https://www.youtube.com/live/QrJPCY6GxlM?si=G0rHDjlcAdLQY_FC", "download_url": null, "notes_en": null, "notes_hi": null, "quiz": null, "handwritten": null },
-            { "title": "FORCE AND LAWS OF MOTION - LEC 2", "url": "https://vividxforceandlawsofmotion.edgeone.app/", "download_url": null, "notes_en": null, "notes_hi": null, "quiz": null, "handwritten": null },
-            { "title": "GRAVITATION - LEC 3", "url": "https://vividxgravitation.edgeone.app/", "download_url": null, "notes_en": null, "notes_hi": null, "quiz": null, "handwritten": null }
+            {
+              "title": "MOTION - LEC 1",
+              "url": "https://www.youtube.com/live/QrJPCY6GxlM?si=G0rHDjlcAdLQY_FC",
+              "download_url": null,
+              "notes_en": null,
+              "notes_hi": null,
+              "quiz": null,
+              "handwritten": null
+            },
+            {
+              "title": "FORCE AND LAWS OF MOTION - LEC 2",
+              "url": "https://vividxforceandlawsofmotion.edgeone.app/",
+              "download_url": null,
+              "notes_en": null,
+              "notes_hi": null,
+              "quiz": null,
+              "handwritten": null
+            },
+            {
+              "title": "GRAVITATION - LEC 3",
+              "url": "https://vividxgravitation.edgeone.app/",
+              "download_url": null,
+              "notes_en": null,
+              "notes_hi": null,
+              "quiz": null,
+              "handwritten": null
+            }
           ],
           "WEEKLY TESTS": []
         },
         {
           "name": "POLITY",
           "CHAPTERS": [
-            { "title": "MAKING OF CONSTITUTION - LEC 1", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90dc713a84022525e5e80", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90df313a84022525e5e82", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90dfc13a84022525e5e84", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e0813a84022525e5e86", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e1013a84022525e5e88" },
-            { "title": "SALIENT FEATURES OF CONSTITUTION - LEC 2", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90e1813a84022525e5e8a", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e2013a84022525e5e8c", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e2813a84022525e5e8e", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e3213a84022525e5e90", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e3913a84022525e5e92" },
-            { "title": "PREAMBLE - LEC 3", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90e4213a84022525e5e94", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e4e13a84022525e5e96", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e5413a84022525e5e98", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e5f13a84022525e5e9a", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e6913a84022525e5e9c" },
-            { "title": "PART 1 AND PART 2 OF CONSTITUTION - LEC 4", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90e7213a84022525e5e9e", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e7a13a84022525e5ea0", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e8213a84022525e5ea2", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e8a13a84022525e5ea4", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e9213a84022525e5ea6" },
-            { "title": "FUNDAMENTAL RIGHTS - LEC 5", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90e9b13a84022525e5ea8", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90ea213a84022525e5eaa", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90eaa13a84022525e5eac", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90ea213a84022525e5eaa", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90eaa13a84022525e5eac" },
-            { "title": "FUNDAMENTAL RIGHTS PART 2 - LEC 6", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90eb313a84022525e5eae", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90ebb13a84022525e5eb0", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90ec313a84022525e5eb2", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90ecb13a84022525e5eb4", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90ed313a84022525e5eb6" },
-            { "title": "DPSP AND FUNDAMENTAL DUTIES - LEC 7", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90edb13a84022525e5eb8", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90ee413a84022525e5eba", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90eeb13a84022525e5ebc", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90ef713a84022525e5ebe", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90eff13a84022525e5ec0" },
-            { "title": "PRESIDENT & VICE PRESIDENT - LEC 8", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90f0413a84022525e5ec2", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f0c13a84022525e5ec4", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f1313a84022525e5ec6", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f1a13a84022525e5ec8", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f2113a84022525e5eca" },
-            { "title": "PRIME MINISTER & COUNCILING OF MINISTERS - LEC 9", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90f2913a84022525e5ecc", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f3013a84022525e5ece", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f3713a84022525e5ed0", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f3e13a84022525e5ed2", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f4613a84022525e5ed4" },
-            { "title": "PARLIAMENT - LEC 10", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90f4d13a84022525e5ed6", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f5513a84022525e5ed8", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f5d13a84022525e5eda", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f6613a84022525e5edc", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f6d13a84022525e5ede" },
-            { "title": "PARLIAMENT PART 2 - LEC 11", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90f7913a84022525e5ee0", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f8213a84022525e5ee2", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f8d13a84022525e5ee4", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f9613a84022525e5ee6", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f9d13a84022525e5ee8" },
-            { "title": "PARLIAMENT MCQs", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90fa713a84022525e5eea", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90fac13a84022525e5eec", "notes_hi": null, "quiz": null, "handwritten": null },
-            { "title": "STATE LEGISLATURE - LEC 12", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90fb513a84022525e5eee", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90fbd13a84022525e5ef0", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90fc513a84022525e5ef2", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90fcd13a84022525e5ef4", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90fd413a84022525e5ef6" },
-            { "title": "COURTS - LEC 13", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90fdb13a84022525e5ef8", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90fe313a84022525e5efa", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90feb13a84022525e5efc", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90ff313a84022525e5efe", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90ffa13a84022525e5f00" },
-            { "title": "LOCAL BODIES - LEC 14", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9100213a84022525e5f02", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9100913a84022525e5f04", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9101013a84022525e5f06", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9101713a84022525e5f08", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9101e13a84022525e5f0a" },
-            { "title": "LOCAL BODIES - MCQs", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9102913a84022525e5f0c", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9102e13a84022525e5f0e", "notes_hi": null, "quiz": null, "handwritten": null },
-            { "title": "CONSTITUTIONAL AND NON CONSTITUTIONAL BODIES - LEC 15", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9103613a84022525e5f10", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9103e13a84022525e5f12", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9104613a84022525e5f14", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9104e13a84022525e5f16", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9105513a84022525e5f18" },
-            { "title": "EMERGENCY,AMENDMENTS AND INTER STATE RELATIONS - LEC 16", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9105d13a84022525e5f1a", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9106413a84022525e5f1c", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9106b13a84022525e5f1e", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9107213a84022525e5f20", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9107a13a84022525e5f22" },
-            { "title": "HISTORICAL BACKGROUND (ACTS) - LEC 17", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9108113a84022525e5f24", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9108813a84022525e5f26", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9109013a84022525e5f28", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9109e13a84022525e5f2a", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b910a613a84022525e5f2c" }
+            {
+              "title": "MAKING OF CONSTITUTION - LEC 1",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90dc713a84022525e5e80",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90df313a84022525e5e82",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90dfc13a84022525e5e84",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e0813a84022525e5e86",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e1013a84022525e5e88"
+            },
+            {
+              "title": "SALIENT FEATURES OF CONSTITUTION - LEC 2",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90e1813a84022525e5e8a",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e2013a84022525e5e8c",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e2813a84022525e5e8e",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e3213a84022525e5e90",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e3913a84022525e5e92"
+            },
+            {
+              "title": "PREAMBLE - LEC 3",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90e4213a84022525e5e94",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e4e13a84022525e5e96",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e5413a84022525e5e98",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e5f13a84022525e5e9a",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e6913a84022525e5e9c"
+            },
+            {
+              "title": "PART 1 AND PART 2 OF CONSTITUTION - LEC 4",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90e7213a84022525e5e9e",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e7a13a84022525e5ea0",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e8213a84022525e5ea2",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e8a13a84022525e5ea4",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90e9213a84022525e5ea6"
+            },
+            {
+              "title": "FUNDAMENTAL RIGHTS - LEC 5",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90e9b13a84022525e5ea8",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90ea213a84022525e5eaa",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90eaa13a84022525e5eac",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90ea213a84022525e5eaa",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90eaa13a84022525e5eac"
+            },
+            {
+              "title": "FUNDAMENTAL RIGHTS PART 2 - LEC 6",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90eb313a84022525e5eae",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90ebb13a84022525e5eb0",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90ec313a84022525e5eb2",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90ecb13a84022525e5eb4",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90ed313a84022525e5eb6"
+            },
+            {
+              "title": "DPSP AND FUNDAMENTAL DUTIES - LEC 7",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90edb13a84022525e5eb8",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90ee413a84022525e5eba",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90eeb13a84022525e5ebc",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90ef713a84022525e5ebe",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90eff13a84022525e5ec0"
+            },
+            {
+              "title": "PRESIDENT & VICE PRESIDENT - LEC 8",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90f0413a84022525e5ec2",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f0c13a84022525e5ec4",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f1313a84022525e5ec6",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f1a13a84022525e5ec8",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f2113a84022525e5eca"
+            },
+            {
+              "title": "PRIME MINISTER & COUNCILING OF MINISTERS - LEC 9",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90f2913a84022525e5ecc",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f3013a84022525e5ece",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f3713a84022525e5ed0",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f3e13a84022525e5ed2",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f4613a84022525e5ed4"
+            },
+            {
+              "title": "PARLIAMENT - LEC 10",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90f4d13a84022525e5ed6",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f5513a84022525e5ed8",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f5d13a84022525e5eda",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f6613a84022525e5edc",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f6d13a84022525e5ede"
+            },
+            {
+              "title": "PARLIAMENT PART 2 - LEC 11",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90f7913a84022525e5ee0",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f8213a84022525e5ee2",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f8d13a84022525e5ee4",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f9613a84022525e5ee6",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90f9d13a84022525e5ee8"
+            },
+            {
+              "title": "PARLIAMENT MCQs",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90fa713a84022525e5eea",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90fac13a84022525e5eec",
+              "notes_hi": null,
+              "quiz": null,
+              "handwritten": null
+            },
+            {
+              "title": "STATE LEGISLATURE - LEC 12",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90fb513a84022525e5eee",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90fbd13a84022525e5ef0",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90fc513a84022525e5ef2",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90fcd13a84022525e5ef4",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90fd413a84022525e5ef6"
+            },
+            {
+              "title": "COURTS - LEC 13",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b90fdb13a84022525e5ef8",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90fe313a84022525e5efa",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90feb13a84022525e5efc",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90ff313a84022525e5efe",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b90ffa13a84022525e5f00"
+            },
+            {
+              "title": "LOCAL BODIES - LEC 14",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9100213a84022525e5f02",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9100913a84022525e5f04",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9101013a84022525e5f06",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9101713a84022525e5f08",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9101e13a84022525e5f0a"
+            },
+            {
+              "title": "LOCAL BODIES - MCQs",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9102913a84022525e5f0c",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9102e13a84022525e5f0e",
+              "notes_hi": null,
+              "quiz": null,
+              "handwritten": null
+            },
+            {
+              "title": "CONSTITUTIONAL AND NON CONSTITUTIONAL BODIES - LEC 15",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9103613a84022525e5f10",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9103e13a84022525e5f12",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9104613a84022525e5f14",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9104e13a84022525e5f16",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9105513a84022525e5f18"
+            },
+            {
+              "title": "EMERGENCY,AMENDMENTS AND INTER STATE RELATIONS - LEC 16",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9105d13a84022525e5f1a",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9106413a84022525e5f1c",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9106b13a84022525e5f1e",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9107213a84022525e5f20",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9107a13a84022525e5f22"
+            },
+            {
+              "title": "HISTORICAL BACKGROUND (ACTS) - LEC 17",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9108113a84022525e5f24",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9108813a84022525e5f26",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9109013a84022525e5f28",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9109e13a84022525e5f2a",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b910a613a84022525e5f2c"
+            }
           ],
           "WEEKLY TESTS": []
+        },
+        {
+          "name": "ANCIENT HISTORY",
+          "CHAPTERS": [
+            {
+              "title": "STONE AGE - LEC 1",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9017913a84022525e5bb8",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9018913a84022525e5bba",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9019213a84022525e5bbc",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9019b13a84022525e5bbe",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b901a413a84022525e5bc0"
+            },
+            {
+              "title": "INDUS VALLEY CIVILISATION - LEC 2",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b901ae13a84022525e5bc2",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b901b613a84022525e5bc4",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b901bd13a84022525e5bc6",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b901c613a84022525e5bc8",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b901d513a84022525e5bca"
+            },
+            {
+              "title": "VEDIC AGE - LEC 3",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b901f213a84022525e5bcc",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b901fa13a84022525e5bce",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9020113a84022525e5bd0",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9020a13a84022525e5bd2",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9021213a84022525e5bd4"
+            },
+            {
+              "title": "BUDDHISM AND JAINISM - LEC 4",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9022013a84022525e5bd6",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9023b13a84022525e5bd8",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9025113a84022525e5bda",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9029113a84022525e5c04",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b902db13a84022525e5c08"
+            },
+            {
+              "title": "MAHAJANPADAS AND MAGADHA - LEC 5",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b902ef13a84022525e5c0a",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b902fe13a84022525e5c0c",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9030c13a84022525e5c0e",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9031413a84022525e5c10",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9032013a84022525e5c12"
+            },
+            {
+              "title": "MAURYAN EMPIRE - LEC 6",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9032d13a84022525e5c14",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9033413a84022525e5c16",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9033d13a84022525e5c18",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9034513a84022525e5c1a",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9034f13a84022525e5c1c"
+            },
+            {
+              "title": "POST MAURYAN EMPIRE - LEC 7",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9035713a84022525e5c1e",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9035e13a84022525e5c20",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9036613a84022525e5c22",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9036e13a84022525e5c24",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9037613a84022525e5c26"
+            },
+            {
+              "title": "SANGAM AGE - LEC 8",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9038113a84022525e5c28",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9038913a84022525e5c2a",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9039213a84022525e5c2c",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9039b13a84022525e5c2e",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b903a513a84022525e5c30"
+            },
+            {
+              "title": "GUPTA ERA - LEC 9",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b903b013a84022525e5c32",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b903b713a84022525e5c34",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b903c013a84022525e5c36",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b903cb13a84022525e5c38",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b903d213a84022525e5c3a"
+            },
+            {
+              "title": "POST GUPTA ERA PART 1 - LEC 10",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b903db13a84022525e5c3c",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b903e213a84022525e5c3e",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b903eb13a84022525e5c40",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b903f213a84022525e5c42",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b903fb13a84022525e5c44"
+            },
+            {
+              "title": "POST GUPTA ERA PART 2 - LEC 11",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9040d13a84022525e5c46",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9041513a84022525e5c48",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9041d13a84022525e5c4a",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9042413a84022525e5c4c",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9042e13a84022525e5c4e"
+            },
+            {
+              "title": "CHOLAS AND TRIPARTITE STRUGGLE - LEC 12",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9044113a84022525e5c50",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9044c13a84022525e5c52",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9045213a84022525e5c54",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9045a13a84022525e5c56",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9046313a84022525e5c58"
+            }
+          ],
+          "WEEKLY TESTS": []
+        },
+        {
+          "name": "MEDIEVAL HISTORY",
+          "CHAPTERS": [
+            {
+              "title": "INVANSION OF ISLAM - LEC 1",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9046c13a84022525e5c5a",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9047c13a84022525e5c5c",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9048313a84022525e5c5e",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9048f13a84022525e5c60",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9049513a84022525e5c62"
+            },
+            {
+              "title": "DELHI SULTANATE PART 1 - LEC 2",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b904a013a84022525e5c64",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b904a913a84022525e5c66",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b904b113a84022525e5c68",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b904b813a84022525e5c6a",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b904c013a84022525e5c6c"
+            },
+            {
+              "title": "DELHI SULTANATE PART 2 - LEC 3",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b904c913a84022525e5c6e",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b904d213a84022525e5c70",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b904db13a84022525e5c72",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b904e213a84022525e5c74",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b904eb13a84022525e5c76"
+            },
+            {
+              "title": "LECTURE 1 , 2 AND 3 - (MCQ - PDF)",
+              "url": null,
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b904f213a84022525e5c78",
+              "notes_hi": null,
+              "quiz": null,
+              "handwritten": null
+            },
+            {
+              "title": "VIJAYNAGARA EMPIRE BAHMANI KINGDOM - LEC 4",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b904fb13a84022525e5c7a",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9050413a84022525e5c7c",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9050d13a84022525e5c7e",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9051613a84022525e5c80",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9051d13a84022525e5c82"
+            },
+            {
+              "title": "MUGHAL EMPIRE PART 1 - LEC 5",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9052713a84022525e5c84",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9053013a84022525e5c86",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9053713a84022525e5c88",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9053f13a84022525e5c8a",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9054613a84022525e5c8c"
+            },
+            {
+              "title": "MUGHAL EMPIRE PART 2 - LEC 6",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9054e13a84022525e5c8e",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9055613a84022525e5c90",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9055e13a84022525e5c92",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9056613a84022525e5c94",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9056d13a84022525e5c96"
+            },
+            {
+              "title": "AURANGEB AND LATER MUGHALS - LEC 7",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9057613a84022525e5c98",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9057f13a84022525e5c9a",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9058713a84022525e5c9c",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9058f13a84022525e5c9e",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9059613a84022525e5ca0"
+            },
+            {
+              "title": "MARATHAS - LEC 8",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9059f13a84022525e5ca2",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b905b813a84022525e5ca4",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b905eb13a84022525e5ca6",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b905f513a84022525e5ca8",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b905fd13a84022525e5caa"
+            },
+            {
+              "title": "BHAKTI & SUFI MOVEMENT - LEC 9",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9060813a84022525e5cac",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9061913a84022525e5cae",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9062713a84022525e5cb0",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9063013a84022525e5cb4",
+              "handwritten": null
+            }
+          ],
+          "WEEKLY TESTS": []
+        },
+        {
+          "name": "MODERN HISTORY",
+          "CHAPTERS": [
+            {
+              "title": "ADVENT OF EUROPEANS - LEC 1",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9063a13a84022525e5cb9",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9064713a84022525e5cbe",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9065013a84022525e5cc0",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9065813a84022525e5cc2",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9066113a84022525e5cc4"
+            },
+            {
+              "title": "SOCIO RELIGIOUS REFORM MOVEMENTS - LEC 2",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9066f13a84022525e5cc6",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9067713a84022525e5cc8",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9068813a84022525e5cca",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9069113a84022525e5ccc",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9069a13a84022525e5cce"
+            },
+            {
+              "title": "REVOLT OF 1857 - LEC 3",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b906a313a84022525e5cd0",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b906b613a84022525e5cd2",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b906bf13a84022525e5cd4",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b906c913a84022525e5cd6",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b906d313a84022525e5cda"
+            },
+            {
+              "title": "INDIAN NATIONAL CONGRESS INC - LEC 4",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b906dc13a84022525e5ce0",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b906e513a84022525e5ce2",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b906ef13a84022525e5ce6",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b906f713a84022525e5ce8",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9070013a84022525e5cea"
+            },
+            {
+              "title": "PARTITION OF BENGAL - LEC 5",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9070913a84022525e5cec",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9071213a84022525e5cee",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9071913a84022525e5cf0",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9072113a84022525e5cf2",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9072913a84022525e5cf4"
+            },
+            {
+              "title": "GANDHIAN ERA - LEC 6",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9073613a84022525e5cf6",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9074013a84022525e5cf8",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9074713a84022525e5cfa",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9074f13a84022525e5cfc",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9076413a84022525e5cfe"
+            },
+            {
+              "title": "BHAGAT SINGH AND REVOLUTIONARY ACTIVITIES - LEC 7",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9077913a84022525e5d00",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9078f13a84022525e5d02",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9079713a84022525e5d04",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9079f13a84022525e5d06",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b907ac13a84022525e5d0a"
+            },
+            {
+              "title": "CIVIL DISOBEDIENCE MOVEMENT - LEC 8",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b907b713a84022525e5d0e",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b907c113a84022525e5d10",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b907cf13a84022525e5d13",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b907d813a84022525e5d15",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b907e013a84022525e5d19"
+            },
+            {
+              "title": "QUIT INDIA MOVEMENT - LEC 9",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b907eb13a84022525e5d1c",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b907f213a84022525e5d1f",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b907fa13a84022525e5d25",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9080213a84022525e5d27",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9080b13a84022525e5d29"
+            }
+          ],
+          "WEEKLY TESTS": [
+            {
+              "title": "testing...",
+              "url": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\">  <style> body{ background:#000; margin:0; overflow:hidden; }  @keyframes spin{ 0%{transform:rotate(0deg);} 100%{transform:rotate(360deg);} } </style>  <div style=\"width:100%;max-width:950px;margin:auto;position:relative;height:667px;border-radius:12px;overflow:hidden;background:#000;\">  <div id=\"loader\" style=\" position:absolute; top:0; left:0; width:100%; height:100%; background:#000; display:flex; align-items:center; justify-content:center; flex-direction:column; z-index:10; \">  <div style=\" width:60px; height:60px; border:6px solid rgba(255,0,0,0.15); border-top:6px solid #ff0000; border-radius:50%; box-shadow:0 0 18px rgba(255,0,0,0.8); animation:spin 0.8s linear infinite; \"></div>  <div style=\" margin-top:18px; color:#ff2b2b; font-family:sans-serif; font-size:16px; letter-spacing:1px; \"> Please Wait 10sec... </div>  </div>  <iframe src=\"https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69bce2c6fab086309845879d\" style=\"width:100%;height:850px;border:none;transform:translateY(-90px);background:#000;\" scrolling=\"no\" allowfullscreen> </iframe>  <div style=\" position:absolute; bottom:0; left:0; width:100%; height:55px; background:#000; display:flex; align-items:center; justify-content:center; font-family:sans-serif; font-weight:700; letter-spacing:1px; box-shadow:0 -2px 20px rgba(255,0,0,0.5); \">  <a href=\"https://whatsapp.com/channel/0029VbBjUBM0wajzBk92iw2q\" target=\"_blank\" style=\" text-decoration:none; color:#ff2b2b; font-size:16px; padding:6px 18px; border:2px solid #ff0000; border-radius:8px; box-shadow:0 0 10px rgba(255,0,0,0.6); \">  POWERED BY : VIVID  </a>  </div>  </div>  <script> setTimeout(function(){ document.getElementById(\"loader\").style.display=\"none\"; },9500); </script>",
+              "download_url": null,
+              "notes_en": null,
+              "notes_hi": null,
+              "quiz": null,
+              "handwritten": null
+            },
+            {
+              "title": "TESTING....",
+              "url": null,
+              "download_url": null,
+              "notes_en": "<style> body{margin:0;background:#000;height:100vh;overflow:hidden} iframe{display:none} </style>  <iframe src=\"https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69bdaeb36abf9573a5e142d2\"></iframe>",
+              "notes_hi": null,
+              "quiz": null,
+              "handwritten": null
+            }
+          ]
         },
         {
           "name": "GEOGRAPHY",
           "CHAPTERS": [
-            { "title": "SOLAR SYSTEM - LEC 1", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8fa7113a84022525e5a8f", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fa9513a84022525e5a93", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fa9513a84022525e5a92", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fac813a84022525e5a9a", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fac813a84022525e5a99" },
-            { "title": "LATITUDE AND LONGITUDE - LEC 2", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8fac813a84022525e5a97", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fac813a84022525e5a98", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fac813a84022525e5a9", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fac913a84022525e5a9b", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fad213a84022525e5aa2" },
-            { "title": "HIMALAYAS - LEC 13", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8fde713a84022525e5b1a", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fdef13a84022525e5b1c", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fdf713a84022525e5b1e", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fdff13a84022525e5b20", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fe0713a84022525e5b22" },
-            { "title": "PENINSULAR PLATEAU - LEC 14", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8fe0f13a84022525e5b24", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fe1713a84022525e5b26", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fe1f13a84022525e5b28", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fe2713a84022525e5b2a", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fe2f13a84022525e5b2c" },
-            { "title": "HIMALAYAN RIVER SYSTEM - LEC 16", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8fe6413a84022525e5b38", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fe6c13a84022525e5b3a", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fe7413a84022525e5b3c", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fe7c13a84022525e5b3e", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fe8313a84022525e5b40" },
-            { "title": "PENINSULAR RIVERS - LEC 17", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8fe9c13a84022525e5b46", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fea413a84022525e5b48", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8feae13a84022525e5b4a", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8feb513a84022525e5b4c", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8febe13a84022525e5b4e" },
-            { "title": "MONSOON - LEC 19", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8ff1613a84022525e5b57", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8ff1f13a84022525e5b59", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8ff2713a84022525e5b5b", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8ff2f13a84022525e5b5d", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8ff3913a84022525e5b5f" },
-            { "title": "HUMAN GEOGRAPHY - LEC 27", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9012113a84022525e5bae", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9012a13a84022525e5bb0", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9013513a84022525e5bb2", "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9014213a84022525e5bb4", "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9014b13a84022525e5bb6" }
-          ],
-          "WEEKLY TESTS": []
-        },
-        {
-          "name": "ENVIROMENT AND ECOLOGY",
-          "CHAPTERS": [
-            { "title": "DIFFERENT CYCLES", "url": null, "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69d0a6116d440ae7398a4ea9", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69d0a61c6d440ae7398a4eab", "quiz": null, "handwritten": null },
-            { "title": "ENVIROMENT AND ECOLOGY - LEC 1", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69d0a6256d440ae7398a4ead", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69d0a62c6d440ae7398a4eaf", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69d0a6366d440ae7398a4eb1", "quiz": null, "handwritten": null },
-            { "title": "ENVIROMENT AND ECOLOGY - LEC 2", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69d0a63d6d440ae7398a4eb3", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69d0a6436d440ae7398a4eb5", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69d0a6486d440ae7398a4eb7", "quiz": null, "handwritten": null },
-            { "title": "ENVIROMENT AND ECOLOGY - LEC 3", "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69d0a64f6d440ae7398a4eb9", "download_url": null, "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69d0a6566d440ae7398a4ebb", "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69d0a65d6d440ae7398a4ebd", "quiz": null, "handwritten": null }
+            {
+              "title": "SOLAR SYSTEM - LEC 1",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8fa7113a84022525e5a8f DONN",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fa9513a84022525e5a93",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fa9513a84022525e5a92",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fac813a84022525e5a9a",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fac813a84022525e5a99"
+            },
+            {
+              "title": "LATITUDE AND LONGITUDE - LEC 2",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8fac813a84022525e5a97",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fac813a84022525e5a98",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fac813a84022525e5a9",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fac913a84022525e5a9b",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fad213a84022525e5aa2"
+            },
+            {
+              "title": "EARTH'S INTERIOR AND PLATE TECHTONICS - LEC 3",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8fad213a84022525e5aa3",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fad213a84022525e5aa4",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fad213a84022525e5aa5",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fae813a84022525e5aaa",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fae813a84022525e5aac"
+            },
+            {
+              "title": "OCEAN AND CONTINENTS - LEC 4",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8fae813a84022525e5aad",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fae813a84022525e5aae",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fae813a84022525e5aaf",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fae813a84022525e5aab",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fb0e13a84022525e5ab6"
+            },
+            {
+              "title": "ROCKS AND VOLCANO - LEC 5",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8fc3f13a84022525e5acc",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fc4713a84022525e5ace",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fc5113a84022525e5ad0",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fc5913a84022525e5ad2",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fc6213a84022525e5ad4"
+            },
+            {
+              "title": "GEOMORPHIC PROCESSES - LEC 6",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8fc7313a84022525e5ad6",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8f3e213a84022525e5977",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8f3ed13a84022525e5979",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fcb513a84022525e5ada",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fcbf13a84022525e5adc"
+            },
+            {
+              "title": "LANDFORMS - LEC 7",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8fcca13a84022525e5ade",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fcd213a84022525e5ae0",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fcda13a84022525e5ae2",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fce513a84022525e5ae4",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fcf113a84022525e5ae6"
+            },
+            {
+              "title": "ATMOSPHERE - LEC 8",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8fcf913a84022525e5ae8",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fd0313a84022525e5aea",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fd0f13a84022525e5aec",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fd1813a84022525e5aee",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fd2013a84022525e5af0"
+            },
+            {
+              "title": "CONDENSATION AND PRECIPITATION - LEC 9",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8fd2913a84022525e5af2",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fd3113a84022525e5af4",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fd3913a84022525e5af6",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fd4313a84022525e5af8",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fd4a13a84022525e5afa"
+            },
+            {
+              "title": "WIND - LEC 10",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8fd5213a84022525e5afc",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fd5d13a84022525e5afe",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fd6513a84022525e5b00",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fd7213a84022525e5b02",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fd7a13a84022525e5b04"
+            },
+            {
+              "title": "CYCLONE AND OCEAN CURRENTS - LEC 11",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8fd8213a84022525e5b06",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fd8a13a84022525e5b08",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fd9713a84022525e5b0a",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fd9e13a84022525e5b0c",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fda713a84022525e5b0e"
+            },
+            {
+              "title": "INDIA AND IT'S LOCATION - LEC 12",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8fdb213a84022525e5b10",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fdb913a84022525e5b12",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fdc513a84022525e5b14",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fdce13a84022525e5b16",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fdd813a84022525e5b18"
+            },
+            {
+              "title": "HIMALAYAS - LEC 13",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8fde713a84022525e5b1a",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fdef13a84022525e5b1c",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fdf713a84022525e5b1e",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fdff13a84022525e5b20",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fe0713a84022525e5b22"
+            },
+            {
+              "title": "PENINSULAR PLATEAU - LEC 14",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8fe0f13a84022525e5b24",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fe1713a84022525e5b26",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fe1f13a84022525e5b28",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fe2713a84022525e5b2a",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fe2f13a84022525e5b2c"
+            },
+            {
+              "title": "PLAINS AND ISLANDS - LEC 15",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8fe3913a84022525e5b2e DO BE",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fe4113a84022525e5b30",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fe4b13a84022525e5b32",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fe5313a84022525e5b34",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fe5b13a84022525e5b36"
+            },
+            {
+              "title": "HIMALAYAN RIVER SYSTEM - LEC 16",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8fe6413a84022525e5b38",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fe6c13a84022525e5b3a",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fe7413a84022525e5b3c",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fe7c13a84022525e5b3e",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fe8313a84022525e5b40"
+            },
+            {
+              "title": "RIVER SYSTEM MCQs",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8fe8c13a84022525e5b42",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fe9413a84022525e5b44",
+              "notes_hi": null,
+              "quiz": null,
+              "handwritten": null
+            },
+            {
+              "title": "PENINSULAR RIVERS - LEC 17",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8fe9c13a84022525e5b46",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fea413a84022525e5b48",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8feae13a84022525e5b4a",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8feb513a84022525e5b4c",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8febe13a84022525e5b4e"
+            },
+            {
+              "title": "DAMS , LAKES AND WATERFALLS - LEC 18",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8fec713a84022525e5b50",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8f5c113a84022525e59f4",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8f5c713a84022525e59f6",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fef813a84022525e5b54",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8f5d413a84022525e59fa"
+            },
+            {
+              "title": "MONSOON - LEC 19",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8ff1613a84022525e5b57",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8ff1f13a84022525e5b59",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8ff2713a84022525e5b5b",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8ff2f13a84022525e5b5d",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8ff3913a84022525e5b5f"
+            },
+            {
+              "title": "MONSOON MCQs",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8ff4013a84022525e5b61",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8ff4913a84022525e5b63",
+              "notes_hi": null,
+              "quiz": null,
+              "handwritten": null
+            },
+            {
+              "title": "FORESTS AND GRASSLANDS - LEC 20",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8ff5013a84022525e5b65",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8ff5d13a84022525e5b67",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8ff6513a84022525e5b69",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8ff6e13a84022525e5b6b",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8ff7613a84022525e5b6d"
+            },
+            {
+              "title": "SOIL - LEC 21",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8ff7f13a84022525e5b6f",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8ff8713a84022525e5b71",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8ff8f13a84022525e5b73",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8ff9b13a84022525e5b75",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8ffa613a84022525e5b77"
+            },
+            {
+              "title": "AGRICULTURE - LEC 22",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8ffaf13a84022525e5b79",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8ffb713a84022525e5b7b",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8ffbf13a84022525e5b7d",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8ffc813a84022525e5b7f",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8ffd213a84022525e5b81"
+            },
+            {
+              "title": "MINERALS - LEC 23",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b8ffda13a84022525e5b83",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8ffe213a84022525e5b85",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8ffec13a84022525e5b87",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8fff913a84022525e5b89",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9000213a84022525e5b8b"
+            },
+            {
+              "title": "TRANSPORT - LEC 24",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9000a13a84022525e5b8d",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9001213a84022525e5b8f",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9001c13a84022525e5b91",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9002813a84022525e5b93",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9003313a84022525e5b95"
+            },
+            {
+              "title": "WORLD MAP PART 1 - LEC 25",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9003b13a84022525e5b97",
+              "download_url": null,
+              "notes_en": null,
+              "notes_hi": null,
+              "quiz": null,
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9004413a84022525e5b99"
+            },
+            {
+              "title": "WORLD MAP PART 2 - LEC 26",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9004c13a84022525e5b9b DONE.",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b8f6bd13a84022525e5a42",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9010913a84022525e5ba8",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9011013a84022525e5baa",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9011913a84022525e5bac"
+            },
+            {
+              "title": "HUMAN GEOGRAPHY - LEC 27",
+              "url": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?watch=69b9012113a84022525e5bae",
+              "download_url": null,
+              "notes_en": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9012a13a84022525e5bb0",
+              "notes_hi": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9013513a84022525e5bb2",
+              "quiz": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9014213a84022525e5bb4",
+              "handwritten": "https://publicbotshub.blogspot.com/p/file-stream-bot.html?dl=69b9014b13a84022525e5bb6"
+            }
           ],
           "WEEKLY TESTS": []
         }
       ]
     },
-    { "name": "MATH'S SPL VOD BATCH", "teacher": "GAGAN PRATAP SIR", "directLink": "https://vividxmathsplvodgagansirbatch.edgeone.app/", "subjects": [] },
-    { "name": "REASONING SPL 60", "teacher": "PIYUSH VARSHNEY SIR", "directLink": "https://vividxreasoningspl60batch.edgeone.app/", "subjects": [] },
-    { "name": "ENGLISH SPECIAL 1", "teacher": "AMAN VASHISHTH SIR", "directLink": "https://vividxengspecial1.edgeone.app/", "subjects": [] },
-    { "name": "MATH'S SPL 48", "teacher": "RAKESH YADAV SIR", "directLink": "https://vividmathscourse.edgeone.app/", "subjects": [] },
-    { "name": "ENGLISH PRACTICE 26", "teacher": "JAIDEEP SINGH SIR", "directLink": "https://vividxengpractice26.edgeone.app/", "subjects": [] },
-    { "name": "COMPUTER SPL 29", "teacher": "YATENDRA SIR", "directLink": "https://vividxcomputerspl29.edgeone.app/", "subjects": [] },
-    { "name": "MATH'S SPECIAL VOD BATCH 2", "teacher": "GAGAN PRATAP SIR", "directLink": "https://vividxmathsspecialvod2.edgeone.app/", "subjects": [] },
-    { "name": "SSC PRATHAM BATCH 2", "directLink": "https://vividxprathambatch.edgeone.app/", "subjects": [] },
-    { "name": "SELECTION WAY", "directLink": "https://selectionwayvivid.edgeone.dev/", "subjects": [] },
-    { "name": "PARMAR 5.0 GK", "subjects": [ { "name": "POLITY", "CHAPTERS": [ { "title": "MAKING OF CONSTITUTION LEC - 1", "url": "https://www.youtube.com/live/UjmtJmpP4Bo", "download_url": null, "notes_en": null, "notes_hi": null, "quiz": null, "handwritten": null } ], "WEEKLY TESTS": [] } ] },
-    { "name": "ACHIEVERS 8.0", "directLink": "https://achievers8byvivid.edgeone.dev/", "subjects": [] },
-    { "name": "BHUTESH MATH'S FOUNDATION", "directLink": "https://bhuteshmathsbyvivid.edgeone.dev/", "subjects": [] },
-    { "name": "PARMAR PC 2.0", "directLink": "https://parmarpc2byvivid.edgeone.dev/", "subjects": [] },
-    { "name": "PARMAR REASONING FOUNDATION", "directLink": "https://parmarreasoningbyvivid.edgeone.dev/", "subjects": [] },
-    { "name": "ADITYA SIR VOD 3.0", "directLink": "pages/aditya-sir-vod-30.html", "subjects": [] },
-    { "name": "ABHINAY MATH'S FOUNDATION COURSE", "directLink": "pages/abhinay-maths-foundation-course.html", "subjects": [] }
+    {
+      "name": "MATH'S SPL VOD BATCH",
+      "teacher": "GAGAN PRATAP SIR",
+      "directLink": "https://vividxmathsplvodgagansirbatch.edgeone.app/",
+      "subjects": []
+    },
+    {
+      "name": "REASONING SPL 60",
+      "teacher": "PIYUSH VARSHNEY SIR",
+      "directLink": "https://vividxreasoningspl60batch.edgeone.app/",
+      "subjects": []
+    },
+    {
+      "name": "ENGLISH SPECIAL 1",
+      "teacher": "AMAN VASHISHTH SIR",
+      "directLink": "https://vividxengspecial1.edgeone.app/",
+      "subjects": []
+    },
+    {
+      "name": "MATH'S SPL 48",
+      "teacher": "RAKESH YADAV SIR",
+      "directLink": "https://vividmathscourse.edgeone.app/",
+      "subjects": []
+    },
+    {
+      "name": "ENGLISH PRACTICE 26",
+      "teacher": "JAIDEEP SINGH SIR",
+      "directLink": "https://vividxengpractice26.edgeone.app/",
+      "subjects": []
+    },
+    {
+      "name": "COMPUTER SPL 29",
+      "teacher": "YATENDRA SIR",
+      "directLink": "https://vividxcomputerspl29.edgeone.app/",
+      "subjects": []
+    },
+    {
+      "name": "MATH'S SPECIAL VOD BATCH 2",
+      "teacher": "GAGAN PRATAP SIR",
+      "directLink": "https://vividxmathsspecialvod2.edgeone.app/",
+      "subjects": []
+    }
+  ],
+  "notifications": [
+    {
+      "tag": "TESTING",
+      "message": "hello!!!",
+      "date": "26 Feb 2026, 11:56 pm"
+    },
+    {
+      "tag": "UPDATE...",
+      "message": "All subjects on the Parmar 4.0 website have now been fully updated. ðŸ“š Make the most of itâ€”study consistently and aim for your selection. ðŸŽ¯ If you find any video or PDF link not working, please report it to me on Instagram. ðŸ”§ IG: @ellorvii",
+      "date": "18 Mar 2026, 1:27 am"
+    }
   ]
 }
