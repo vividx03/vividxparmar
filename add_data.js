@@ -15,10 +15,12 @@ const PAGES_DIR = 'pages';
 // ============================================================
 
 function loadDB() {
-  if (!fs.existsSync(DB_FILE)) return { site: {}, exams: [], notifications: [] };
+  if (!fs.existsSync(DB_FILE)) {
+    return { site: {}, exams: [], notifications: [], _legacy_courses: [] };
+  }
   try { return JSON.parse(fs.readFileSync(DB_FILE, 'utf8')); }
   catch (e) {
-    console.error('❌ db.json is corrupted. Fix it manually before running.');
+    console.error('\n❌ db.json is corrupted. Fix it manually before running.\n');
     process.exit(1);
   }
 }
@@ -29,7 +31,7 @@ function saveDB(db) {
 
 function backupOnce() {
   if (fs.existsSync(DB_FILE) && !fs.existsSync(BACKUP_FILE)) {
-    try { fs.copyFileSync(DB_FILE, BACKUP_FILE); console.log('📦 Backup: db.backup.json'); }
+    try { fs.copyFileSync(DB_FILE, BACKUP_FILE); }
     catch (e) {}
   }
 }
@@ -41,6 +43,12 @@ function slugify(str) {
 }
 
 function hr(title) {
+  console.log('\n' + '═'.repeat(58));
+  if (title) console.log('  ' + title);
+  console.log('═'.repeat(58));
+}
+
+function sub(title) {
   console.log('\n' + '─'.repeat(58));
   if (title) console.log('  ' + title);
   console.log('─'.repeat(58));
@@ -50,23 +58,20 @@ function ensureDir(dir) {
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 }
 
+function pause() {
+  readline.question('\n   Press ENTER to continue...');
+}
+
 // ============================================================
 // IMAGE / FILE RESOLVER
 // ============================================================
 
-/**
- * Accepts either an https URL or a local file path.
- * - URL          → returned as-is
- * - Local file   → copied into ./images/ and relative path returned
- * - Empty        → returns null
- */
 function resolveImage(input, nameHint) {
   if (!input) return null;
   const cleaned = String(input).trim().replace(/^["']|["']$/g, '');
   if (!cleaned) return null;
 
   if (/^https?:\/\//i.test(cleaned)) return cleaned;
-
   if (cleaned.startsWith(IMAGES_DIR + '/') && fs.existsSync(cleaned)) return cleaned;
 
   if (fs.existsSync(cleaned)) {
@@ -89,7 +94,7 @@ function resolveImage(input, nameHint) {
 
 function copyHtmlToPages(htmlFilePath, nameHint) {
   const cleaned = String(htmlFilePath).trim().replace(/^["']|["']$/g, '');
-  if (!fs.existsSync(cleaned)) { console.log(`❌ File not found: ${cleaned}`); return null; }
+  if (!fs.existsSync(cleaned)) { console.log(`\n❌ File not found: ${cleaned}`); return null; }
   ensureDir(PAGES_DIR);
   const dest = path.join(PAGES_DIR, slugify(nameHint) + '.html');
   fs.copyFileSync(cleaned, dest);
@@ -101,9 +106,9 @@ function copyHtmlToPages(htmlFilePath, nameHint) {
 // ============================================================
 
 function askImageInput(label) {
-  console.log(`\n🖼️  ${label} (thumbnail)`);
-  console.log('   → Paste image URL  (e.g. https://i.imgur.com/x.jpg)');
-  console.log('   → Or local path    (e.g. /sdcard/Pictures/ssc.jpg)');
+  console.log(`\n🖼️  ${label} — thumbnail (optional)`);
+  console.log('   → Paste an image URL  (https://...)');
+  console.log('   → Or a local file path  (/sdcard/Pictures/x.jpg)');
   console.log('   → Press ENTER to skip');
   const input = readline.question('   > ').trim();
   if (!input) return null;
@@ -112,7 +117,7 @@ function askImageInput(label) {
 
 function readMultiLine(promptText) {
   console.log(`\n${promptText}`);
-  console.log("   (Write lines one by one. Type 'DONE' on a new line to finish.)");
+  console.log("   (Type each line, then 'DONE' on a new line to finish.)");
   const lines = [];
   while (true) {
     const line = readline.question('   > ');
@@ -130,44 +135,29 @@ function confirmTwice(label) {
 }
 
 // ============================================================
-// MIGRATION: legacy "courses" → new "exams"
+// MENU HELPERS (cleaner cancel option)
 // ============================================================
 
-function migrateIfNeeded(db) {
-  const legacyCount = (db.courses || []).length;
-  if (legacyCount === 0) return false;
+function menuSelect(options, prompt) {
+  // Always append "Cancel" at the end and shift selection back.
+  const opts = [...options, '↩  Cancel / Back'];
+  const idx = readline.keyInSelect(opts, prompt);
+  if (idx === -1 || idx === opts.length - 1) return -1;
+  return idx;
+}
 
-  const hasNew = (db.exams || []).length > 0;
+// ============================================================
+// LEGACY MIGRATION
+// ============================================================
 
-  if (hasNew) {
-    console.log(`\n⚠️  Found ${legacyCount} legacy course(s) AND ${db.exams.length} exam(s).`);
-    if (!readline.keyInYN('   Merge legacy courses into exams?')) return false;
-  } else {
-    console.log(`\n🔄 Converting ${legacyCount} legacy course(s) → exams structure...`);
-  }
+function detectLegacy(db) {
+  return (db.courses || []).length > 0 || (db._legacy_courses || []).length > 0;
+}
 
-  if (!db.exams) db.exams = [];
-
-  db.courses.forEach(c => {
-    db.exams.push({
-      name: c.name || 'Untitled',
-      icon: c.icon || 'graduation-cap',
-      image: c.image || c.cover || null,
-      directLink: c.directLink || null,
-      subjects: (c.subjects || []).map(s => ({
-        name: s.name || 'Untitled',
-        image: s.image || null,
-        'CHAPTERS': s.CHAPTERS || [],
-        'WEEKLY TESTS': s['WEEKLY TESTS'] || []
-      })),
-      coachings: []
-    });
-  });
-
-  delete db.courses;
-  saveDB(db);
-  console.log(`✅ Migrated ${legacyCount} course(s) into exams.`);
-  return true;
+function getLegacyCourses(db) {
+  if (db.courses && db.courses.length) return db.courses;
+  if (db._legacy_courses && db._legacy_courses.length) return db._legacy_courses;
+  return [];
 }
 
 // ============================================================
@@ -178,37 +168,194 @@ function manageSiteSettings(db) {
   hr('SITE SETTINGS');
   console.log(`   Current site image: ${db.site?.image || '(not set)'}`);
 
-  const opts = ['🖼️  Set / change site image', '🗑️  Clear site image'];
-  const idx = readline.keyInSelect(opts, 'Choose:');
+  const idx = menuSelect(
+    ['🖼️  Set / change site image', '🗑️  Clear site image'],
+    'Choose action:'
+  );
   if (idx === -1) return;
 
   if (idx === 0) {
     const img = askImageInput('Site image');
-    if (!img) { console.log('❌ Cancelled.'); return; }
+    if (!img) { console.log('\n❌ Cancelled.'); return; }
     if (!db.site) db.site = {};
     db.site.image = img;
     saveDB(db);
-    console.log(`✅ Site image set → ${img}`);
+    console.log(`\n✅ Site image set → ${img}`);
   } else if (idx === 1) {
     if (db.site) db.site.image = null;
     saveDB(db);
-    console.log('✅ Site image cleared.');
+    console.log('\n✅ Site image cleared.');
   }
 }
 
 // ============================================================
-// ADD / UPDATE CONTENT (main content flow)
+// MANAGE PREVIOUS COURSES (LEGACY PATH)
+// ============================================================
+
+function manageLegacyCourses(db) {
+  hr('MANAGE PREVIOUS COURSES  (Legacy)');
+
+  const legacy = getLegacyCourses(db);
+
+  if (legacy.length === 0) {
+    console.log('\n   ✅ No legacy courses found.');
+    console.log('   Nothing to migrate — everything already in the new format.');
+    pause();
+    return;
+  }
+
+  console.log(`\n   Found ${legacy.length} legacy course(s):\n`);
+  legacy.forEach((c, i) => {
+    const subCount = (c.subjects || []).length;
+    const linkFlag = c.directLink ? ' 🔗' : '';
+    console.log(`   ${i + 1}. ${c.name}  —  ${subCount} subject(s)${linkFlag}`);
+  });
+
+  console.log('\n   What would you like to do?');
+
+  const idx = menuSelect(
+    [
+      '🔄 Convert ALL legacy courses → exams structure',
+      '👁️  Just view a legacy course',
+      '🗑️  Delete a legacy course',
+      '🗑️  Delete ALL legacy courses'
+    ],
+    'Choose:'
+  );
+  if (idx === -1) return;
+
+  if (idx === 0) migrateAllLegacy(db);
+  else if (idx === 1) viewLegacy(db, legacy);
+  else if (idx === 2) deleteOneLegacy(db, legacy);
+  else if (idx === 3) deleteAllLegacy(db);
+}
+
+function migrateAllLegacy(db) {
+  const legacy = getLegacyCourses(db);
+  if (legacy.length === 0) { console.log('\n❌ Nothing to migrate.'); return; }
+
+  if (!db.exams) db.exams = [];
+
+  console.log(`\n🔄 Migrating ${legacy.length} legacy course(s)...`);
+
+  let migrated = 0;
+  let skipped = 0;
+
+  legacy.forEach(c => {
+    const exists = db.exams.some(e => e.name === c.name);
+    if (exists) {
+      console.log(`   ⏭️  Skipped "${c.name}" — already exists in exams`);
+      skipped++;
+      return;
+    }
+
+    db.exams.push({
+      name: c.name || 'Untitled',
+      icon: c.icon || 'graduation-cap',
+      image: c.image || c.cover || null,
+      directLink: c.directLink || null,
+      subjects: (c.subjects || []).map(s => ({
+        name: s.name || 'Untitled',
+        image: s.image || null,
+        directLink: s.directLink || null,
+        'CHAPTERS': s.CHAPTERS || [],
+        'WEEKLY TESTS': s['WEEKLY TESTS'] || []
+      })),
+      coachings: []
+    });
+    console.log(`   ✅ Migrated: ${c.name}`);
+    migrated++;
+  });
+
+  // Clear legacy data
+  delete db.courses;
+  db._legacy_courses = [];
+
+  saveDB(db);
+  console.log(`\n🎉 Done — ${migrated} migrated, ${skipped} skipped.`);
+  pause();
+}
+
+function viewLegacy(db, legacy) {
+  const names = legacy.map(c => c.name || 'Untitled');
+  const idx = menuSelect(names, 'Pick a course to view:');
+  if (idx === -1) return;
+
+  const c = legacy[idx];
+  console.log(`\n📚 ${c.name}`);
+  console.log(`   Teacher: ${c.teacher || '(none)'}`);
+  console.log(`   Image:   ${c.image || c.cover || '(none)'}`);
+  console.log(`   Direct:  ${c.directLink || '(none)'}`);
+  console.log(`   Subjects (${(c.subjects || []).length}):`);
+  (c.subjects || []).forEach((s, i) => {
+    const ch = (s.CHAPTERS || []).length;
+    const ts = (s['WEEKLY TESTS'] || []).length;
+    console.log(`     ${i + 1}. ${s.name}  —  ${ch} ch · ${ts} tests`);
+  });
+  pause();
+}
+
+function deleteOneLegacy(db, legacy) {
+  const names = legacy.map(c => c.name || 'Untitled');
+  const idx = menuSelect(names, 'Pick a course to DELETE:');
+  if (idx === -1) return;
+
+  const c = legacy[idx];
+  if (!confirmTwice(`Legacy course "${c.name}"`)) {
+    console.log('\n❌ Cancelled.');
+    return;
+  }
+
+  const source = db.courses && db.courses.length ? db.courses : db._legacy_courses;
+  const i = source.indexOf(c);
+  if (i >= 0) source.splice(i, 1);
+  saveDB(db);
+  console.log(`\n🗑️  Legacy course "${c.name}" deleted.`);
+  pause();
+}
+
+function deleteAllLegacy(db) {
+  const legacy = getLegacyCourses(db);
+  if (legacy.length === 0) return;
+
+  if (!confirmTwice(`ALL ${legacy.length} legacy course(s)`)) {
+    console.log('\n❌ Cancelled.');
+    return;
+  }
+
+  delete db.courses;
+  db._legacy_courses = [];
+  saveDB(db);
+  console.log(`\n🗑️  All legacy courses deleted.`);
+  pause();
+}
+
+// ============================================================
+// ADD / UPDATE CONTENT  (ONLY new exams hierarchy)
 // ============================================================
 
 function addNewOrUpdate(db) {
   hr('ADD / UPDATE CONTENT');
-  const exams = db.exams || [];
-  const names = exams.map(e => `${e.name}  (${(e.subjects||[]).length} sub · ${(e.coachings||[]).length} inst)`);
-  names.push('➕ ADD NEW EXAM');
 
-  const idx = readline.keyInSelect(names, 'Select an exam:');
+  const exams = db.exams || [];
+
+  if (exams.length === 0) {
+    console.log('\n   No exams yet. Let\'s create one.\n');
+    addNewExam(db);
+    return;
+  }
+
+  const names = exams.map(e => {
+    const s = (e.subjects || []).length;
+    const c = (e.coachings || []).length;
+    return `${e.name}  ·  ${s} sub · ${c} inst`;
+  });
+  names.push('➕  ADD NEW EXAM');
+
+  const idx = menuSelect(names, 'Select an exam:');
   if (idx === -1) return;
   if (idx === names.length - 1) { addNewExam(db); return; }
+
   manageExam(db, exams[idx]);
 }
 
@@ -216,34 +363,44 @@ function addNewOrUpdate(db) {
 
 function addNewExam(db) {
   hr('ADD NEW EXAM');
-  const name = readline.question('Exam name (e.g. SSC, JEE, NEET): ').trim().toUpperCase();
-  if (!name) { console.log('❌ Cancelled.'); return; }
 
-  console.log('\n💡 Common icons: landmark, train, atom, dna, brain, bank, shield,');
-  console.log('   graduation-cap, book, flask, language, earth, laptop-code');
-  const icon = readline.question('Icon name [graduation-cap]: ').trim() || 'graduation-cap';
+  const name = readline.question('   Exam name (e.g. SSC, JEE, NEET): ').trim().toUpperCase();
+  if (!name) { console.log('\n❌ Cancelled.'); return; }
+
+  const exists = (db.exams || []).some(e => e.name === name);
+  if (exists) {
+    console.log(`\n❌ Exam "${name}" already exists.`);
+    pause();
+    return;
+  }
+
+  console.log('\n💡 Common icons: landmark · train · atom · dna · brain · bank ·');
+  console.log('   shield · graduation-cap · book · flask · language · earth · laptop-code');
+  const icon = readline.question('   Icon name [graduation-cap]: ').trim() || 'graduation-cap';
 
   const image = askImageInput('Exam thumbnail');
 
   console.log('\nMode:');
-  const modes = [
-    'Full hierarchy (Subjects / Coachings)',
-    'Direct Link (redirect to URL)',
-    'HTML File (self-hosted page)'
-  ];
-  const modeIdx = readline.keyInSelect(modes, 'Choose:');
+  const modeIdx = menuSelect(
+    [
+      '📚 Full hierarchy (Subjects / Coachings)',
+      '🔗 Direct Link (redirect to URL)',
+      '📄 HTML File (self-hosted page)'
+    ],
+    'Choose mode:'
+  );
   if (modeIdx === -1) return;
 
   const exam = { name, icon, image: image || null, subjects: [], coachings: [] };
 
   if (modeIdx === 1) {
-    const link = readline.question('Redirect URL: ').trim();
-    if (!link) { console.log('❌ URL required.'); return; }
+    const link = readline.question('\n   Redirect URL: ').trim();
+    if (!link) { console.log('\n❌ URL required.'); pause(); return; }
     exam.directLink = link;
   } else if (modeIdx === 2) {
-    const p = readline.question('HTML file path: ').trim();
+    const p = readline.question('\n   HTML file path: ').trim();
     const rel = copyHtmlToPages(p, name);
-    if (!rel) return;
+    if (!rel) { pause(); return; }
     exam.directLink = rel;
   }
 
@@ -251,6 +408,7 @@ function addNewExam(db) {
   db.exams.push(exam);
   saveDB(db);
   console.log(`\n✅ Exam "${name}" added.`);
+  pause();
 }
 
 // ---------- Manage existing exam ----------
@@ -259,16 +417,20 @@ function manageExam(db, exam) {
   hr(`Exam: ${exam.name}`);
   const subC = (exam.subjects || []).length;
   const coaC = (exam.coachings || []).length;
-  console.log(`   ${subC} subjects · ${coaC} coachings · directLink: ${exam.directLink ? 'yes' : 'no'}`);
+  console.log(`   ${subC} subjects · ${coaC} coachings`);
+  if (exam.directLink) console.log(`   🔗 Direct link: ${exam.directLink}`);
+  if (exam.image) console.log(`   🖼️  Image: ${exam.image}`);
 
-  const opts = [
-    '📚 By Subject',
-    '🏫 By Institution (Coaching)',
-    '✏️  Edit Exam (name / icon / image)',
-    '🔗 Set / Change Direct Redirect',
-    '🗑️  Delete this Exam'
-  ];
-  const idx = readline.keyInSelect(opts, 'Choose:');
+  const idx = menuSelect(
+    [
+      '📚 By Subject',
+      '🏫 By Institution (Coaching)',
+      '✏️  Edit Exam (name / icon / image)',
+      '🔗 Set / Change Direct Redirect',
+      '🗑️  Delete this Exam'
+    ],
+    'Choose:'
+  );
   if (idx === -1) return;
   if (idx === 0) bySubjectFlow(db, exam);
   else if (idx === 1) byInstitutionFlow(db, exam);
@@ -279,10 +441,14 @@ function manageExam(db, exam) {
 
 function bySubjectFlow(db, exam) {
   const subjects = exam.subjects || [];
-  const names = subjects.map(s => `${s.name}  (${(s.CHAPTERS||[]).length} ch · ${(s['WEEKLY TESTS']||[]).length} tests)`);
-  names.push('➕ ADD NEW SUBJECT');
+  const names = subjects.map(s => {
+    const ch = (s.CHAPTERS || []).length;
+    const ts = (s['WEEKLY TESTS'] || []).length;
+    return `${s.name}  ·  ${ch} ch · ${ts} tests`;
+  });
+  names.push('➕  ADD NEW SUBJECT');
 
-  const idx = readline.keyInSelect(names, 'Subjects:');
+  const idx = menuSelect(names, 'Select subject:');
   if (idx === -1) return;
   if (idx === names.length - 1) { addSubject(db, exam); return; }
   manageContainer(db, exam, subjects[idx], 'subject');
@@ -290,10 +456,14 @@ function bySubjectFlow(db, exam) {
 
 function byInstitutionFlow(db, exam) {
   const coachings = exam.coachings || [];
-  const names = coachings.map(s => `${s.name}  (${(s.CHAPTERS||[]).length} ch · ${(s['WEEKLY TESTS']||[]).length} tests)`);
-  names.push('➕ ADD NEW COACHING / INSTITUTION');
+  const names = coachings.map(s => {
+    const ch = (s.CHAPTERS || []).length;
+    const ts = (s['WEEKLY TESTS'] || []).length;
+    return `${s.name}  ·  ${ch} ch · ${ts} tests`;
+  });
+  names.push('➕  ADD NEW COACHING / INSTITUTION');
 
-  const idx = readline.keyInSelect(names, 'Coachings:');
+  const idx = menuSelect(names, 'Select coaching:');
   if (idx === -1) return;
   if (idx === names.length - 1) { addCoaching(db, exam); return; }
   manageContainer(db, exam, coachings[idx], 'coaching');
@@ -303,40 +473,77 @@ function byInstitutionFlow(db, exam) {
 
 function addSubject(db, exam) {
   hr(`Add Subject → ${exam.name}`);
-  const name = readline.question('Subject name: ').trim().toUpperCase();
-  if (!name) { console.log('❌ Cancelled.'); return; }
-  const image = askImageInput('Subject thumbnail');
+
+  const name = readline.question('   Subject name: ').trim().toUpperCase();
+  if (!name) { console.log('\n❌ Cancelled.'); return; }
 
   if (!exam.subjects) exam.subjects = [];
-  exam.subjects.push({ name, image: image || null, CHAPTERS: [], 'WEEKLY TESTS': [] });
+  if (exam.subjects.some(s => s.name === name)) {
+    console.log(`\n❌ Subject "${name}" already exists.`);
+    pause();
+    return;
+  }
+
+  const image = askImageInput('Subject thumbnail');
+
+  exam.subjects.push({
+    name,
+    image: image || null,
+    CHAPTERS: [],
+    'WEEKLY TESTS': []
+  });
   saveDB(db);
-  console.log(`✅ Subject "${name}" added.`);
+  console.log(`\n✅ Subject "${name}" added.`);
+  pause();
 }
 
 function addCoaching(db, exam) {
   hr(`Add Coaching → ${exam.name}`);
-  const name = readline.question('Coaching / Institution name: ').trim().toUpperCase();
-  if (!name) { console.log('❌ Cancelled.'); return; }
-  const image = askImageInput('Coaching thumbnail');
+
+  const name = readline.question('   Coaching / Institution name: ').trim().toUpperCase();
+  if (!name) { console.log('\n❌ Cancelled.'); return; }
 
   if (!exam.coachings) exam.coachings = [];
-  exam.coachings.push({ name, image: image || null, CHAPTERS: [], 'WEEKLY TESTS': [] });
+  if (exam.coachings.some(c => c.name === name)) {
+    console.log(`\n❌ Coaching "${name}" already exists.`);
+    pause();
+    return;
+  }
+
+  const image = askImageInput('Coaching thumbnail');
+
+  exam.coachings.push({
+    name,
+    image: image || null,
+    CHAPTERS: [],
+    'WEEKLY TESTS': []
+  });
   saveDB(db);
-  console.log(`✅ Coaching "${name}" added.`);
+  console.log(`\n✅ Coaching "${name}" added.`);
+  pause();
 }
 
-// ---------- Manage a subject or coaching ----------
+// ---------- Manage subject / coaching ----------
 
 function manageContainer(db, exam, container, kind) {
-  hr(`${container.name} — ${kind}`);
-  const opts = [
-    '📖 Add / Update Chapters',
-    '📝 Add / Update Mock Tests',
-    '✏️  Edit name / image',
-    '🔗 Set / Change Direct Redirect',
-    `🗑️  Delete this ${kind}`
-  ];
-  const idx = readline.keyInSelect(opts, 'Choose:');
+  hr(`${container.name}  ·  ${kind}`);
+
+  const ch = (container.CHAPTERS || []).length;
+  const ts = (container['WEEKLY TESTS'] || []).length;
+  console.log(`   ${ch} chapters · ${ts} tests`);
+  if (container.image) console.log(`   🖼️  ${container.image}`);
+  if (container.directLink) console.log(`   🔗 ${container.directLink}`);
+
+  const idx = menuSelect(
+    [
+      '📖 Add / Update Chapters',
+      '📝 Add / Update Mock Tests',
+      '✏️  Edit name / image',
+      '🔗 Set / Change Direct Redirect',
+      `🗑️  Delete this ${kind}`
+    ],
+    'Choose:'
+  );
   if (idx === -1) return;
   if (idx === 0) addChapterOrTest(db, container, 'CHAPTERS');
   else if (idx === 1) addChapterOrTest(db, container, 'WEEKLY TESTS');
@@ -346,77 +553,95 @@ function manageContainer(db, exam, container, kind) {
 }
 
 function editContainer(db, container, kind) {
-  console.log(`\nEditing ${kind}: ${container.name}`);
-  const name = readline.question(`New name [${container.name}]: `).trim().toUpperCase() || container.name;
+  hr(`Edit ${kind}: ${container.name}`);
+
+  const name = readline.question(`   New name [${container.name}]: `).trim().toUpperCase() || container.name;
   container.name = name;
 
-  console.log(`Current image: ${container.image || '(none)'}`);
+  console.log(`   Current image: ${container.image || '(none)'}`);
   if (readline.keyInYN('   Change image?')) {
     const img = askImageInput(`${kind} thumbnail`);
     if (img) container.image = img;
   }
+
   saveDB(db);
-  console.log('✅ Updated.');
+  console.log('\n✅ Updated.');
+  pause();
 }
 
 function setContainerDirectLink(db, container) {
-  console.log(`\n🔗 Direct redirect for: ${container.name}`);
+  hr(`Direct redirect → ${container.name}`);
   console.log(`   Current: ${container.directLink || '(none)'}`);
   const link = readline.question('   New URL (blank = remove): ').trim();
   if (link) container.directLink = link;
   else delete container.directLink;
   saveDB(db);
-  console.log('✅ Updated.');
+  console.log('\n✅ Updated.');
+  pause();
 }
 
 function deleteContainer(db, exam, container, kind) {
-  if (!confirmTwice(`${kind} "${container.name}"`)) { console.log('❌ Cancelled.'); return; }
+  if (!confirmTwice(`${kind} "${container.name}"`)) {
+    console.log('\n❌ Cancelled.');
+    return;
+  }
   const arr = kind === 'subject' ? exam.subjects : exam.coachings;
   const i = arr.indexOf(container);
   if (i >= 0) arr.splice(i, 1);
   saveDB(db);
-  console.log(`🗑️  ${kind} deleted.`);
+  console.log(`\n🗑️  ${kind} deleted.`);
+  pause();
 }
 
 // ---------- Chapters / Mock Tests ----------
 
 function addChapterOrTest(db, container, cat) {
   const list = container[cat] || [];
-  const titles = list.map(i => i.title);
-  titles.push('➕ ADD NEW');
+  const label = cat === 'CHAPTERS' ? 'Chapter' : 'Test';
 
-  const idx = readline.keyInSelect(titles, `Select ${cat} item:`);
+  const titles = list.map((it, i) => `${i + 1}. ${it.title}`);
+  titles.push(`➕  ADD NEW ${label.toUpperCase()}`);
+
+  const idx = menuSelect(titles, `Select ${label}:`);
   if (idx === -1) return;
 
   const isNew = idx === titles.length - 1;
   const existing = isNew ? null : list[idx];
 
+  hr(isNew ? `Add ${label}` : `Edit ${label}: ${existing.title}`);
+
   let title;
   if (isNew) {
-    title = readline.question('Title: ').trim();
-    if (!title) { console.log('❌ Cancelled.'); return; }
+    title = readline.question(`   ${label} title: `).trim();
+    if (!title) { console.log('\n❌ Cancelled.'); return; }
   } else {
-    console.log(`\nEditing: ${existing.title}`);
-    title = readline.question(`New title [${existing.title}]: `).trim() || existing.title;
+    title = readline.question(`   New title [${existing.title}]: `).trim() || existing.title;
   }
 
+  // Lecture link / HTML
   let url = existing?.url || null;
-  console.log(`\n📺 Lecture link or HTML code`);
-  console.log(`   (leave blank to keep existing${existing?.url ? ' — currently set' : ''}; type SKIP to clear)`);
-  const lectureInput = readMultiLine('   Lecture input:');
-  if (lectureInput && lectureInput.toUpperCase() === 'SKIP') url = null;
-  else if (lectureInput) url = lectureInput;
+  console.log(`\n   📺 Lecture link or HTML code`);
+  if (existing?.url) {
+    console.log(`   Current: ${existing.url.slice(0, 60)}${existing.url.length > 60 ? '...' : ''}`);
+  }
+  console.log(`   (Enter new value, blank = keep, or type CLEAR to remove)`);
+  const lecture = readMultiLine('   Lecture input:');
+  if (lecture) {
+    if (lecture.toUpperCase() === 'CLEAR') url = null;
+    else url = lecture;
+  }
 
+  // Download link only if HTML code
   let download_url = existing?.download_url || null;
   if (url && url.includes('<')) {
-    const dl = readline.question(`Download link [${download_url || 'none'}]: `).trim();
+    const dl = readline.question(`\n   Download link [${download_url || 'none'}]: `).trim();
     if (dl) download_url = dl;
   }
 
-  const notes_en = readline.question(`English Notes [${existing?.notes_en || 'none'}]: `).trim() || existing?.notes_en || null;
-  const notes_hi = readline.question(`Hindi Notes [${existing?.notes_hi || 'none'}]: `).trim() || existing?.notes_hi || null;
-  const quiz     = readline.question(`Quiz [${existing?.quiz || 'none'}]: `).trim() || existing?.quiz || null;
-  const ppt      = readline.question(`PPT / Other [${existing?.handwritten || 'none'}]: `).trim() || existing?.handwritten || null;
+  const notes_en = readline.question(`\n   English notes [${existing?.notes_en || 'none'}]: `).trim() || existing?.notes_en || null;
+  const notes_hi = readline.question(`   Hindi notes [${existing?.notes_hi || 'none'}]: `).trim() || existing?.notes_hi || null;
+  const quiz     = readline.question(`   Quiz [${existing?.quiz || 'none'}]: `).trim() || existing?.quiz || null;
+  const ppt      = readline.question(`   PPT / Other [${existing?.handwritten || 'none'}]: `).trim() || existing?.handwritten || null;
 
   const newItem = {
     title,
@@ -428,64 +653,79 @@ function addChapterOrTest(db, container, cat) {
     handwritten: ppt || null
   };
 
-  if (isNew) { if (!container[cat]) container[cat] = []; container[cat].push(newItem); }
-  else container[cat][idx] = newItem;
+  if (isNew) {
+    if (!container[cat]) container[cat] = [];
+    container[cat].push(newItem);
+  } else {
+    container[cat][idx] = newItem;
+  }
 
   saveDB(db);
-  console.log(`\n✅ ${cat} "${title}" ${isNew ? 'added' : 'updated'}.`);
+  console.log(`\n✅ ${label} "${title}" ${isNew ? 'added' : 'updated'}.`);
+  pause();
 }
 
 // ---------- Edit exam metadata ----------
 
 function editExam(db, exam) {
-  hr(`Edit: ${exam.name}`);
-  const name = readline.question(`New name [${exam.name}]: `).trim().toUpperCase() || exam.name;
-  const icon = readline.question(`Icon [${exam.icon || 'graduation-cap'}]: `).trim() || exam.icon || 'graduation-cap';
+  hr(`Edit Exam: ${exam.name}`);
+
+  const name = readline.question(`   New name [${exam.name}]: `).trim().toUpperCase() || exam.name;
+  const icon = readline.question(`   Icon [${exam.icon || 'graduation-cap'}]: `).trim() || exam.icon || 'graduation-cap';
 
   exam.name = name;
   exam.icon = icon;
 
-  console.log(`Current image: ${exam.image || '(none)'}`);
+  console.log(`   Current image: ${exam.image || '(none)'}`);
   if (readline.keyInYN('   Change image?')) {
     const img = askImageInput('Exam thumbnail');
     if (img) exam.image = img;
   }
 
   saveDB(db);
-  console.log('✅ Exam updated.');
+  console.log('\n✅ Exam updated.');
+  pause();
 }
 
 function setDirectLink(db, exam) {
-  hr(`Direct redirect for: ${exam.name}`);
+  hr(`Direct redirect → ${exam.name}`);
   console.log(`   Current: ${exam.directLink || '(none)'}`);
   const link = readline.question('   New URL (blank = remove): ').trim();
   if (link) exam.directLink = link;
   else delete exam.directLink;
   saveDB(db);
-  console.log('✅ Updated.');
+  console.log('\n✅ Updated.');
+  pause();
 }
 
 function deleteExam(db, exam) {
-  if (!confirmTwice(`Exam "${exam.name}" (with all subjects/coachings)`)) { console.log('❌ Cancelled.'); return; }
+  if (!confirmTwice(`Exam "${exam.name}" with all subjects & coachings`)) {
+    console.log('\n❌ Cancelled.');
+    return;
+  }
   const i = db.exams.indexOf(exam);
   if (i >= 0) db.exams.splice(i, 1);
   saveDB(db);
-  console.log(`🗑️  Exam deleted.`);
+  console.log(`\n🗑️  Exam deleted.`);
+  pause();
 }
 
 // ============================================================
-// MANAGE / DELETE (standalone delete menu)
+// MANAGE / DELETE DATA (only new hierarchy)
 // ============================================================
 
 function manageData(db) {
   hr('MANAGE / DELETE DATA');
-  const opts = [
-    '🗑️  Delete an Exam',
-    '🗑️  Delete a Subject',
-    '🗑️  Delete a Coaching',
-    '🗑️  Delete a Chapter / Test'
-  ];
-  const idx = readline.keyInSelect(opts, 'Choose:');
+
+  const idx = menuSelect(
+    [
+      '🗑️  Delete an Exam',
+      '🗑️  Delete a Subject',
+      '🗑️  Delete a Coaching',
+      '🗑️  Delete a Chapter / Test'
+    ],
+    'Choose:'
+  );
   if (idx === -1) return;
   if (idx === 0) standaloneDeleteExam(db);
   else if (idx === 1) standaloneDeleteContainer(db, 'subjects');
@@ -495,68 +735,78 @@ function manageData(db) {
 
 function standaloneDeleteExam(db) {
   const exams = db.exams || [];
-  if (exams.length === 0) { console.log('❌ No exams.'); return; }
-  const idx = readline.keyInSelect(exams.map(e => e.name), 'Exam to delete:');
+  if (exams.length === 0) { console.log('\n❌ No exams.'); pause(); return; }
+
+  const idx = menuSelect(exams.map(e => e.name), 'Exam to delete:');
   if (idx === -1) return;
+
   const exam = exams[idx];
-  if (!confirmTwice(`Exam "${exam.name}"`)) { console.log('❌ Cancelled.'); return; }
+  if (!confirmTwice(`Exam "${exam.name}"`)) { console.log('\n❌ Cancelled.'); return; }
   db.exams.splice(idx, 1);
   saveDB(db);
-  console.log('🗑️  Exam deleted.');
+  console.log('\n🗑️  Exam deleted.');
+  pause();
 }
 
 function standaloneDeleteContainer(db, key) {
   const exams = db.exams || [];
-  if (exams.length === 0) { console.log('❌ No exams.'); return; }
+  if (exams.length === 0) { console.log('\n❌ No exams.'); pause(); return; }
 
-  const eIdx = readline.keyInSelect(exams.map(e => e.name), 'Exam:');
+  const eIdx = menuSelect(exams.map(e => e.name), 'Exam:');
   if (eIdx === -1) return;
+
   const exam = exams[eIdx];
   const list = exam[key] || [];
-  if (list.length === 0) { console.log(`❌ No ${key}.`); return; }
+  if (list.length === 0) { console.log(`\n❌ No ${key}.`); pause(); return; }
 
-  const sIdx = readline.keyInSelect(list.map(s => s.name), `Select ${key}:`);
+  const sIdx = menuSelect(list.map(s => s.name), `Select ${key}:`);
   if (sIdx === -1) return;
-  const item = list[sIdx];
 
-  if (!confirmTwice(`${key} "${item.name}"`)) { console.log('❌ Cancelled.'); return; }
+  const item = list[sIdx];
+  if (!confirmTwice(`${key} "${item.name}"`)) { console.log('\n❌ Cancelled.'); return; }
   list.splice(sIdx, 1);
   saveDB(db);
-  console.log(`🗑️  Deleted.`);
+  console.log('\n🗑️  Deleted.');
+  pause();
 }
 
 function standaloneDeleteChapter(db) {
   const exams = db.exams || [];
-  if (exams.length === 0) { console.log('❌ No exams.'); return; }
+  if (exams.length === 0) { console.log('\n❌ No exams.'); pause(); return; }
 
-  const eIdx = readline.keyInSelect(exams.map(e => e.name), 'Exam:');
+  const eIdx = menuSelect(exams.map(e => e.name), 'Exam:');
   if (eIdx === -1) return;
-  const exam = exams[eIdx];
 
+  const exam = exams[eIdx];
   const allContainers = [
     ...(exam.subjects || []).map(s => ({ label: '📚 ' + s.name, ref: s })),
     ...(exam.coachings || []).map(s => ({ label: '🏫 ' + s.name, ref: s }))
   ];
-  if (allContainers.length === 0) { console.log('❌ No subjects or coachings.'); return; }
+  if (allContainers.length === 0) { console.log('\n❌ No subjects or coachings.'); pause(); return; }
 
-  const cIdx = readline.keyInSelect(allContainers.map(c => c.label), 'Pick subject / coaching:');
+  const cIdx = menuSelect(allContainers.map(c => c.label), 'Pick subject / coaching:');
   if (cIdx === -1) return;
+
   const container = allContainers[cIdx].ref;
 
-  const catIdx = readline.keyInSelect(['CHAPTERS', 'WEEKLY TESTS'], 'Category:');
+  const catIdx = menuSelect(['CHAPTERS', 'WEEKLY TESTS'], 'Category:');
   if (catIdx === -1) return;
   const cat = catIdx === 0 ? 'CHAPTERS' : 'WEEKLY TESTS';
 
   const list = container[cat] || [];
-  if (list.length === 0) { console.log('❌ Nothing to delete.'); return; }
+  if (list.length === 0) { console.log('\n❌ Nothing to delete.'); pause(); return; }
 
-  const iIdx = readline.keyInSelect(list.map(i => i.title), 'Item to delete:');
+  const iIdx = menuSelect(list.map(i => i.title), 'Item to delete:');
   if (iIdx === -1) return;
 
-  if (!confirmTwice(`"${list[iIdx].title}" from ${cat}`)) { console.log('❌ Cancelled.'); return; }
+  if (!confirmTwice(`"${list[iIdx].title}" from ${cat}`)) {
+    console.log('\n❌ Cancelled.');
+    return;
+  }
   list.splice(iIdx, 1);
   saveDB(db);
-  console.log('🗑️  Deleted.');
+  console.log('\n🗑️  Deleted.');
+  pause();
 }
 
 // ============================================================
@@ -565,13 +815,13 @@ function standaloneDeleteChapter(db) {
 
 function addNotification(db) {
   hr('ADD NOTIFICATION');
-  const tag = readline.question('Tag [UPDATE]: ').trim().toUpperCase() || 'UPDATE';
 
-  console.log('\n📝 Message (multi-line, end with DONE):');
-  const message = readMultiLine('   Message input:');
-  if (!message) { console.log('❌ Message required.'); return; }
+  const tag = readline.question('   Tag [UPDATE]: ').trim().toUpperCase() || 'UPDATE';
 
-  console.log('\n🔗 Optional link — where should this open when tapped?');
+  const message = readMultiLine('   📝 Message (multi-line, end with DONE):');
+  if (!message) { console.log('\n❌ Message required.'); return; }
+
+  console.log('\n   🔗 Optional link — where should it open when tapped?');
   const link = readline.question('   Link URL (blank = no link): ').trim();
 
   let linkText = null;
@@ -590,66 +840,83 @@ function addNotification(db) {
 
   console.log('\n✅ Notification added.');
   if (link) console.log(`   🔗 Links to: ${link}`);
+  pause();
 }
 
 function deleteNotification(db) {
   const list = db.notifications || [];
-  if (list.length === 0) { console.log('❌ No notifications.'); return; }
+  if (list.length === 0) { console.log('\n❌ No notifications.'); pause(); return; }
 
   const preview = list.map(n => `[${n.tag || 'UPDATE'}] ${(n.message || '').slice(0, 45)}...`);
-  const idx = readline.keyInSelect(preview, 'Notification to delete:');
+  const idx = menuSelect(preview, 'Notification to delete:');
   if (idx === -1) return;
 
   const target = list[idx];
   if (!confirmTwice(`Notification: "${(target.message || '').slice(0, 60)}..."`)) {
-    console.log('❌ Cancelled.');
+    console.log('\n❌ Cancelled.');
     return;
   }
   list.splice(idx, 1);
   saveDB(db);
-  console.log('🗑️  Notification deleted.');
+  console.log('\n🗑️  Notification deleted.');
+  pause();
 }
 
 // ============================================================
-// MAIN
+// SUMMARY PRINTER
 // ============================================================
 
 function printSummary(db) {
   const e = (db.exams || []).length;
   const n = (db.notifications || []).length;
   const img = db.site?.image ? '✅' : '—';
-  console.log(`   Exams: ${e}  |  Notifications: ${n}  |  Site image: ${img}`);
+  const legacy = getLegacyCourses(db).length;
+
+  const parts = [
+    `Exams: ${e}`,
+    `Notifs: ${n}`,
+    `Site image: ${img}`
+  ];
+  if (legacy > 0) parts.push(`⚠️  Legacy: ${legacy}`);
+
+  console.log('   ' + parts.join('  |  '));
 }
+
+// ============================================================
+// MAIN
+// ============================================================
 
 function main() {
   backupOnce();
 
   while (true) {
     const db = loadDB();
-    migrateIfNeeded(db);
 
     hr('VIVID ACADEMY — CONTENT MANAGER');
     printSummary(db);
 
-    const opts = [
-      '📚 Add / Update Content',
-      '🗑️  Manage / Delete Data',
-      '🔔 Add Notification',
-      '❌ Delete Notifications',
-      '⚙️  Site Settings',
-      '🚪 Exit'
-    ];
-    const idx = readline.keyInSelect(opts, 'What do you want to do?');
+    const idx = menuSelect(
+      [
+        '📚 Add / Update Content',
+        '🗑️  Manage / Delete Data',
+        '🔔 Add Notification',
+        '❌ Delete Notifications',
+        '⚙️  Site Settings',
+        '📦 Manage Previous Courses (Legacy)',
+        '🚪 Exit'
+      ],
+      'What do you want to do?'
+    );
 
+    if (idx === -1) { console.log('\n👋 Bye.\n'); break; }
     if (idx === 0) addNewOrUpdate(db);
     else if (idx === 1) manageData(db);
     else if (idx === 2) addNotification(db);
     else if (idx === 3) deleteNotification(db);
     else if (idx === 4) manageSiteSettings(db);
-    else break;
+    else if (idx === 5) manageLegacyCourses(db);
+    else if (idx === 6) { console.log('\n👋 Bye.\n'); break; }
   }
-
-  console.log('\n👋 Done.\n');
 }
 
 main();
