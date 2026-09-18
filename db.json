@@ -18,6 +18,27 @@
   ],
   "courses": [
     {
+      "name": "PARMAR 5.0 GK",
+      "teacher": "PARMAR SIR",
+      "subjects": [
+        {
+          "name": "POLITY",
+          "CHAPTERS": [
+            {
+              "title": "MAKING OF CONSTITUTION LEC - 1",
+              "url": "https://www.youtube.com/live/UjmtJmpP4Bo",
+              "download_url": null,
+              "notes_en": null,
+              "notes_hi": null,
+              "quiz": null,
+              "handwritten": null
+            }
+          ],
+          "WEEKLY TESTS": []
+        }
+      ]
+    },
+    {
       "name": "PARMAR 4.0 GK",
       "teacher": "PARMAR SIR",
       "subjects": [
@@ -1305,61 +1326,49 @@
     },
     {
       "name": "SSC PRATHAM BATCH 2",
+      "teacher": "CAREERWILL FACULTY",
       "directLink": "https://vividxprathambatch.edgeone.app/",
       "subjects": []
     },
     {
       "name": "SELECTION WAY",
+      "teacher": "SELECTION WAY FACULTY",
       "directLink": "https://selectionwayvivid.edgeone.dev/",
       "subjects": []
     },
     {
-      "name": "PARMAR 5.0 GK",
-      "subjects": [
-        {
-          "name": "POLITY",
-          "CHAPTERS": [
-            {
-              "title": "MAKING OF CONSTITUTION LEC - 1",
-              "url": "https://www.youtube.com/live/UjmtJmpP4Bo",
-              "download_url": null,
-              "notes_en": null,
-              "notes_hi": null,
-              "quiz": null,
-              "handwritten": null
-            }
-          ],
-          "WEEKLY TESTS": []
-        }
-      ]
-    },
-    {
       "name": "ACHIEVERS 8.0",
+      "teacher": "RANI MADAM",
       "directLink": "https://achievers8byvivid.edgeone.dev/",
       "subjects": []
     },
     {
       "name": "BHUTESH MATH'S FOUNDATION",
+      "teacher": "BHUTESH SIR",
       "directLink": "https://bhuteshmathsbyvivid.edgeone.dev/",
       "subjects": []
     },
     {
       "name": "PARMAR PC 2.0",
+      "teacher": "AMAN SIR",
       "directLink": "https://parmarpc2byvivid.edgeone.dev/",
       "subjects": []
     },
     {
       "name": "PARMAR REASONING FOUNDATION",
+      "teacher": "KAMAL SIR",
       "directLink": "https://parmarreasoningbyvivid.edgeone.dev/",
       "subjects": []
     },
     {
       "name": "ADITYA SIR VOD 3.0",
+      "teacher": "ADITYA SIR",
       "directLink": "pages/aditya-sir-vod-30.html",
       "subjects": []
     },
     {
       "name": "ABHINAY MATH'S FOUNDATION COURSE",
+      "teacher": "ABHINAY SIR",
       "directLink": "pages/abhinay-maths-foundation-course.html",
       "subjects": []
     }
